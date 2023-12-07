@@ -26,7 +26,8 @@ module.exports = {
         whiteHover: "rgb(226,226,226)",
       },
 
-      backgroundImage: {},
+      backgroundImage: {
+      },
 
       fontFamily: {
         UberMove: ["Uber Move", "sans-serif"],
