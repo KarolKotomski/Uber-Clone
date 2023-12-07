@@ -1,3 +1,4 @@
+import HomeAbout from "./HomeAbout";
 import HomeBanner from "./HomeBanner";
 import HomeDownload from "./HomeDownload";
 import HomeFocused from "./HomeFocused";
@@ -10,6 +11,7 @@ const HomeMain = () => {
       <HomeHero />
       <HomeBanner />
       <HomeFocused />
+      <HomeAbout />
       <HomeDownload />
       <HomeSignUp />
     </main>
