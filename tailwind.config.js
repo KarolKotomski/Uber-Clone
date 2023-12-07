@@ -27,6 +27,8 @@ module.exports = {
       },
 
       backgroundImage: {
+        hero: "url('images/hero.webp')",
+        banner: "url('images/banner.webp')",
       },
 
       fontFamily: {
