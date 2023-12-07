@@ -1,7 +1,15 @@
+import HomeFooter from "../components/HomeFooter";
+import HomeMain from "../components/HomeMain";
+import HomeNavbar from "../components/HomeNavbar";
+
 const HomePage = () => {
   return (
-    <div>Home</div>
-  )
-}
+    <>
+      <HomeNavbar />
+      <HomeMain />
+      <HomeFooter />
+    </>
+  );
+};
 
-export default HomePage
+export default HomePage;

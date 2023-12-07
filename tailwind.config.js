@@ -21,10 +21,17 @@ module.exports = {
 
     extend: {
       colors: {
-        orange: "#ff4d30",
+        greyActive: "rgb(84,84,84)",
+        greyHover: "rgb(51,51,51)",
+        whiteHover: "rgb(226,226,226)",
       },
 
       backgroundImage: {},
+
+      fontFamily: {
+        UberMove: ["Uber Move", "sans-serif"],
+        UberMoveText: ["Uber Move Text", "sans-serif"],
+      },
     },
   },
   plugins: [],
