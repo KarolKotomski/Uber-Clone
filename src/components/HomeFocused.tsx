@@ -3,7 +3,7 @@ import HomeFocusedUnit from "./HomeFocusedUnit";
 const HomeFocused = () => {
   return (
     <section>
-      <div className="container p-16">
+      <div className="container p-16 text-greyHover">
         <h2 className="font-UberMove pb-9 text-[2.25rem] font-bold">
           Focused on safety, wherever you go
         </h2>
