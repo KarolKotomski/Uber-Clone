@@ -24,6 +24,7 @@ module.exports = {
         greyActive: "rgb(84,84,84)",
         greyHover: "rgb(51,51,51)",
         whiteHover: "rgb(226,226,226)",
+        lightGrey: "rgb(246,246,246)",
       },
 
       backgroundImage: {
