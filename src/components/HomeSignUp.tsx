@@ -1,5 +1,16 @@
+import HomeSignUpUnit from "./HomeSignUpUnit";
+
 const HomeSignUp = () => {
-  return <div>HomeSignUp</div>;
+  return (
+    <section>
+      <div className="container p-16">
+        <div className="grid grid-cols-2 gap-9">
+          <HomeSignUpUnit />
+          <HomeSignUpUnit />
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default HomeSignUp;

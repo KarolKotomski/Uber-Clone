@@ -11,10 +11,9 @@ const HomeDownloadUnit = () => {
       <svg
         aria-hidden="true"
         focusable="false"
-        width="1em"
-        height="25"
         fill="currentColor"
         viewBox="0 0 36 36"
+        className="w-4"
       >
         <path
           fill-rule="evenodd"
