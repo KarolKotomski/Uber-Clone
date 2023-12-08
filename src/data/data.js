@@ -1,3 +1,9 @@
+import facebook from "../icons/facebook.png";
+import twitter from "../icons/twitter.png";
+import youtube from "../icons/youtube.png";
+import linkedin from "../icons/linkedin.png";
+import instagram from "../icons/instagram.png";
+
 //footer data:
 
 export const footerList = [
@@ -33,5 +39,28 @@ export const footerList = [
   {
     label: "Travel",
     list: ["Reserve", "Airports", "Cities"],
+  },
+];
+
+export const icons = [
+  {
+    name: "facebook",
+    icon: facebook,
+  },
+  {
+    name: "twitter",
+    icon: twitter,
+  },
+  {
+    name: "youtube",
+    icon: youtube,
+  },
+  {
+    name: "linkedin",
+    icon: linkedin,
+  },
+  {
+    name: "instagram",
+    icon: instagram,
   },
 ];
