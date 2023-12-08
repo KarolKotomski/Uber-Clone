@@ -5,7 +5,9 @@ const HomeDownloadUnit = () => {
     <div className="flex items-center justify-between bg-white p-6">
       <img src={uberAppQr} alt="Uber App QR code" />
       <div>
-        <h3 className="font-UberMove text-2xl">Download the Uber app</h3>
+        <h3 className="font-UberMove text-2xl font-bold">
+          Download the Uber app
+        </h3>
         <p>Scan to download</p>
       </div>
       <svg
