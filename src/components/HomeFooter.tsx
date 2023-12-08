@@ -1,5 +1,7 @@
 import google from "../icons/google.svg";
 import apple from "../icons/apple.svg";
+import HomeFooterListUnit from "./HomeFooterListUnit";
+import { footerList } from "../data/data";
 
 const HomeFooter = () => {
   return (
@@ -13,83 +15,15 @@ const HomeFooter = () => {
           <p className="text-base">Visit Help Center</p>
         </div>
         <div className="my-20 grid grid-cols-4">
-          <div>
-            <h4 className="mb-5 text-lg font-medium">Company</h4>
-            <ul className="flex flex-col gap-4">
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                About us
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Our offerings
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Newsroom
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Investors
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Blog
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Careers
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                AI
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Gift cards
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="mb-5 text-lg font-medium">Products</h4>
-            <ul className="flex flex-col gap-4">
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Ride
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Drive
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Deliver
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Eat
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Uber for Business
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Uber Freight
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="mb-5 text-lg font-medium">Global citizenship</h4>
-            <ul className="flex flex-col gap-4">
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Safety
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Diversity and Inclusion
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="mb-5 text-lg font-medium">Travel</h4>
-            <ul className="flex flex-col gap-4">
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Reserve
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Airports
-              </li>
-              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
-                Cities
-              </li>
-            </ul>
-          </div>
+          {footerList.map((element, index) => {
+            return (
+              <HomeFooterListUnit
+                key={index}
+                label={element.label}
+                list={element.list}
+              />
+            );
+          })}
         </div>
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-16">
@@ -174,13 +108,15 @@ const HomeFooter = () => {
         <div className="flex items-center justify-between text-xs text-[#AFAFAF]">
           <p>© 2023 Uber Technologies Inc.</p>
           <div className="flex items-center justify-between gap-5">
-            <p className="w-fit cursor-pointer hover:text-greyActive transition-colors">
+            <p className="w-fit cursor-pointer transition-colors hover:text-greyActive">
               Privacy
             </p>
-            <p className="w-fit cursor-pointer hover:text-greyActive transition-colors">
+            <p className="w-fit cursor-pointer transition-colors hover:text-greyActive">
               Accessibility
             </p>
-            <p className="w-fit cursor-pointer hover:text-greyActive transition-colors">Terms</p>
+            <p className="w-fit cursor-pointer transition-colors hover:text-greyActive">
+              Terms
+            </p>
           </div>
         </div>
       </div>
