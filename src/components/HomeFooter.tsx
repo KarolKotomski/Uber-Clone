@@ -16,40 +16,78 @@ const HomeFooter = () => {
           <div>
             <h4 className="mb-5 text-lg font-medium">Company</h4>
             <ul className="flex flex-col gap-4">
-              <li>About us</li>
-              <li>Our offerings</li>
-              <li>Newsroom</li>
-              <li>Investors</li>
-              <li>Blog</li>
-              <li>Careers</li>
-              <li>AI</li>
-              <li>Gift cards</li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                About us
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Our offerings
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Newsroom
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Investors
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Blog
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Careers
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                AI
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Gift cards
+              </li>
             </ul>
           </div>
           <div>
             <h4 className="mb-5 text-lg font-medium">Products</h4>
             <ul className="flex flex-col gap-4">
-              <li>Ride</li>
-              <li>Drive</li>
-              <li>Deliver</li>
-              <li>Eat</li>
-              <li>Uber for Business</li>
-              <li>Uber Freight</li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Ride
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Drive
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Deliver
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Eat
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Uber for Business
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Uber Freight
+              </li>
             </ul>
           </div>
           <div>
             <h4 className="mb-5 text-lg font-medium">Global citizenship</h4>
             <ul className="flex flex-col gap-4">
-              <li>Safety</li>
-              <li>Diversity and Inclusion</li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Safety
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Diversity and Inclusion
+              </li>
             </ul>
           </div>
           <div>
             <h4 className="mb-5 text-lg font-medium">Travel</h4>
             <ul className="flex flex-col gap-4">
-              <li>Reserve</li>
-              <li>Airports</li>
-              <li>Cities</li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Reserve
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Airports
+              </li>
+              <li className="transition-colors w-fit cursor-pointer hover:text-[#AFAFAFAF]">
+                Cities
+              </li>
             </ul>
           </div>
         </div>
@@ -136,9 +174,13 @@ const HomeFooter = () => {
         <div className="flex items-center justify-between text-xs text-[#AFAFAF]">
           <p>© 2023 Uber Technologies Inc.</p>
           <div className="flex items-center justify-between gap-5">
-            <p>Privacy</p>
-            <p>Accessibility</p>
-            <p>Terms</p>
+            <p className="w-fit cursor-pointer hover:text-greyActive transition-colors">
+              Privacy
+            </p>
+            <p className="w-fit cursor-pointer hover:text-greyActive transition-colors">
+              Accessibility
+            </p>
+            <p className="w-fit cursor-pointer hover:text-greyActive transition-colors">Terms</p>
           </div>
         </div>
       </div>
