@@ -1,4 +1,4 @@
-import uberAppQr from "../images/uberAppQr.webp";
+import uberAppQr from "../icons/uberAppQr.webp";
 
 const HomeDownloadUnit = () => {
   return (
