@@ -1,8 +1,12 @@
-const HomeSignUpUnit = () => {
+type Props = {
+  purpose: string;
+};
+
+const HomeSignUpUnit = ({ purpose }: Props) => {
   return (
-    <div className="flex items-center justify-between cursor-pointer border-b border-b-black pb-10 hover:text-greyActive">
+    <div className="flex cursor-pointer items-center justify-between border-b border-b-black pb-10 hover:text-greyActive">
       <h2 className="font-UberMove text-[2.25rem] font-bold">
-        Sign up to drive
+        Sign up to {purpose}
       </h2>
       <svg
         aria-hidden="true"
