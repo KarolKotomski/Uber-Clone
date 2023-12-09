@@ -1,3 +1,7 @@
+import earnDeliver from "../icons/earn-deliver.svg";
+import forkEat from "../icons/fork-eat.svg";
+import carRide from "../icons/car-ride.svg";
+
 import focused1 from "../images/focused1.webp";
 import focused2 from "../images/focused2.webp";
 
@@ -14,7 +18,52 @@ import instagram from "../icons/instagram.png";
 import uberAppQr from "../icons/uberAppQr.webp";
 import driverAppQr from "../icons/driverAppQr.webp";
 
-//focused section data:
+//HomeHeroElement data:
+
+/**Header */
+export const heroElementHeaderList = [
+  {
+    icon: earnDeliver,
+    text: "Drive or deliver",
+  },
+  {
+    icon: forkEat,
+    text: "Eat",
+  },
+  {
+    icon: carRide,
+    text: "Ride",
+  },
+];
+
+/**Main */
+export const heroElementMainList = [
+  {
+    id: 1,
+    header: "Get in the driver's seat and get paid",
+    paragraph:
+      "Drive on the platform with the largest network of active riders.",
+    buttonText: "Sign up to drive",
+    additionalText: "Learn more about driving and delivering",
+  },
+  {
+    id: 2,
+    header: "Discover delicious eats",
+    paragraph: "Order delivery from restaurants you love.",
+    buttonText: "Order now",
+    additionalText: "Own a restaurant? Partner with Uber Eats",
+  },
+  {
+    id: 3,
+    header: "Request a ride now",
+    paragraph:
+      "Drive on the platform with the largest network of active riders.",
+    buttonText: "Request now",
+    additionalText: "Schedule for later",
+  },
+];
+
+//HomeFocused section data:
 export const focusedList = [
   {
     picture: focused1,
@@ -35,7 +84,7 @@ export const focusedList = [
   },
 ];
 
-//about section data:
+//HomeAbout section data:
 
 export const aboutList = [
   {
@@ -61,7 +110,7 @@ export const aboutList = [
   },
 ];
 
-//download section data:
+//HomeDownload section data:
 
 export const downloadList = [
   {
@@ -74,7 +123,7 @@ export const downloadList = [
   },
 ];
 
-//footer section data:
+//HomeFooter section data:
 export const footerList = [
   {
     label: "Company",

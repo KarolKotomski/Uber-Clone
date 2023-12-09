@@ -1,4 +1,4 @@
-import HomeHeroUnit from "./HomeHeroUnit";
+import HomeHeroElement from "./HomeHeroElement";
 
 const HomeHero = () => {
   return (
@@ -7,7 +7,7 @@ const HomeHero = () => {
         <div className="container">
           <div className="left-0 right-0 top-0 h-full p-16">
             <div className="max-w-[50%]">
-              <HomeHeroUnit />
+              <HomeHeroElement />
             </div>
           </div>
         </div>
