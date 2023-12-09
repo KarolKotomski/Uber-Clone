@@ -1,5 +1,3 @@
-import focused1 from "../images/focused1.webp";
-
 type Props = {
   picture: string;
   header: string;
@@ -23,8 +21,8 @@ const HomeFocusedUnit = ({
       <h3 className="text-lg font-medium">{header}</h3>
       <p>{paragraph}</p>
       <div className="mt-3 flex gap-5">
-        {additionals.map((additional) => {
-          return <div>{additional}</div>;
+        {additionals.map((additional, index) => {
+          return <div key={index}>{additional}</div>;
         })}
       </div>
     </div>

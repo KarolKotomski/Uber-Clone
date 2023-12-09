@@ -10,9 +10,10 @@ const HomeDownload = () => {
             It's easier in the apps
           </h2>
           <div className="mt-9 grid grid-cols-2 gap-9 ">
-            {downloadList.map((element) => {
+            {downloadList.map((element, index) => {
               return (
                 <HomeDownloadUnit
+                  key={index}
                   header={element.header}
                   qrCode={element.qrCode}
                 />

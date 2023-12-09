@@ -20,8 +20,8 @@ const HomeDownloadUnit = ({ header, qrCode }: Props) => {
           className="h-4 w-4"
         >
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M18.2354 2H24.2711L36 18L24.2711 34H18.2354L28.1237 20.56H0V15.44H28.1237L18.2354 2Z"
             fill="currentColor"
           ></path>

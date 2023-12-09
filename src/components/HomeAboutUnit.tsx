@@ -1,4 +1,3 @@
-import person from "../icons/person.svg";
 type Props = {
   icon: string;
   header: string;

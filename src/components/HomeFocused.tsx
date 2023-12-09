@@ -9,9 +9,10 @@ const HomeFocused = () => {
           Focused on safety, wherever you go
         </h2>
         <div className="grid grid-cols-2 gap-9">
-          {focusedList.map((element) => {
+          {focusedList.map((element, index) => {
             return (
               <HomeFocusedUnit
+                key={index}
                 picture={element.picture}
                 header={element.header}
                 paragraph={element.paragraph}

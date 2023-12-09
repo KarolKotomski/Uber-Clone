@@ -12,7 +12,7 @@ const HomeHeroElement = () => {
           );
         })}
       </div>
-      <HomeHeroElementMain object={heroElementMainList[0]} />
+      <HomeHeroElementMain content={heroElementMainList[0]} />
     </div>
   );
 };
