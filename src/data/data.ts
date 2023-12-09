@@ -1,6 +1,10 @@
 import focused1 from "../images/focused1.webp";
 import focused2 from "../images/focused2.webp";
 
+import aboutPerson from "../icons/person.svg";
+import aboutDocument from "../icons/document.svg";
+import aboutHome from "../icons/home.svg";
+
 import facebook from "../icons/facebook.png";
 import twitter from "../icons/twitter.png";
 import youtube from "../icons/youtube.png";
@@ -32,6 +36,30 @@ export const focusedList = [
 ];
 
 //about section data:
+
+export const aboutList = [
+  {
+    icon: aboutPerson,
+    header: "About us",
+    paragraph:
+      "Find out how we started, what drives us, and how we're reimagining how the world moves.",
+    link: "Learn more about Uber",
+  },
+  {
+    icon: aboutDocument,
+    header: "Newsroom",
+    paragraph:
+      "See announcements about our latest releases, initiatives, and partnerships.",
+    link: "Go to Newsroom",
+  },
+  {
+    icon: aboutHome,
+    header: "Global citizenship",
+    paragraph:
+      "Read about our commitment to making a positive impact in the cities we serve.",
+    link: "See our partnerships",
+  },
+];
 
 //download section data:
 

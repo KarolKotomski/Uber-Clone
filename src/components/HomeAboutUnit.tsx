@@ -1,20 +1,23 @@
 import person from "../icons/person.svg";
+type Props = {
+  icon: string;
+  header: string;
+  paragraph: string;
+  link: string;
+};
 
-const HomeAboutUnit = () => {
+const HomeAboutUnit = ({ icon, header, paragraph, link }: Props) => {
   return (
     <div className="flex flex-col gap-5">
       <img
-        src={person}
+        src={icon}
         alt="taxi driver man drives a car with a woman as a passenger"
         className="h-6 w-6"
       />
-      <h3 className="text-lg font-medium">About us</h3>
-      <p>
-        Find out how we started, what drives us, and how we're reimagining how
-        the world moves.
-      </p>
+      <h3 className="text-lg font-medium">{header}</h3>
+      <p>{paragraph}</p>
       <div className="mt-3 flex gap-5">
-        <div>Learn more about Uber</div>
+        <div>{link}</div>
       </div>
     </div>
   );
