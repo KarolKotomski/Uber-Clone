@@ -20,26 +20,11 @@ import driverAppQr from "../icons/driverAppQr.webp";
 
 //HomeHeroElement data:
 
-/**Header */
-export const heroElementHeaderList = [
-  {
-    icon: earnDeliver,
-    text: "Drive or deliver",
-  },
-  {
-    icon: forkEat,
-    text: "Eat",
-  },
-  {
-    icon: carRide,
-    text: "Ride",
-  },
-];
-
-/**Main */
-export const heroElementMainList = [
+export const heroList = [
   {
     id: 1,
+    icon: earnDeliver,
+    label: "Drive or deliver",
     header: "Get in the driver's seat and get paid",
     paragraph:
       "Drive on the platform with the largest network of active riders.",
@@ -48,6 +33,8 @@ export const heroElementMainList = [
   },
   {
     id: 2,
+    icon: forkEat,
+    label: "Eat",
     header: "Discover delicious eats",
     paragraph: "Order delivery from restaurants you love.",
     buttonText: "Order now",
@@ -55,6 +42,8 @@ export const heroElementMainList = [
   },
   {
     id: 3,
+    icon: carRide,
+    label: "Ride",
     header: "Request a ride now",
     paragraph:
       "Drive on the platform with the largest network of active riders.",
@@ -62,6 +51,7 @@ export const heroElementMainList = [
     additionalText: "Schedule for later",
   },
 ];
+
 
 //HomeFocused section data:
 export const focusedList = [

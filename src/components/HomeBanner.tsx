@@ -1,7 +1,7 @@
 const HomeBanner = () => {
   return (
     <section>
-      <div className="bg-banner bg-[#EEEEEE] bg-cover bg-center">
+      <div className="bg-lightGrey2 bg-banner bg-cover bg-center">
         <div className="container p-16">
           <div className="flex w-4/5 flex-col gap-5">
             <h2 className="font-UberMove text-[2.25rem] font-bold">
@@ -11,7 +11,7 @@ const HomeBanner = () => {
               A platform for managing global rides and meals, and local
               deliveries, for companies of any size.
             </p>
-            <button className="inline-block w-fit rounded-lg bg-black px-6 py-3 font-medium text-white mt-3">
+            <button className="mt-3 inline-block w-fit rounded-lg bg-black px-6 py-3 font-medium text-white">
               Get started
             </button>
           </div>

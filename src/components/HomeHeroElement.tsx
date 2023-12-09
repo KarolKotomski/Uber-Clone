@@ -1,18 +1,38 @@
 import HomeHeroElementHeader from "./HomeHeroElementHeader";
 import HomeHeroElementMain from "./HomeHeroElementMain";
-import { heroElementHeaderList, heroElementMainList } from "../data/data";
+import { heroList } from "../data/data";
+import { useState } from "react";
 
 const HomeHeroElement = () => {
+  const [activeHeaderId, setActiveHeaderId] = useState(1);
+
+  const mainContent = heroList.find((element) => element.id === activeHeaderId);
+
+  const handleClick = (id: number) => {
+    setActiveHeaderId(id);
+  };
   return (
     <div className="flex flex-col bg-white text-black">
       <div className="flex justify-evenly border-b border-b-[rgb(238,238,238)]">
-        {heroElementHeaderList.map((element, index) => {
+        {heroList.map((element) => {
           return (
-            <HomeHeroElementHeader key={index} icon={element.icon} text={element.text} />
+            <HomeHeroElementHeader
+              key={element.id}
+              icon={element.icon}
+              label={element.label}
+              id={element.id}
+              handleClick={handleClick}
+            />
           );
         })}
       </div>
-      <HomeHeroElementMain content={heroElementMainList[0]} />
+      <HomeHeroElementMain
+        header={mainContent?.header}
+        paragraph={mainContent?.paragraph}
+        buttonText={mainContent?.buttonText}
+        additionalText={mainContent?.additionalText}
+        id={mainContent?.id}
+      />
     </div>
   );
 };
