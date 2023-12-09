@@ -1,11 +1,14 @@
+import focused1 from "../images/focused1.webp";
+import focused2 from "../images/focused2.webp";
+
 import facebook from "../icons/facebook.png";
 import twitter from "../icons/twitter.png";
 import youtube from "../icons/youtube.png";
 import linkedin from "../icons/linkedin.png";
 import instagram from "../icons/instagram.png";
 
-import focused1 from "../images/focused1.webp";
-import focused2 from "../images/focused2.webp";
+import uberAppQr from "../icons/uberAppQr.webp";
+import driverAppQr from "../icons/driverAppQr.webp";
 
 //focused section data:
 export const focusedList = [
@@ -25,6 +28,21 @@ export const focusedList = [
     paragraph:
       "The app is available in thousands of cities worldwide, so you can request a ride even when you're far from home.",
     additionals: ["View all cities"],
+  },
+];
+
+//about section data:
+
+//download section data:
+
+export const downloadList = [
+  {
+    header: "Download the Uber app",
+    qrCode: uberAppQr,
+  },
+  {
+    header: "Download the Driver app",
+    qrCode: driverAppQr,
   },
 ];
 

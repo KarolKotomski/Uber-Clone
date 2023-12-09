@@ -1,4 +1,5 @@
 import HomeDownloadUnit from "./HomeDownloadUnit";
+import { downloadList } from "../data/data";
 
 const HomeDownload = () => {
   return (
@@ -9,8 +10,14 @@ const HomeDownload = () => {
             It's easier in the apps
           </h2>
           <div className="mt-9 grid grid-cols-2 gap-9 ">
-            <HomeDownloadUnit />
-            <HomeDownloadUnit />
+            {downloadList.map((element) => {
+              return (
+                <HomeDownloadUnit
+                  header={element.header}
+                  qrCode={element.qrCode}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
