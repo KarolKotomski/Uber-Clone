@@ -13,7 +13,7 @@ const HomeHeroElement = () => {
   };
   return (
     <div className="flex flex-col bg-white text-black">
-      <div className="flex justify-evenly border-b border-b-[rgb(238,238,238)]">
+      <div className="flex border-b border-b-[rgb(238,238,238)] xl:justify-evenly">
         {heroList.map((element) => {
           return (
             <HomeHeroElementHeader

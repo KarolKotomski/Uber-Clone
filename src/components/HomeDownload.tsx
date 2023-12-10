@@ -9,7 +9,7 @@ const HomeDownload = () => {
           <h2 className="font-UberMove text-[2.25rem] font-bold">
             It's easier in the apps
           </h2>
-          <div className="mt-9 grid grid-cols-2 gap-9 ">
+          <div className="mt-9 grid grid-cols-1 gap-9 lg:grid-cols-2">
             {downloadList.map((element, index) => {
               return (
                 <HomeDownloadUnit
