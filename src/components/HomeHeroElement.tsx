@@ -3,13 +3,18 @@ import HomeHeroElementMain from "./HomeHeroElementMain";
 import { heroList } from "../data/data";
 import { useState } from "react";
 
-const HomeHeroElement = () => {
+type Props = {
+  handleChangeBackgroundImage: (id:number) => void
+}
+
+const HomeHeroElement = ({handleChangeBackgroundImage}:Props) => {
   const [activeHeaderId, setActiveHeaderId] = useState(1);
 
   const mainContent = heroList.find((element) => element.id === activeHeaderId);
 
   const handleClick = (id: number) => {
     setActiveHeaderId(id);
+    handleChangeBackgroundImage(id);
   };
   return (
     <div className="flex flex-col bg-white text-black">
