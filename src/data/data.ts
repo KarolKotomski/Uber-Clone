@@ -30,6 +30,7 @@ export const heroList = [
       "Drive on the platform with the largest network of active riders.",
     buttonText: "Sign up to drive",
     additionalText: "Learn more about driving and delivering",
+    isButton: false,
   },
   {
     id: 2,
@@ -39,6 +40,7 @@ export const heroList = [
     paragraph: "Order delivery from restaurants you love.",
     buttonText: "Order now",
     additionalText: "Own a restaurant? Partner with Uber Eats",
+    isButton: false,
   },
   {
     id: 3,
@@ -49,9 +51,9 @@ export const heroList = [
       "Drive on the platform with the largest network of active riders.",
     buttonText: "Request now",
     additionalText: "Schedule for later",
+    isButton: true,
   },
 ];
-
 
 //HomeFocused section data:
 export const focusedList = [

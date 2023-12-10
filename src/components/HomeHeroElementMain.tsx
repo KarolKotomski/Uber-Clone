@@ -3,7 +3,7 @@ type Props = {
   paragraph: string | undefined;
   buttonText: string | undefined;
   additionalText: string | undefined;
-  id: number | undefined;
+  isButton: boolean | undefined;
 };
 
 const HomeHeroElementMain = ({
@@ -11,7 +11,7 @@ const HomeHeroElementMain = ({
   paragraph,
   buttonText,
   additionalText,
-  id,
+  isButton,
 }: Props) => {
   return (
     <div className="flex flex-col gap-8 p-12">
@@ -25,12 +25,12 @@ const HomeHeroElementMain = ({
         <button className="w-fit rounded-lg bg-black px-6 py-3 font-medium text-white">
           {buttonText}
         </button>
-        {id !== 3 ? (
-          <p>{additionalText}</p>
-        ) : (
-          <button className="bg-lightGrey2 w-fit rounded-lg px-6 py-3 font-medium text-black">
+        {isButton ? (
+          <button className="w-fit rounded-lg bg-lightGrey2 px-6 py-3 font-medium text-black">
             {additionalText}
           </button>
+        ) : (
+          <p>{additionalText}</p>
         )}
       </div>
     </div>

@@ -31,7 +31,7 @@ const HomeHeroElement = () => {
         paragraph={mainContent?.paragraph}
         buttonText={mainContent?.buttonText}
         additionalText={mainContent?.additionalText}
-        id={mainContent?.id}
+        isButton={mainContent?.isButton}
       />
     </div>
   );
