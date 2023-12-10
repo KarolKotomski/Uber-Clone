@@ -8,7 +8,14 @@ const HomeHero = () => {
     className: "bg-hero1",
   });
 
-  const getHeroPicture = (id: number) => import(`../images/hero${id}.jpg`);
+  const getHeroPicture = async (id: number) => {
+    try {
+      const picture = await import(`../images/hero${id}.jpg`);
+      return picture;
+    } catch (error) {
+      console.error("Error loading image:", error);
+    }
+  };
 
   const handleChangeBackgroundImage = async (id: number) => {
     const picture = await getHeroPicture(id);
@@ -21,7 +28,13 @@ const HomeHero = () => {
   return (
     <section>
       <div
-        className={`h-full w-full bg-lightGrey2 ${background.className} bg-cover bg-center bg-no-repeat`}
+        style={{
+          backgroundImage: `url(${background.picture})`,
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+        }}
+        className="h-full w-full bg-lightGrey2"
       >
         <div className="xl:container">
           <div className="h-full xl:p-16">
