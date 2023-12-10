@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 const HomeNavbar = () => {
   return (
     <nav className="bg-black py-3 font-medium text-white">
-      <div className="container flex items-center justify-between px-16">
+      <div className="mx-auto flex max-w-[100rem] items-center justify-between px-4">
         <div className="flex items-center text-sm">
           <ul>
             <Link to="/">
               <li className="font-UberMove text-2xl">Uber</li>
             </Link>
           </ul>
-          <ul className="mx-6 hidden gap-1 leading-4 lg:flex">
+          <ul className="mx-6 hidden gap-1 leading-4 md:flex">
             <li className="rounded-full px-[12px] py-[10px] transition-colors duration-200 hover:bg-greyHover active:bg-greyActive">
               <button className="flex items-center gap-2">
                 Company
@@ -37,7 +37,7 @@ const HomeNavbar = () => {
           </ul>
         </div>
         <ul className="flex gap-1 text-sm leading-4">
-          <li className="hidden lg:block">
+          <li className="hidden md:block">
             <button className="flex items-center gap-2 rounded-full px-[12px] py-[10px] transition-colors duration-200 hover:bg-greyHover active:bg-greyActive">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <path
@@ -48,7 +48,7 @@ const HomeNavbar = () => {
               EN
             </button>
           </li>
-          <li className="hidden lg:block">
+          <li className="hidden md:block">
             <button className="flex items-center gap-2 rounded-full px-[12px] py-[10px] transition-colors duration-200 hover:bg-greyHover active:bg-greyActive">
               <svg
                 width="14"
@@ -70,7 +70,7 @@ const HomeNavbar = () => {
               Log in
             </button>
           </li>
-          <li className="lg:hidden">
+          <li className="md:hidden">
             <button className="flex items-center gap-2 rounded-full px-[12px] py-[10px] transition-colors duration-200 hover:bg-greyHover active:bg-greyActive">
               <svg
                 width="16"
