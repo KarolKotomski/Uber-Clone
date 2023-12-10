@@ -2,9 +2,9 @@ const HomeBanner = () => {
   return (
     <section>
       <div className="bg-lightGrey2 bg-banner bg-cover bg-center">
-        <div className="container p-16">
+        <div className="container px-6 py-10 sm:px-8 sm:py-14 xl:p-16">
           <div className="flex flex-col gap-5">
-            <h2 className="font-UberMove text-[2.25rem] font-bold">
+            <h2 className="font-UberMove text-[1.75rem] font-bold sm:text-[2rem] lg:text-[2.25rem]">
               The Uber you know, reimagined for business
             </h2>
             <p>

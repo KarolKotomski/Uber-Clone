@@ -5,7 +5,7 @@ type Props = {
 const HomeSignUpUnit = ({ purpose }: Props) => {
   return (
     <div className="flex cursor-pointer items-center justify-between border-b border-b-black pb-10 hover:text-greyActive">
-      <h2 className="font-UberMove text-[2.25rem] font-bold">
+      <h2 className="pr-5 font-UberMove text-[1.75rem] font-bold sm:text-[2rem] lg:text-[2.25rem]">
         Sign up to {purpose}
       </h2>
       <svg
@@ -13,7 +13,7 @@ const HomeSignUpUnit = ({ purpose }: Props) => {
         focusable="false"
         fill="currentColor"
         viewBox="0 0 36 36"
-        className="h-9 w-9"
+        className="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9"
       >
         <path
           fillRule="evenodd"

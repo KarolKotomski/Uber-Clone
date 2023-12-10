@@ -14,9 +14,9 @@ const HomeHeroElementMain = ({
   isButton,
 }: Props) => {
   return (
-    <div className="flex flex-col gap-8 p-12">
+    <div className="flex flex-col gap-8 p-6 sm:p-8 xl:p-12">
       <div className="flex flex-col gap-8">
-        <h2 className="font-UberMove text-[3.25rem] font-bold leading-[4rem]">
+        <h2 className="font-UberMove text-4xl font-bold leading-[2.75rem] sm:text-[2.75rem] sm:leading-[3.25rem] lg:text-[3.25rem] lg:leading-[4rem]">
           {header}
         </h2>
         <p>{paragraph}</p>

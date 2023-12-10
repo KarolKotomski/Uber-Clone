@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const HomeNavbar = () => {
   return (
     <nav className="bg-black py-3 font-medium text-white">
-      <div className="mx-auto flex max-w-[100rem] items-center justify-between px-4">
+      <div className="mx-auto flex max-w-[92rem] items-center justify-between px-4">
         <div className="flex items-center text-sm">
           <ul>
             <Link to="/">

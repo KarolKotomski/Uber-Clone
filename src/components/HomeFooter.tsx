@@ -7,15 +7,18 @@ import HomeFooterIconUnit from "./HomeFooterIconUnit";
 const HomeFooter = () => {
   return (
     <footer className="bg-black text-white">
-      <div className="container p-16 text-sm">
+      <div className="container px-6 py-10 text-sm sm:px-8 sm:py-14 xl:p-16">
         <div className="flex flex-col">
-          <p className="text-right">
+          <p className="hidden text-right md:block">
             How the Uber and Uber Eats apps and websites work
           </p>
           <h3 className="py-10 font-UberMove text-2xl">Uber</h3>
           <p className="text-base">Visit Help Center</p>
+          <p className="pt-14 md:hidden">
+            How the Uber and Uber Eats apps and websites work
+          </p>
         </div>
-        <div className="my-20 grid grid-cols-4">
+        <div className="my-20 grid grid-cols-1 gap-20 xs:grid-cols-2 md:grid-cols-4">
           {footerList.map((element, index) => {
             return (
               <HomeFooterListUnit
@@ -26,8 +29,8 @@ const HomeFooter = () => {
             );
           })}
         </div>
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-16">
+        <div className="flex flex-col items-start gap-10 md:flex-row md:items-center md:justify-between">
+          <div className="flex w-full items-center justify-between md:w-1/2">
             {icons.map((element, index) => {
               return (
                 <HomeFooterIconUnit
@@ -38,8 +41,8 @@ const HomeFooter = () => {
               );
             })}
           </div>
-          <div className="flex items-center">
-            <button className="flex items-center  justify-center rounded-lg px-3 py-2 transition-colors hover:bg-greyHover">
+          <div className="flex flex-col items-start md:flex-row">
+            <button className="flex items-center justify-center rounded-lg px-3 py-2 transition-colors hover:bg-greyHover">
               <div className="mr-2">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                   <path
@@ -75,7 +78,7 @@ const HomeFooter = () => {
             </div>
           </button>
         </div>
-        <div className="flex items-center justify-between text-xs text-[#AFAFAF]">
+        <div className="flex flex-col items-center justify-between text-xs text-[#AFAFAF] md:flex-row">
           <p>© 2023 Uber Technologies Inc.</p>
           <div className="flex items-center justify-between gap-5">
             <p className="w-fit cursor-pointer transition-colors hover:text-greyActive">

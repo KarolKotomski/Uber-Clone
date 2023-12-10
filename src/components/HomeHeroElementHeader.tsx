@@ -8,7 +8,7 @@ type Props = {
 const HomeHeroElementHeader = ({ icon, label, id, handleClick }: Props) => {
   return (
     <div
-      className="flex w-24 cursor-pointer flex-col items-center justify-between gap-5 px-5 pb-6 pt-5"
+      className="flex w-[6.5rem] cursor-pointer flex-col items-center justify-between gap-5 px-5 pb-6 pt-5"
       onClick={() => handleClick(id)}
     >
       <div className="h-6 w-6">
