@@ -1,13 +1,17 @@
+import { Link } from "react-router-dom";
+
 const HomeNavbar = () => {
   return (
     <nav className="bg-black py-3 font-medium text-white">
       <div className="container flex items-center justify-between px-16">
         <div className="flex items-center text-sm">
           <ul>
-            <li className="font-UberMove text-2xl">Uber</li>
+            <Link to="/">
+              <li className="font-UberMove text-2xl">Uber</li>
+            </Link>
           </ul>
-          <ul className="mx-6 flex gap-1 leading-4">
-            <li className="hover:bg-greyHover active:bg-greyActive rounded-full px-[12px] py-[10px] transition-colors duration-200">
+          <ul className="mx-6 hidden gap-1 leading-4 lg:flex">
+            <li className="rounded-full px-[12px] py-[10px] transition-colors duration-200 hover:bg-greyHover active:bg-greyActive">
               <button className="flex items-center gap-2">
                 Company
                 <div>
@@ -21,20 +25,20 @@ const HomeNavbar = () => {
               </button>
             </li>
             <li>
-              <button className="hover:bg-greyHover active:bg-greyActive rounded-full px-[12px] py-[10px] transition-colors duration-200">
+              <button className="rounded-full px-[12px] py-[10px] transition-colors duration-200 hover:bg-greyHover active:bg-greyActive">
                 Safety
               </button>
             </li>
             <li>
-              <button className="hover:bg-greyHover active:bg-greyActive rounded-full px-[12px] py-[10px] transition-colors duration-200">
+              <button className="rounded-full px-[12px] py-[10px] transition-colors duration-200 hover:bg-greyHover active:bg-greyActive">
                 Help
               </button>
             </li>
           </ul>
         </div>
         <ul className="flex gap-1 text-sm leading-4">
-          <li>
-            <button className="hover:bg-greyHover active:bg-greyActive flex items-center gap-2 rounded-full px-[12px] py-[10px] transition-colors duration-200">
+          <li className="hidden lg:block">
+            <button className="flex items-center gap-2 rounded-full px-[12px] py-[10px] transition-colors duration-200 hover:bg-greyHover active:bg-greyActive">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
                 <path
                   d="M12 1C5.9 1 1 5.9 1 12s4.9 11 11 11 11-4.9 11-11S18.1 1 12 1Zm8 11c0 .7-.1 1.4-.3 2-.6-1.5-1.6-3.1-3-4.7l1.8-1.8c1 1.3 1.5 2.8 1.5 4.5ZM6.5 6.5c1.3 0 3.6.8 6 2.9l-3.2 3.2C7.1 9.8 6.5 7.5 6.5 6.5Zm8.1 5c2.3 2.7 2.9 5 2.9 6-1.3 0-3.6-.8-6-2.9l3.1-3.1Zm1.9-6.1-1.9 1.9c-1.6-1.4-3.2-2.4-4.7-3 .7-.2 1.3-.3 2-.3 1.8 0 3.3.5 4.6 1.4ZM4 12c0-.7.1-1.4.3-2 .6 1.5 1.6 3.1 3 4.7l-1.8 1.8C4.5 15.2 4 13.7 4 12Zm3.5 6.6 1.9-1.9c1.6 1.4 3.2 2.4 4.7 3-.7.2-1.3.3-2 .3-1.8 0-3.3-.5-4.6-1.4Z"
@@ -44,8 +48,8 @@ const HomeNavbar = () => {
               EN
             </button>
           </li>
-          <li>
-            <button className="hover:bg-greyHover active:bg-greyActive rounded-full px-[12px] py-[10px] transition-colors duration-200 flex items-center gap-2">
+          <li className="hidden lg:block">
+            <button className="flex items-center gap-2 rounded-full px-[12px] py-[10px] transition-colors duration-200 hover:bg-greyHover active:bg-greyActive">
               <svg
                 width="14"
                 height="14"
@@ -62,8 +66,22 @@ const HomeNavbar = () => {
             </button>
           </li>
           <li>
-            <button className="hover:bg-whiteHover active:bg-greyActive rounded-full px-[12px] py-[10px] transition-colors duration-200 bg-white text-black ml-4">
+            <button className="ml-4 rounded-full bg-white px-[12px] py-[10px] text-black transition-colors duration-200 hover:bg-whiteHover active:bg-greyActive">
               Log in
+            </button>
+          </li>
+          <li className="lg:hidden">
+            <button className="flex items-center gap-2 rounded-full px-[12px] py-[10px] transition-colors duration-200 hover:bg-greyHover active:bg-greyActive">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                color="white"
+              >
+                <path d="M2 6h20v3H2V6Z" fill="currentColor"></path>,
+                <path d="M2 15h20v3H2v-3Z" fill="currentColor"></path>
+              </svg>
             </button>
           </li>
         </ul>
