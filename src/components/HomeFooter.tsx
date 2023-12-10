@@ -3,18 +3,23 @@ import apple from "../icons/apple.svg";
 import HomeFooterListUnit from "./HomeFooterListUnit";
 import { footerList, icons } from "../data/data";
 import HomeFooterIconUnit from "./HomeFooterIconUnit";
+import { Link } from "react-router-dom";
 
 const HomeFooter = () => {
   return (
     <footer className="bg-black text-white">
       <div className="container px-6 py-10 text-sm sm:px-8 sm:py-14 xl:p-16">
         <div className="flex flex-col">
-          <p className="hidden text-right md:block">
+          <p className="ml-auto hidden w-fit cursor-pointer transition-colors hover:text-[#AFAFAFAF] md:block">
             How the Uber and Uber Eats apps and websites work
           </p>
-          <h3 className="py-10 font-UberMove text-2xl">Uber</h3>
-          <p className="text-base">Visit Help Center</p>
-          <p className="pt-14 md:hidden">
+          <Link to="/">
+            <h3 className="py-10 font-UberMove text-2xl">Uber</h3>
+          </Link>
+          <p className="w-fit cursor-pointer text-base transition-colors hover:text-[#AFAFAFAF]">
+            Visit Help Center
+          </p>
+          <p className="w-fit cursor-pointer pt-14 transition-colors hover:text-[#AFAFAFAF] md:hidden">
             How the Uber and Uber Eats apps and websites work
           </p>
         </div>
@@ -30,7 +35,7 @@ const HomeFooter = () => {
           })}
         </div>
         <div className="flex flex-col items-start gap-10 md:flex-row md:items-center md:justify-between">
-          <div className="flex w-full items-center justify-between md:w-1/2">
+          <div className="flex w-full items-center justify-between md:w-[40%]">
             {icons.map((element, index) => {
               return (
                 <HomeFooterIconUnit
