@@ -20,7 +20,7 @@ const HomeFocusedUnit = ({
       />
       <h3 className="text-lg font-medium">{header}</h3>
       <p>{paragraph}</p>
-      <div className="mt-3 flex gap-5">
+      <div className="mt-3 flex gap-5 flex-wrap">
         {additionals.map((additional, index) => {
           return <div key={index}>{additional}</div>;
         })}

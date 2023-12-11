@@ -8,7 +8,7 @@ const HomeFocused = () => {
         <h2 className="pb-9 font-UberMove text-[1.75rem] font-bold sm:text-[2rem] lg:text-[2.25rem]">
           Focused on safety, wherever you go
         </h2>
-        <div className="grid grid-cols-1 gap-9 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-9 xs:grid-cols-2">
           {focusedList.map((element, index) => {
             return (
               <HomeFocusedUnit
