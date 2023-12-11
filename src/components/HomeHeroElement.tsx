@@ -1,10 +1,14 @@
 import HomeHeroElementHeader from "./HomeHeroElementHeader";
 import HomeHeroElementMain from "./HomeHeroElementMain";
 import { heroList } from "../data/data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 type Props = {
   handleChangeBackgroundImage: (id: number) => void;
+};
+
+type Translation = {
+  [key: number]: string;
 };
 
 const HomeHeroElement = ({ handleChangeBackgroundImage }: Props) => {
@@ -19,21 +23,38 @@ const HomeHeroElement = ({ handleChangeBackgroundImage }: Props) => {
     handleTranslationDistance(id);
   };
 
+  const bigTransDistanceList: Translation = {
+    1: "0.975px",
+    2: "3.1px",
+    3: "5.225px",
+  };
+  const smallTransDistanceList: Translation = {
+    1: "0.15px",
+    2: "1.45px",
+    3: "2.75px",
+  };
+
   const handleTranslationDistance = (id: number) => {
-    switch (id) {
-      case 1:
-        setTranslationDistance("0.975px");
-        break;
-      case 2:
-        setTranslationDistance("3.1px");
-        break;
-      case 3:
-        setTranslationDistance("5.225px");
-        break;
-      default:
-        setTranslationDistance("0.975px");
+    const containerWidth = window.innerWidth;
+    if (containerWidth >= 1280) {
+      setTranslationDistance(bigTransDistanceList[id]);
+    } else {
+      setTranslationDistance(smallTransDistanceList[id]);
     }
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      handleTranslationDistance(activeHeaderId);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [activeHeaderId]);
+
   return (
     <div className="flex flex-col bg-white text-black">
       <div className="relative flex border-b border-b-[rgb(238,238,238)] xl:justify-evenly">
