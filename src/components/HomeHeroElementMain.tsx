@@ -22,7 +22,7 @@ const HomeHeroElementMain = ({
         <p>{paragraph}</p>
       </div>
       <div className="flex flex-wrap items-center gap-8">
-        <button className="w-fit rounded-lg bg-black px-6 py-3 font-medium text-white">
+        <button className="w-fit rounded-lg bg-black px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-greyHover">
           {buttonText}
         </button>
         {isButton ? (

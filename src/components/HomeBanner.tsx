@@ -11,7 +11,7 @@ const HomeBanner = () => {
               A platform for managing global rides and meals, and local
               deliveries, for companies of any size.
             </p>
-            <button className="mt-3 inline-block w-fit rounded-lg bg-black px-6 py-3 font-medium text-white">
+            <button className="mt-3 inline-block w-fit rounded-lg bg-black px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-greyHover">
               Get started
             </button>
           </div>
