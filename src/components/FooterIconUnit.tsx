@@ -3,7 +3,7 @@ type Props = {
   iconImage: string;
 };
 
-const HomeFooterIconUnit = ({ iconAlt, iconImage }: Props) => {
+const FooterIconUnit = ({ iconAlt, iconImage }: Props) => {
   return (
     <button className="flex h-12 w-12 items-center justify-center rounded-lg transition-colors hover:bg-greyHover">
       <img src={iconImage} alt={iconAlt} className="h-4 w-4" />
@@ -11,4 +11,4 @@ const HomeFooterIconUnit = ({ iconAlt, iconImage }: Props) => {
   );
 };
 
-export default HomeFooterIconUnit;
+export default FooterIconUnit;

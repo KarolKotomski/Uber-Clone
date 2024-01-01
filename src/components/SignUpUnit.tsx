@@ -2,7 +2,7 @@ type Props = {
   purpose: string;
 };
 
-const HomeSignUpUnit = ({ purpose }: Props) => {
+const SignUpUnit = ({ purpose }: Props) => {
   return (
     <div className="flex cursor-pointer items-center justify-between border-b border-b-black pb-10 hover:text-greyActive">
       <h2 className="pr-5 font-UberMove text-[1.75rem] font-bold sm:text-[2rem] lg:text-[2.25rem]">
@@ -26,4 +26,4 @@ const HomeSignUpUnit = ({ purpose }: Props) => {
   );
 };
 
-export default HomeSignUpUnit;
+export default SignUpUnit;

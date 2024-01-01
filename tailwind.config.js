@@ -23,13 +23,6 @@ module.exports = {
         lightGrey2: "rgb(238,238,238)",
       },
 
-      backgroundImage: {
-        hero1: "url('images/hero1.jpg')",
-        hero2: "url('images/hero2.jpg')",
-        hero3: "url('images/hero3.jpg')",
-        banner: "url('images/banner.webp')",
-      },
-
       fontFamily: {
         UberMove: ["Uber Move", "sans-serif"],
         UberMoveText: ["Uber Move Text", "sans-serif"],

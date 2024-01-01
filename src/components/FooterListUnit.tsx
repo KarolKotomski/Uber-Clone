@@ -3,7 +3,7 @@ type Props = {
     list: string[]
 }
 
-const HomeFooterListUnit = ({label, list}:Props) => {
+const FooterListUnit = ({label, list}:Props) => {
   return (
     <div>
           <h4 className="mb-5 text-lg font-medium">{label}</h4>
@@ -16,4 +16,4 @@ const HomeFooterListUnit = ({label, list}:Props) => {
   )
 }
 
-export default HomeFooterListUnit
+export default FooterListUnit

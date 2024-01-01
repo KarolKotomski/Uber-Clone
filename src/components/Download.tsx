@@ -1,7 +1,7 @@
-import HomeDownloadUnit from "./HomeDownloadUnit";
+import DownloadUnit from "./DownloadUnit";
 import { downloadList } from "../data/data";
 
-const HomeDownload = () => {
+const Download = () => {
   return (
     <section>
       <div className="bg-lightGrey">
@@ -12,7 +12,7 @@ const HomeDownload = () => {
           <div className="mt-9 grid grid-cols-1 gap-9 lg:grid-cols-2">
             {downloadList.map((element, index) => {
               return (
-                <HomeDownloadUnit
+                <DownloadUnit
                   key={index}
                   header={element.header}
                   qrCode={element.qrCode}
@@ -26,4 +26,4 @@ const HomeDownload = () => {
   );
 };
 
-export default HomeDownload;
+export default Download;

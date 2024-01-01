@@ -1,11 +1,11 @@
 import google from "../icons/google.svg";
 import apple from "../icons/apple.svg";
-import HomeFooterListUnit from "./HomeFooterListUnit";
+import FooterListUnit from "./FooterListUnit";
 import { footerList, icons } from "../data/data";
-import HomeFooterIconUnit from "./HomeFooterIconUnit";
+import FooterIconUnit from "./FooterIconUnit";
 import { Link } from "react-router-dom";
 
-const HomeFooter = () => {
+const Footer = () => {
   return (
     <footer className="bg-black text-white">
       <div className="container px-6 py-10 text-sm sm:px-8 sm:py-14 xl:p-16">
@@ -26,7 +26,7 @@ const HomeFooter = () => {
         <div className="my-20 grid grid-cols-1 gap-20 xs:grid-cols-2 md:grid-cols-4">
           {footerList.map((element, index) => {
             return (
-              <HomeFooterListUnit
+              <FooterListUnit
                 key={index}
                 label={element.label}
                 list={element.list}
@@ -38,7 +38,7 @@ const HomeFooter = () => {
           <div className="flex w-full items-center justify-between md:w-[40%]">
             {icons.map((element, index) => {
               return (
-                <HomeFooterIconUnit
+                <FooterIconUnit
                   key={index}
                   iconAlt={element.name}
                   iconImage={element.icon}
@@ -102,4 +102,4 @@ const HomeFooter = () => {
   );
 };
 
-export default HomeFooter;
+export default Footer;

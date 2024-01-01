@@ -3,7 +3,7 @@ type Props = {
   qrCode: string;
 };
 
-const HomeDownloadUnit = ({ header, qrCode }: Props) => {
+const DownloadUnit = ({ header, qrCode }: Props) => {
   return (
     <div className="flex items-center justify-between bg-white p-4 sm:p-6">
       <img src={qrCode} alt="Uber App QR code" className="w-20 sm:w-36" />
@@ -33,4 +33,4 @@ const HomeDownloadUnit = ({ header, qrCode }: Props) => {
   );
 };
 
-export default HomeDownloadUnit;
+export default DownloadUnit;

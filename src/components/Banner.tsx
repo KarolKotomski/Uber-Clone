@@ -1,4 +1,4 @@
-const HomeBanner = () => {
+const Banner = () => {
   return (
     <section>
       <div className="bg-lightGrey2 bg-banner bg-cover bg-center">
@@ -21,4 +21,4 @@ const HomeBanner = () => {
   );
 };
 
-export default HomeBanner;
+export default Banner;

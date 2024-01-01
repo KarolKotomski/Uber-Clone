@@ -1,4 +1,4 @@
-import HomeFooter from "../components/HomeFooter";
+import Footer from "../components/Footer";
 import HomeMain from "../components/HomeMain";
 import HomeNavbar from "../components/HomeNavbar";
 
@@ -7,7 +7,7 @@ const HomePage = () => {
     <>
       <HomeNavbar />
       <HomeMain />
-      <HomeFooter />
+      <Footer />
     </>
   );
 };
