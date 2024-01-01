@@ -6,8 +6,9 @@ type Props = {
 const StandardButton = ({ invertedColors, buttonText }: Props) => {
   return (
     <button
-      className={`rounded-lg px-[1.5625rem] py-[0.875rem] font-medium ${
-        invertedColors ? "bg-white text-black" : "bg-black text-white"
+      type="button"
+      className={`rounded-lg px-[1.5625rem] py-[0.875rem] font-medium transition-colors duration-200 ${
+        invertedColors ? "bg-white text-black hover:bg-lightGrey2" : "bg-black text-white hover:bg-greyHover"
       }`}
     >
       {buttonText}
