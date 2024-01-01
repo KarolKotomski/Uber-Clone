@@ -1,6 +1,5 @@
 import Banner from "./Banner";
 import Download from "./Download";
-import SignUp from "./SignUp";
 import { bannerContentList } from "../data/data";
 
 const HomeMain = () => {
@@ -30,8 +29,9 @@ const HomeMain = () => {
           secondaryButtonText="Check out our solutions"
         />
       </section>
-      <Download />
-      <SignUp />
+      <section className="lg:bg-lightGrey">
+        <Download />
+      </section>
     </main>
   );
 };
