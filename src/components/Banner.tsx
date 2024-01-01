@@ -7,31 +7,53 @@ type Props = {
     id: number;
     header: string;
     paragraph: string;
-    isHero: boolean;
     image: string;
     altText: string;
   };
+  buttonText: string;
+  invertedColors?: boolean;
+  switchPicture?: boolean;
+  searchPanel?: boolean;
+  secondaryButton?: boolean;
+  secondaryButtonText?: string;
 };
 
-const Banner = ({ content }: Props) => {
-  const { header, paragraph, isHero, image, altText } = content;
+const Banner = ({
+  content,
+  buttonText,
+  invertedColors,
+  switchPicture,
+  searchPanel,
+  secondaryButton,
+  secondaryButtonText,
+}: Props) => {
+  const { header, paragraph, image, altText } = content;
   return (
-      <div className="container px-6 py-10 sm:px-8 sm:py-14 xl:p-16 flex flex-col gap-9 lg:gap-16 lg:flex-row">
-        <div className="flex flex-col justify-center">
-          <h1 className="font-UberMove text-4xl leading-[2.75rem] font-bold sm:text-[2.75rem] sm:leading-[3.25rem] lg:leading-[4rem] lg:text-[3.25rem]">
-            {header}
-          </h1>
-          <p>{paragraph}</p>
-          {isHero && <SearchPanel />}
-          <div className="flex">
-            <StandardButton />
-            {!isHero && <SecondaryButton />}
-          </div>
-        </div>
-        <div className="lg:w-1/2">
-          <img src={image} alt={altText} />
+    <div
+      className={`container flex flex-col gap-9 px-6 py-10 sm:px-8 sm:py-14 ${
+        switchPicture ? "lg:flex-row-reverse" : "lg:flex-row"
+      } lg:gap-16 xl:p-16`}
+    >
+      <div className="flex flex-col justify-center gap-8 lg:w-1/2">
+        <h1 className="font-UberMove text-4xl font-bold leading-[2.75rem] sm:text-[2.75rem] sm:leading-[3.25rem] lg:text-[3.25rem] lg:leading-[4rem]">
+          {header}
+        </h1>
+        <p>{paragraph}</p>
+        {searchPanel && <SearchPanel />}
+        <div className="flex gap-6">
+          <StandardButton
+            buttonText={buttonText}
+            invertedColors={invertedColors}
+          />
+          {secondaryButton && (
+            <SecondaryButton secondaryButtonText={secondaryButtonText} />
+          )}
         </div>
       </div>
+      <div className="lg:w-1/2">
+        <img src={image} alt={altText} />
+      </div>
+    </div>
   );
 };
 

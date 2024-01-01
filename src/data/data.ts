@@ -18,7 +18,6 @@ export const bannerContentList = [
     id: 1,
     header: "Go anywhere with Uber",
     paragraph: "Request a ride, hop in, and go.",
-    isHero: true,
     image: herobanner,
     altText: "A woman getting out of the car in the city center",
   },
@@ -27,7 +26,6 @@ export const bannerContentList = [
     header: "Drive when you want, make what you need",
     paragraph:
       "Make money on your schedule with deliveries or rides—or both. You can use your own car or choose a rental through Uber.",
-    isHero: false,
     image: banner1,
     altText: "A taxi driver in the car",
   },
@@ -36,7 +34,6 @@ export const bannerContentList = [
     header: "The Uber you know, reimagined for business",
     paragraph:
       "Uber for Business is a platform for managing global rides and meals, and local deliveries, for companies of any size.",
-    isHero: false,
     image: banner2,
     altText: "A woman getting out of the car at the airport",
   },
