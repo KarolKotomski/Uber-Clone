@@ -1,23 +1,37 @@
-const Banner = () => {
+import SearchPanel from "./SearchPanel";
+import SecondaryButton from "./buttons/SecondaryButton";
+import StandardButton from "./buttons/StandardButton";
+
+type Props = {
+  content: {
+    id: number;
+    header: string;
+    paragraph: string;
+    isHero: boolean;
+    image: string;
+    altText: string;
+  };
+};
+
+const Banner = ({ content }: Props) => {
+  const { header, paragraph, isHero, image, altText } = content;
   return (
-    <section>
-      <div className="bg-lightGrey2 bg-banner bg-cover bg-center">
-        <div className="container px-6 py-10 sm:px-8 sm:py-14 xl:p-16">
-          <div className="flex flex-col gap-5">
-            <h2 className="font-UberMove text-[1.75rem] font-bold sm:text-[2rem] lg:text-[2.25rem]">
-              The Uber you know, reimagined for business
-            </h2>
-            <p>
-              A platform for managing global rides and meals, and local
-              deliveries, for companies of any size.
-            </p>
-            <button className="mt-3 inline-block w-fit rounded-lg bg-black px-6 py-3 font-medium text-white transition-colors duration-200 hover:bg-greyHover">
-              Get started
-            </button>
+      <div className="container px-6 py-10 sm:px-8 sm:py-14 xl:p-16 flex flex-col gap-9 lg:gap-16 lg:flex-row">
+        <div className="flex flex-col justify-center">
+          <h1 className="font-UberMove text-4xl leading-[2.75rem] font-bold sm:text-[2.75rem] sm:leading-[3.25rem] lg:leading-[4rem] lg:text-[3.25rem]">
+            {header}
+          </h1>
+          <p>{paragraph}</p>
+          {isHero && <SearchPanel />}
+          <div className="flex">
+            <StandardButton />
+            {!isHero && <SecondaryButton />}
           </div>
         </div>
+        <div className="lg:w-1/2">
+          <img src={image} alt={altText} />
+        </div>
       </div>
-    </section>
   );
 };
 
