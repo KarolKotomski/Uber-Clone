@@ -10,7 +10,7 @@ type Props = {
     image: string;
     altText: string;
   };
-  buttonText: string;
+  buttonText?: string;
   invertedColors?: boolean;
   switchPicture?: boolean;
   searchPanel?: boolean;
@@ -44,10 +44,13 @@ const Banner = ({
             {searchPanel && <SearchPanel />}
           </div>
           <div className="flex flex-wrap gap-6">
-            <StandardButton
-              buttonText={buttonText}
-              invertedColors={invertedColors}
-            />
+            {buttonText && (
+              <StandardButton
+                buttonText={buttonText}
+                invertedColors={invertedColors}
+              />
+            )}
+
             {secondaryButton && (
               <SecondaryButton secondaryButtonText={secondaryButtonText} />
             )}

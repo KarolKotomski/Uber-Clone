@@ -1,6 +1,6 @@
 type Props = {
   invertedColors?: boolean;
-  buttonText: string;
+  buttonText?: string;
 };
 
 const StandardButton = ({ invertedColors, buttonText }: Props) => {
