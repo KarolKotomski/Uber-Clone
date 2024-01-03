@@ -5,16 +5,15 @@ type Props = {
 
 const DownloadUnit = ({ header, qrCode }: Props) => {
   return (
-    <div className="group cursor-pointer flex items-center justify-between border bg-white p-4 sm:p-6 lg:border-none">
+    <div className="group flex cursor-pointer items-center justify-between border bg-white p-4 sm:p-6 lg:border-none">
       <div className="flex items-center">
-      <img src={qrCode} alt="Uber App QR code" className="w-20 sm:w-36" />
-      <div className="p-5">
-        <h3 className="font-UberMove text-xl font-bold sm:text-2xl">
-          {header}
-        </h3>
-        <p className="hidden sm:block">Scan to download</p>
-      </div>
-
+        <img src={qrCode} alt="Uber App QR code" className="w-20 sm:w-36" />
+        <div className="p-5">
+          <h3 className="font-UberMove text-xl font-bold sm:text-2xl">
+            {header}
+          </h3>
+          <p className="hidden sm:block">Scan to download</p>
+        </div>
       </div>
       <div>
         <svg

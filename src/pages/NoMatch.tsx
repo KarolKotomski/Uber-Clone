@@ -9,7 +9,7 @@ const NoMatch = () => {
         <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 xl:px-16">
           <nav className="flex items-center text-sm">
             <Link to="/">
-              <h1 className="font-UberMove text-2xl">Uber</h1>
+              <h1 className="font-UberMove text-xl md:text-2xl">Uber</h1>
             </Link>
           </nav>
         </div>
@@ -23,7 +23,7 @@ const NoMatch = () => {
           />
         </div>
         <div className="flex flex-1 flex-col gap-5">
-          <h2 className="text-2xl font-bold sm:text-3xl lg:text-4xl font-UberMove">
+          <h2 className="font-UberMove text-2xl font-bold sm:text-3xl lg:text-4xl">
             Sorry, we couldn't find that page
           </h2>
           <p>
