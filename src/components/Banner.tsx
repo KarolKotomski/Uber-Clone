@@ -11,6 +11,7 @@ type Props = {
     altText: string;
   };
   buttonText?: string;
+  buttonLinkTo?: string;
   invertedColors?: boolean;
   switchPicture?: boolean;
   searchPanel?: boolean;
@@ -21,6 +22,7 @@ type Props = {
 const Banner = ({
   content,
   buttonText,
+  buttonLinkTo,
   invertedColors,
   switchPicture,
   searchPanel,
@@ -48,6 +50,7 @@ const Banner = ({
               <StandardButton
                 buttonText={buttonText}
                 invertedColors={invertedColors}
+                buttonLinkTo={buttonLinkTo}
               />
             )}
 

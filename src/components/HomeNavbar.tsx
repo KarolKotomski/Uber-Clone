@@ -3,7 +3,7 @@ import caretIcon from "../icons/caret.png";
 import globeIcon from "../icons/globe.png";
 import dotsIcon from "../icons/dots.png";
 import hamburgerIcon from "../icons/hamburger.png";
-import HomeNavbarButton from "./HomeNavbarButton";
+import HomeNavbarButton from "./buttons/HomeNavbarButton";
 
 const HomeNavbar = () => {
   return (

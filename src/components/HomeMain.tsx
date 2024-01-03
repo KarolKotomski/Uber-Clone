@@ -9,6 +9,7 @@ const HomeMain = () => {
         <Banner
           content={bannerContentList[0]}
           buttonText="See prices"
+          buttonLinkTo="ride"
           invertedColors={true}
           searchPanel={true}
         />
