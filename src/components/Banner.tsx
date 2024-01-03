@@ -34,24 +34,25 @@ const Banner = ({
         switchPicture ? "lg:flex-row-reverse" : "lg:flex-row"
       } lg:gap-16 xl:p-16`}
     >
-      <div className={`lg:w-1/2 flex ${switchPicture && "justify-end"}`}>
+      <div className={`flex lg:w-1/2 ${switchPicture && "justify-end"}`}>
         <div className="flex flex-col justify-center gap-8 lg:w-4/5">
-        <h1 className="font-UberMove text-4xl font-bold leading-[2.75rem] sm:text-[2.75rem] sm:leading-[3.25rem] lg:text-[3.25rem] lg:leading-[4rem]">
-          {header}
-        </h1>
-        <p>{paragraph}</p>
-        {searchPanel && <SearchPanel />}
-        <div className="flex gap-6 flex-wrap">
-          <StandardButton
-            buttonText={buttonText}
-            invertedColors={invertedColors}
-          />
-          {secondaryButton && (
-            <SecondaryButton secondaryButtonText={secondaryButtonText} />
-          )}
+          <h1 className="font-UberMove text-4xl font-bold leading-[2.75rem] sm:text-[2.75rem] sm:leading-[3.25rem] lg:text-[3.25rem] lg:leading-[4rem]">
+            {header}
+          </h1>
+          <div>
+            <p>{paragraph}</p>
+            {searchPanel && <SearchPanel />}
+          </div>
+          <div className="flex flex-wrap gap-6">
+            <StandardButton
+              buttonText={buttonText}
+              invertedColors={invertedColors}
+            />
+            {secondaryButton && (
+              <SecondaryButton secondaryButtonText={secondaryButtonText} />
+            )}
+          </div>
         </div>
-        </div>
-        
       </div>
       <div className="lg:w-1/2">
         <img src={image} alt={altText} />

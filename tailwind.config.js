@@ -21,6 +21,7 @@ module.exports = {
         whiteHover: "rgb(226,226,226)",
         lightGrey: "rgb(246,246,246)",
         lightGrey2: "rgb(238,238,238)",
+        placeholderGrey: "rgb(107,107,107)",
       },
 
       fontFamily: {

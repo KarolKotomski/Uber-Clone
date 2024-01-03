@@ -10,6 +10,7 @@ const HomeMain = () => {
           content={bannerContentList[0]}
           buttonText="See prices"
           invertedColors={true}
+          searchPanel={true}
         />
       </section>
       <section>
