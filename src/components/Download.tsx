@@ -3,7 +3,7 @@ import { downloadList } from "../data/data";
 
 const Download = () => {
   return (
-    <div className="containerpx-6 py-10 sm:px-8 sm:py-14 xl:p-16">
+    <div className="container px-6 py-10 sm:px-8 sm:py-14 xl:p-16">
       <h2 className="font-UberMove text-[1.75rem] font-bold sm:text-[2rem] lg:text-[2.25rem]">
         It's easier in the apps
       </h2>

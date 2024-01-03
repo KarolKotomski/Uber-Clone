@@ -5,7 +5,7 @@ type Props = {
 
 const DownloadUnit = ({ header, qrCode }: Props) => {
   return (
-    <div className="flex items-center justify-between border bg-white p-4 sm:p-6 lg:border-none">
+    <div className="group cursor-pointer flex items-center justify-between border bg-white p-4 sm:p-6 lg:border-none">
       <div className="flex items-center">
       <img src={qrCode} alt="Uber App QR code" className="w-20 sm:w-36" />
       <div className="p-5">
@@ -22,7 +22,7 @@ const DownloadUnit = ({ header, qrCode }: Props) => {
           focusable="false"
           fill="currentColor"
           viewBox="0 0 36 36"
-          className="h-4 w-4"
+          className="h-4 w-4 duration-500 group-hover:translate-x-2/3 sm:group-hover:translate-x-full"
         >
           <path
             fillRule="evenodd"
