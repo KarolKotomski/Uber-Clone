@@ -13,13 +13,13 @@ const Footer = () => {
           <p className="ml-auto hidden w-fit cursor-pointer transition-colors hover:text-[#AFAFAFAF] md:block">
             How the Uber and Uber Eats apps and websites work
           </p>
-          <Link to="/">
+          <Link to="/" className="w-fit">
             <h3 className="py-10 font-UberMove text-2xl">Uber</h3>
           </Link>
           <p className="w-fit cursor-pointer text-base transition-colors hover:text-[#AFAFAFAF]">
             Visit Help Center
           </p>
-          <p className="w-fit cursor-pointer pt-14 transition-colors hover:text-[#AFAFAFAF] md:hidden">
+          <p className="w-fit cursor-pointer mt-14 transition-colors hover:text-[#AFAFAFAF] md:hidden">
             How the Uber and Uber Eats apps and websites work
           </p>
         </div>
