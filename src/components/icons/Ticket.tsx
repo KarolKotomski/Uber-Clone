@@ -1,4 +1,4 @@
-const TicketIcon = () => {
+const Ticket = () => {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
       <title>Receipt</title>
@@ -12,4 +12,4 @@ const TicketIcon = () => {
   );
 };
 
-export default TicketIcon;
+export default Ticket;

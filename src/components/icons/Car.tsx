@@ -1,4 +1,4 @@
-const CarIcon = () => {
+const Car = () => {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
       <title>Car front</title>
@@ -10,4 +10,4 @@ const CarIcon = () => {
   );
 };
 
-export default CarIcon;
+export default Car;
