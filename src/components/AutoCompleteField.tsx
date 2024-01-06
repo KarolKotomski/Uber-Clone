@@ -1,5 +1,5 @@
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import SearchCircle from "./icons/SearchCircle";
+import ClearValue from "./icons/ClearValue";
 
 const AutoCompleteField = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
@@ -11,6 +11,9 @@ const AutoCompleteField = () => {
         debounce={400}
         apiOptions={{ language: "en", region: "en" }}
         minLengthAutocomplete={2}
+        onLoadFailed={(error) =>
+          console.error("Could not inject Google script", error)
+        }
         selectProps={{
           placeholder: "Enter location",
           styles: {
@@ -57,17 +60,27 @@ const AutoCompleteField = () => {
             menu: (baseStyles) => ({
               ...baseStyles,
               backgroundColor: "white",
-              borderRadius: "0.5rem",
-              color: "black",
+              borderRadius: "0.3rem",
+              color: "rgb(84 84 84)",
               margin: 0,
               cursor: "not-allowed",
               fontSize: "0.875rem",
             }),
+            option: (baseStyles, state) => ({
+              ...baseStyles,
+              color: state.isSelected ? "black" : "rgb(82 82 82)",
+              backgroundColor: "white",
+              ":hover": {
+                backgroundColor: "rgb(246 246 246)",
+                cursor: "pointer",
+                color: "black",
+              },
+            }),
           },
         }}
       />
-      <div className="absolute left-3 top-1/2 w-5 -translate-y-1/2 text-black">
-        <SearchCircle />
+      <div className="absolute right-3 top-1/2 hidden w-6 -translate-y-1/2 text-black">
+        <ClearValue />
       </div>
     </div>
   );
