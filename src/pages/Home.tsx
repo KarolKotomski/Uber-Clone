@@ -2,7 +2,7 @@ import Footer from "../components/Footer";
 import HomeMain from "../components/HomeMain";
 import HomeNavbar from "../components/HomeNavbar";
 
-const HomePage = () => {
+const Home = () => {
   return (
     <>
       <HomeNavbar />
@@ -12,4 +12,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default Home;

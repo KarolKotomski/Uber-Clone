@@ -33,7 +33,7 @@ const HomeNavbar = () => {
           </ul>
         </nav>
         <nav>
-          <ul className="flex gap-1 text-sm leading-4">
+          <ul className="flex items-center gap-1 text-sm leading-4">
             <li className="hidden md:block">
               <HomeNavbarButton
                 labelText="EN"
