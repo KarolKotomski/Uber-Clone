@@ -5,6 +5,7 @@ import Package from "./icons/Package";
 import Restaurant from "./icons/Restaurant";
 import Ticket from "./icons/Ticket";
 import Hamburger from "./icons/Hamburger";
+import UserButton from "./buttons/UserButton";
 
 const RideNavbar = () => {
   return (
@@ -21,7 +22,7 @@ const RideNavbar = () => {
               <RideNavbarButton labelText="Ride" icon={<Car />} />
             </li>
             <li>
-              <RideNavbarButton labelText="Uber package" icon={<Package />} />
+              <RideNavbarButton labelText="Uber Package" icon={<Package />} />
             </li>
             <li>
               <RideNavbarButton labelText="Uber Eats" icon={<Restaurant />} />
@@ -29,9 +30,12 @@ const RideNavbar = () => {
           </ul>
         </nav>
         <nav>
-          <ul className="flex items-center gap-1 text-sm leading-4">
+          <ul className="flex items-center gap-4 text-sm leading-4">
             <li className="hidden md:flex">
               <RideNavbarButton labelText="My trips" icon={<Ticket />} />
+            </li>
+            <li className="hidden md:flex">
+              <UserButton />
             </li>
             <li className="w-4 md:hidden">
               <RideNavbarButton icon={<Hamburger />} />
