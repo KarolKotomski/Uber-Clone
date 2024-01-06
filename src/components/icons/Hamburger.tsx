@@ -1,6 +1,6 @@
 const Hamburger = () => {
   return (
-    <svg viewBox="0 0 24 24" fill="none" className="w-full">
+    <svg viewBox="0 0 24 24" className="w-4">
       <title>Three lines</title>
       <path
         fillRule="evenodd"
