@@ -9,13 +9,17 @@ const AutoCompleteField = () => {
       <GooglePlacesAutocomplete
         apiKey={apiKey}
         debounce={400}
-        apiOptions={{ language: "en", region: "en" }}
+        apiOptions={{ language: "en"}}
         minLengthAutocomplete={2}
         onLoadFailed={(error) =>
           console.error("Could not inject Google script", error)
         }
         selectProps={{
           placeholder: "Enter location",
+          isClearable: true,
+          components:{
+            DropdownIndicator: ()=> null
+          },
           styles: {
             control: (baseStyles) => ({
               ...baseStyles,
@@ -28,10 +32,6 @@ const AutoCompleteField = () => {
               ":hover": {
                 borderColor: "black",
               },
-            }),
-            indicatorsContainer: (baseStyles) => ({
-              ...baseStyles,
-              display: "none",
             }),
             valueContainer: (baseStyles) => ({
               ...baseStyles,
