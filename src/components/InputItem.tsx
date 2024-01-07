@@ -23,7 +23,7 @@ const InputItem = ({ type }: Props) => {
 
   return (
     <div
-      className={`relative flex items-center rounded-lg border-2 bg-lightGrey2 py-[3px] ${
+      className={`relative flex items-center rounded-lg border-2 bg-lightGrey2 py-[0.1875rem] ${
         isFocused ? "border-black" : "border-lightGrey2"
       } border-lightGrey2`}
     >
@@ -63,13 +63,13 @@ const InputItem = ({ type }: Props) => {
               valueContainer: (baseStyles) => ({
                 ...baseStyles,
                 margin: 0,
-                padding: "0 40px",
+                padding: "0 2.5rem",
               }),
               menu: (baseStyles) => ({
                 ...baseStyles,
                 borderRadius: "0.3rem",
                 color: "rgb(84 84 84)",
-                margin: "6px 0 0 0",
+                margin: "0.375rem 0 0 0",
                 cursor: "not-allowed",
                 fontSize: "0.875rem",
               }),
