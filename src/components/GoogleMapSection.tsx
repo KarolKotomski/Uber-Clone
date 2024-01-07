@@ -1,5 +1,6 @@
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import { useCallback, useState } from "react";
+import { MapStyle } from "../styles/MapStyle";
 
 const containerStyle = {
   width: "100%",
@@ -39,6 +40,12 @@ const GoogleMapSection = () => {
       zoom={10}
       onLoad={onLoad}
       onUnmount={onUnmount}
+      options={{
+        mapTypeControl: false,
+        fullscreenControl: false,
+        streetViewControl: false,
+        styles: MapStyle,
+      }}
     >
       {/* Child components, such as markers, info windows, etc. */}
       <></>
