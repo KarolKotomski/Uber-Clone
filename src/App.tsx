@@ -6,6 +6,9 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { store } from "./store";
 import { LoadScript } from "@react-google-maps/api";
+import { Library } from "@googlemaps/js-api-loader";
+
+const libraries: Library[] = ["places"];
 
 function App() {
   const apiKey = process.env.REACT_APP_API_KEY || "";
@@ -13,7 +16,7 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <LoadScript googleMapsApiKey={apiKey} libraries={["places"]}>
+        <LoadScript googleMapsApiKey={apiKey} libraries={libraries}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="ride" element={<Ride />} />

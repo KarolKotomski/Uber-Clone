@@ -1,4 +1,4 @@
-import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import { GoogleMap } from "@react-google-maps/api";
 import { useCallback, useState } from "react";
 import { MapStyle } from "../styles/MapStyle";
 

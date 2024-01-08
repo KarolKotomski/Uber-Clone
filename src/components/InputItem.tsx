@@ -1,16 +1,24 @@
-import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+import GooglePlacesAutocomplete, {
+  geocodeByPlaceId,
+  getLatLng,
+} from "react-google-places-autocomplete";
 import ClearValue from "./icons/ClearValue";
 import SearchCircle from "./icons/SearchCircle";
 import SearchSquare from "./icons/SearchSquare";
 import { useState } from "react";
+import { Option } from "react-google-places-autocomplete/build/types";
+import { useDispatch } from "react-redux";
+import { setDestination, setOrigin } from "../slices/navSlice";
 
 type Props = {
   type: "source" | "destination";
 };
 
 const InputItem = ({ type }: Props) => {
-
   const [isFocused, setIsFocused] = useState(false);
+  const [value, setValue] = useState<Option | null>(null);
+
+  const dispatch = useDispatch();
 
   let placeholder;
   if (type === "source") {
@@ -19,6 +27,19 @@ const InputItem = ({ type }: Props) => {
   if (type === "destination") {
     placeholder = "Enter Destination";
   }
+
+  const handleSelect = (data: any, type: "source" | "destination") => {
+    if (data) {
+      geocodeByPlaceId(data.value.place_id)
+        .then((results) => getLatLng(results[0]))
+        .then((latLng) => {
+          type === "source"
+            ? dispatch(setOrigin(latLng))
+            : dispatch(setDestination(latLng));
+        })
+        .catch((error) => console.error("Error", error));
+    }
+  };
 
   return (
     <div
@@ -43,6 +64,11 @@ const InputItem = ({ type }: Props) => {
             console.error("Could not inject Google script", error)
           }
           selectProps={{
+            value,
+            onChange: (data) => {
+              handleSelect(data, type);
+              setValue(data);
+            },
             placeholder: placeholder,
             isClearable: true,
             components: {
@@ -51,7 +77,7 @@ const InputItem = ({ type }: Props) => {
               IndicatorSeparator: () => null,
             },
             styles: {
-              control: (baseStyles, state) => ({
+              control: (baseStyles) => ({
                 ...baseStyles,
                 backgroundColor: "#00ffff00",
                 borderColor: "#00ffff00",
