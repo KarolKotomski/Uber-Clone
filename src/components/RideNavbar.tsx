@@ -13,7 +13,7 @@ const RideNavbar = () => {
       <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 xl:px-16">
         <nav className="flex items-center text-sm">
           <ul>
-            <Link to="/ride">
+            <Link to="/">
               <li className="mr-20 font-UberMove text-xl lg:text-3xl">Uber</li>
             </Link>
           </ul>
