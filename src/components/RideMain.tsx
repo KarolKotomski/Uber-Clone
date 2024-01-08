@@ -3,7 +3,7 @@ import GoogleMapSection from "./GoogleMapSection";
 
 const RideMain = () => {
   return (
-    <main className="relative gap-5 lg:container lg:flex lg:flex-row-reverse lg:py-10 h-screen lg:h-full">
+    <main className="relative h-screen gap-5 lg:container lg:flex lg:h-full lg:flex-row-reverse lg:py-10">
       <map className="absolute bottom-[11.5rem] left-0 right-0 top-0 lg:static lg:h-[80vh] lg:w-full lg:pr-5">
         <GoogleMapSection />
       </map>

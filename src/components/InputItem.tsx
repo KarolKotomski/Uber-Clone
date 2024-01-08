@@ -9,7 +9,6 @@ type Props = {
 };
 
 const InputItem = ({ type }: Props) => {
-  const apiKey = process.env.REACT_APP_API_KEY;
 
   const [isFocused, setIsFocused] = useState(false);
 
@@ -37,7 +36,6 @@ const InputItem = ({ type }: Props) => {
         onBlur={() => setIsFocused(false)}
       >
         <GooglePlacesAutocomplete
-          apiKey={apiKey}
           debounce={400}
           apiOptions={{ language: "en" }}
           minLengthAutocomplete={2}

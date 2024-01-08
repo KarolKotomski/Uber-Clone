@@ -13,13 +13,6 @@ const center = {
 };
 
 const GoogleMapSection = () => {
-  const apiKey = process.env.REACT_APP_API_KEY || "";
-
-  const { isLoaded } = useJsApiLoader({
-    id: "google-map-script",
-    googleMapsApiKey: apiKey,
-  });
-
   const [map, setMap] = useState(null);
 
   const onLoad = useCallback(function callback(map: any) {
@@ -33,7 +26,7 @@ const GoogleMapSection = () => {
     setMap(null);
   }, []);
 
-  return isLoaded ? (
+  return (
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={center}
@@ -50,8 +43,6 @@ const GoogleMapSection = () => {
       {/* Child components, such as markers, info windows, etc. */}
       <></>
     </GoogleMap>
-  ) : (
-    <></>
   );
 };
 
