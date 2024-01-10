@@ -3,12 +3,18 @@ import { RootState } from "../store";
 
 type NavState = {
   origin: {
-    lat: number;
-    lng: number;
+    placeData: any;
+    coordinates: {
+      lat: number;
+      lng: number;
+    };
   } | null;
   destination: {
-    lat: number;
-    lng: number;
+    placeData: any;
+    coordinates: {
+      lat: number;
+      lng: number;
+    };
   } | null;
   travelTimeInformation: string | null;
 };
@@ -25,13 +31,19 @@ export const navSlice = createSlice({
   reducers: {
     setOrigin: (
       state,
-      action: PayloadAction<{ lat: number; lng: number } | null>,
+      action: PayloadAction<{
+        placeData: any;
+        coordinates: { lat: number; lng: number };
+      } | null>,
     ) => {
       state.origin = action.payload;
     },
     setDestination: (
       state,
-      action: PayloadAction<{ lat: number; lng: number } | null>,
+      action: PayloadAction<{
+        placeData: any;
+        coordinates: { lat: number; lng: number };
+      } | null>,
     ) => {
       state.destination = action.payload;
     },

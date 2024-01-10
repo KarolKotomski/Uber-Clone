@@ -37,12 +37,19 @@ const InputItem = ({ type }: Props) => {
 
   const handleSelect = (data: any, type: "source" | "destination") => {
     if (data) {
+      console.log(data);
+
       geocodeByPlaceId(data.value.place_id)
         .then((results) => getLatLng(results[0]))
         .then((latLng) => {
+          const payLoad = {
+            placeData: data,
+            coordinates: latLng,
+          };
+
           type === "source"
-            ? dispatch(setOrigin(latLng))
-            : dispatch(setDestination(latLng));
+            ? dispatch(setOrigin(payLoad))
+            : dispatch(setDestination(payLoad));
         })
         .catch((error) => console.error("Error", error));
     }
@@ -63,6 +70,19 @@ const InputItem = ({ type }: Props) => {
     console.log("origin", origin);
     console.log("destination", destination);
   }, [origin, destination]);
+
+  useEffect(() => {
+    if (type === "source" && origin) {
+      setValue(origin.placeData);
+      setIsFilled(true);
+    } else if (type === "destination" && destination) {
+      setValue(destination.placeData);
+      setIsFilled(true);
+    } else {
+      setValue(null);
+      setIsFilled(false);
+    }
+  }, [type, origin, destination]);
 
   return (
     <div
