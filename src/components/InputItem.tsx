@@ -35,7 +35,10 @@ const InputItem = ({ type }: Props) => {
     placeholder = "Enter Destination";
   }
 
-  const handleSelect = (data: Option | null, type: "source" | "destination") => {
+  const handleSelect = (
+    data: Option | null,
+    type: "source" | "destination",
+  ) => {
     if (data) {
       console.log(data);
 
@@ -91,8 +94,8 @@ const InputItem = ({ type }: Props) => {
       } border-lightGrey2`}
     >
       <div className="absolute left-3 top-1/2 w-5 -translate-y-1/2 text-black">
-        {type === "source" && <SearchCircle />}
-        {type === "destination" && <SearchSquare />}
+        {type === "source" && <SearchCircle isFilled={isFilled} />}
+        {type === "destination" && <SearchSquare isFilled={isFilled} />}
       </div>
       <div
         className="w-full"
