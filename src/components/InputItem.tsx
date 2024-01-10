@@ -35,7 +35,7 @@ const InputItem = ({ type }: Props) => {
     placeholder = "Enter Destination";
   }
 
-  const handleSelect = (data: any, type: "source" | "destination") => {
+  const handleSelect = (data: Option | null, type: "source" | "destination") => {
     if (data) {
       console.log(data);
 

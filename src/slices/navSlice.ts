@@ -1,21 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
+import { Option } from "react-google-places-autocomplete/build/types";
+
+type LocationData = {
+  placeData: Option;
+  coordinates: {
+    lat: number;
+    lng: number;
+  };
+};
 
 type NavState = {
-  origin: {
-    placeData: any;
-    coordinates: {
-      lat: number;
-      lng: number;
-    };
-  } | null;
-  destination: {
-    placeData: any;
-    coordinates: {
-      lat: number;
-      lng: number;
-    };
-  } | null;
+  origin: LocationData | null;
+  destination: LocationData | null;
   travelTimeInformation: string | null;
 };
 
