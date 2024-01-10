@@ -5,10 +5,15 @@ import GooglePlacesAutocomplete, {
 import ClearValue from "./icons/ClearValue";
 import SearchCircle from "./icons/SearchCircle";
 import SearchSquare from "./icons/SearchSquare";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Option } from "react-google-places-autocomplete/build/types";
-import { useDispatch } from "react-redux";
-import { setDestination, setOrigin } from "../slices/navSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectDestination,
+  selectOrigin,
+  setDestination,
+  setOrigin,
+} from "../slices/navSlice";
 
 type Props = {
   type: "source" | "destination";
@@ -16,6 +21,8 @@ type Props = {
 
 const InputItem = ({ type }: Props) => {
   const [isFocused, setIsFocused] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
+
   const [value, setValue] = useState<Option | null>(null);
 
   const dispatch = useDispatch();
@@ -40,6 +47,22 @@ const InputItem = ({ type }: Props) => {
         .catch((error) => console.error("Error", error));
     }
   };
+
+  const handleClear = () => {
+    setValue(null);
+    setIsFilled(false);
+    type === "source"
+      ? dispatch(setOrigin(null))
+      : dispatch(setDestination(null));
+  };
+
+  const origin = useSelector(selectOrigin);
+  const destination = useSelector(selectDestination);
+
+  useEffect(() => {
+    console.log("origin", origin);
+    console.log("destination", destination);
+  }, [origin, destination]);
 
   return (
     <div
@@ -68,6 +91,7 @@ const InputItem = ({ type }: Props) => {
             onChange: (data) => {
               handleSelect(data, type);
               setValue(data);
+              setIsFilled(true);
             },
             placeholder: placeholder,
             isClearable: true,
@@ -75,6 +99,7 @@ const InputItem = ({ type }: Props) => {
               DropdownIndicator: () => null,
               CrossIcon: () => null,
               IndicatorSeparator: () => null,
+              ClearIndicator: () => null,
             },
             styles: {
               control: (baseStyles) => ({
@@ -111,9 +136,14 @@ const InputItem = ({ type }: Props) => {
           }}
         />
       </div>
-      <div className="absolute right-3 top-1/2 hidden w-6 -translate-y-1/2 text-black">
-        <ClearValue />
-      </div>
+      {isFilled && (
+        <div
+          className="absolute right-3 top-1/2 w-6 -translate-y-1/2 text-black"
+          onClick={handleClear}
+        >
+          <ClearValue />
+        </div>
+      )}
     </div>
   );
 };

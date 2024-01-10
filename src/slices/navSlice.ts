@@ -13,24 +13,25 @@ type NavState = {
   travelTimeInformation: string | null;
 };
 
-const initialState: NavState = {
+export const initialState: NavState = {
   origin: null,
   destination: null,
   travelTimeInformation: null,
 };
 
-
-
 export const navSlice = createSlice({
   name: "nav",
   initialState,
   reducers: {
-    setOrigin: (state, action: PayloadAction<{ lat: number; lng: number }>) => {
+    setOrigin: (
+      state,
+      action: PayloadAction<{ lat: number; lng: number } | null>,
+    ) => {
       state.origin = action.payload;
     },
     setDestination: (
       state,
-      action: PayloadAction<{ lat: number; lng: number }>,
+      action: PayloadAction<{ lat: number; lng: number } | null>,
     ) => {
       state.destination = action.payload;
     },
@@ -51,7 +52,5 @@ export const selectOrigin = (state: RootState) => state.nav.origin;
 export const selectDestination = (state: RootState) => state.nav.destination;
 export const selectTravelTimeInformation = (state: RootState) =>
   state.nav.travelTimeInformation;
-
-
 
 export default navSlice.reducer;
