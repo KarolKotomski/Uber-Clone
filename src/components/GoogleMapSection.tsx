@@ -1,21 +1,27 @@
 import { GoogleMap } from "@react-google-maps/api";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { MapStyle } from "../styles/MapStyle";
+import { useSelector } from "react-redux";
+import { selectDestination, selectOrigin } from "../slices/navSlice";
 
 const containerStyle = {
   width: "100%",
   height: "100%",
 };
 
-const center = {
+const defaultMapCenter = {
   lat: 52.231844543054066,
   lng: 21.006048641809247,
 };
 
 const GoogleMapSection = () => {
-  const [map, setMap] = useState(null);
+  const [map, setMap] = useState<google.maps.Map | null>(null);
+  const [centerMap, setCenterMap] = useState(defaultMapCenter);
 
-  const onLoad = useCallback(function callback(map: any) {
+  const origin = useSelector(selectOrigin);
+  const destination = useSelector(selectDestination);
+
+  const onLoad = useCallback(function callback(map: google.maps.Map) {
     setMap(map);
   }, []);
 
@@ -23,11 +29,24 @@ const GoogleMapSection = () => {
     setMap(null);
   }, []);
 
+  useEffect(() => {
+    if (origin && map) {
+      setCenterMap(origin.coordinates);
+    }
+    if (destination && map) {
+      setCenterMap(destination.coordinates);
+    }
+
+    if (origin === null && destination === null && map) {
+      setCenterMap(defaultMapCenter);
+    }
+  }, [origin, destination]);
+
   return (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={center}
-      zoom={13}
+      center={centerMap}
+      zoom={15}
       onLoad={onLoad}
       onUnmount={onUnmount}
       options={{

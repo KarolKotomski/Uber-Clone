@@ -27,6 +27,9 @@ const InputItem = ({ type }: Props) => {
 
   const dispatch = useDispatch();
 
+  const origin = useSelector(selectOrigin);
+  const destination = useSelector(selectDestination);
+
   let placeholder;
   if (type === "source") {
     placeholder = "Enter Location";
@@ -40,8 +43,6 @@ const InputItem = ({ type }: Props) => {
     type: "source" | "destination",
   ) => {
     if (data) {
-      console.log(data);
-
       geocodeByPlaceId(data.value.place_id)
         .then((results) => getLatLng(results[0]))
         .then((latLng) => {
@@ -66,9 +67,6 @@ const InputItem = ({ type }: Props) => {
       : dispatch(setDestination(null));
   };
 
-  const origin = useSelector(selectOrigin);
-  const destination = useSelector(selectDestination);
-
   useEffect(() => {
     console.log("origin", origin);
     console.log("destination", destination);
@@ -85,7 +83,7 @@ const InputItem = ({ type }: Props) => {
       setValue(null);
       setIsFilled(false);
     }
-  }, [type, origin, destination]);
+  }, [origin, destination]);
 
   return (
     <div
