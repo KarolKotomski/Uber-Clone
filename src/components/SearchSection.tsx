@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import InputItem from "./InputItem";
 import { useSelector } from "react-redux";
 import { selectDestination, selectOrigin } from "../slices/navSlice";
 import SearchPanel from "./SearchPanel";
