@@ -1,4 +1,9 @@
-import { GoogleMap, MarkerF } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  MarkerF,
+  OverlayView,
+  OverlayViewF,
+} from "@react-google-maps/api";
 import { useCallback, useEffect, useState } from "react";
 import { MapStyle } from "../styles/MapStyle";
 import { useSelector } from "react-redux";
@@ -80,7 +85,18 @@ const GoogleMapSection = () => {
               equals: () => false,
             },
           }}
-        />
+        >
+          <OverlayViewF
+            position={origin?.coordinates}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <div className="p-2">
+              <p className="bg-white p-2 text-base font-medium leading-5 text-black">
+                From: {origin.placeData.label}
+              </p>
+            </div>
+          </OverlayViewF>
+        </MarkerF>
       )}
       {destination && (
         <MarkerF
@@ -93,7 +109,18 @@ const GoogleMapSection = () => {
               equals: () => false,
             },
           }}
-        />
+        >
+          <OverlayViewF
+            position={destination?.coordinates}
+            mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+          >
+            <div className="p-1">
+              <p className="bg-white p-2 text-base font-medium leading-5 text-black">
+                To: {destination.placeData.label}
+              </p>
+            </div>
+          </OverlayViewF>
+        </MarkerF>
       )}
     </GoogleMap>
   );
