@@ -43,7 +43,7 @@ const Banner = ({
           </h1>
           <div className="flex flex-col gap-3">
             <p>{paragraph}</p>
-            {searchPanel && <SearchPanel />}
+            {searchPanel && <SearchPanel isRide={false} />}
           </div>
           <div className="flex flex-wrap gap-6">
             {buttonText && (

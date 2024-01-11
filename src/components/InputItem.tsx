@@ -17,9 +17,10 @@ import {
 
 type Props = {
   type: "source" | "destination";
+  isRide: boolean;
 };
 
-const InputItem = ({ type }: Props) => {
+const InputItem = ({ type, isRide }: Props) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
 
@@ -92,8 +93,12 @@ const InputItem = ({ type }: Props) => {
       } border-lightGrey2`}
     >
       <div className="absolute left-3 top-1/2 w-5 -translate-y-1/2 text-black">
-        {type === "source" && <SearchCircle isFilled={isFilled} />}
-        {type === "destination" && <SearchSquare isFilled={isFilled} />}
+        {type === "source" && (
+          <SearchCircle isFilled={isFilled} isRide={isRide} />
+        )}
+        {type === "destination" && (
+          <SearchSquare isFilled={isFilled} isRide={isRide} />
+        )}
       </div>
       <div
         className="w-full"
