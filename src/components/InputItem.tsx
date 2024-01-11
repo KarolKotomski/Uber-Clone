@@ -69,11 +69,6 @@ const InputItem = ({ type, isRide }: Props) => {
   };
 
   useEffect(() => {
-    console.log("origin", origin);
-    console.log("destination", destination);
-  }, [origin, destination]);
-
-  useEffect(() => {
     if (type === "source" && origin) {
       setValue(origin.placeData);
       setIsFilled(true);

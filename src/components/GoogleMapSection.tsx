@@ -1,4 +1,5 @@
 import {
+  DirectionsRenderer,
   GoogleMap,
   MarkerF,
   OverlayView,
@@ -8,7 +9,7 @@ import { useCallback, useEffect, useState } from "react";
 import { MapStyle } from "../styles/MapStyle";
 import { useSelector } from "react-redux";
 import { selectDestination, selectOrigin } from "../slices/navSlice";
-import circleIcon from "../icons/sesarchCircle.png";
+import circleIcon from "../icons/searchCircle.png";
 import squareIcon from "../icons/searchSquare.png";
 
 const containerStyle = {
@@ -24,6 +25,9 @@ const defaultMapCenter = {
 const GoogleMapSection = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [centerMap, setCenterMap] = useState(defaultMapCenter);
+  const [directionRoutePoints, setDirectionRoutePoints] = useState<
+    google.maps.DirectionsResult | undefined
+  >(undefined);
 
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
@@ -37,28 +41,62 @@ const GoogleMapSection = () => {
   }, []);
 
   useEffect(() => {
-    if (origin && map) {
+    if (origin) {
       setCenterMap(origin.coordinates);
     }
-    if (origin == null && destination && map) {
+    if (!origin && destination) {
       setCenterMap(destination.coordinates);
     }
-    if (origin === null && destination === null && map) {
+    if (!origin && !destination) {
       setCenterMap(defaultMapCenter);
     }
-  }, [origin, map]);
+    if (origin && destination) {
+      handleDirectionRoute();
+    }
+  }, [origin]);
 
   useEffect(() => {
-    if (destination && map) {
+    if (destination) {
       setCenterMap(destination.coordinates);
     }
-    if (destination == null && origin && map) {
+    if (!destination && origin) {
       setCenterMap(origin.coordinates);
     }
-    if (origin === null && destination === null && map) {
+    if (!destination && !origin) {
       setCenterMap(defaultMapCenter);
     }
-  }, [destination, map]);
+    if (origin && destination) {
+      handleDirectionRoute();
+    }
+  }, [destination]);
+
+  useEffect(() => {
+    console.log("DIRECTION", directionRoutePoints);
+    console.log("origin", origin);
+    console.log("destination", destination);
+  }, [directionRoutePoints, origin, destination]);
+
+  const handleDirectionRoute = () => {
+    const directionService = new google.maps.DirectionsService();
+
+    if (origin && destination) {
+      directionService.route(
+        {
+          origin: origin.coordinates,
+          destination: destination.coordinates,
+          travelMode: google.maps.TravelMode.DRIVING,
+        },
+        (result, status) => {
+          if (status === "OK" && result) {
+            setDirectionRoutePoints(result);
+          } else {
+            console.error(`Directions request failed due to ${status}`);
+            setDirectionRoutePoints(undefined);
+          }
+        },
+      );
+    }
+  };
 
   return (
     <GoogleMap
@@ -98,6 +136,7 @@ const GoogleMapSection = () => {
           </OverlayViewF>
         </MarkerF>
       )}
+
       {destination && (
         <MarkerF
           position={destination?.coordinates}
@@ -122,6 +161,14 @@ const GoogleMapSection = () => {
           </OverlayViewF>
         </MarkerF>
       )}
+
+      <DirectionsRenderer
+        directions={directionRoutePoints}
+        options={{
+          suppressMarkers: true,
+        }}
+      />
+      
     </GoogleMap>
   );
 };
