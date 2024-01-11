@@ -25,7 +25,7 @@ const GoogleMapSection = () => {
     setMap(map);
   }, []);
 
-  const onUnmount = useCallback(function callback(map: any) {
+  const onUnmount = useCallback(function callback(map: google.maps.Map) {
     setMap(null);
   }, []);
 
@@ -33,14 +33,25 @@ const GoogleMapSection = () => {
     if (origin && map) {
       setCenterMap(origin.coordinates);
     }
-    if (destination && map) {
+    if (origin == null && destination && map) {
       setCenterMap(destination.coordinates);
     }
-
     if (origin === null && destination === null && map) {
       setCenterMap(defaultMapCenter);
     }
-  }, [origin, destination]);
+  }, [origin, map]);
+
+  useEffect(() => {
+    if (destination && map) {
+      setCenterMap(destination.coordinates);
+    }
+    if (destination == null && origin && map) {
+      setCenterMap(origin.coordinates);
+    }
+    if (origin === null && destination === null && map) {
+      setCenterMap(defaultMapCenter);
+    }
+  }, [destination, map]);
 
   return (
     <GoogleMap
