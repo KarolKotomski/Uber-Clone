@@ -13,7 +13,7 @@ type LocationData = {
 type NavState = {
   origin: LocationData | null;
   destination: LocationData | null;
-  travelTimeInformation: string | null;
+  travelTimeInformation: google.maps.DirectionsResult | null;
 };
 
 export const initialState: NavState = {
@@ -44,7 +44,10 @@ export const navSlice = createSlice({
     ) => {
       state.destination = action.payload;
     },
-    setTravelTimeInformation: (state, action: PayloadAction<string>) => {
+    setTravelTimeInformation: (
+      state,
+      action: PayloadAction<google.maps.DirectionsResult | null>,
+    ) => {
       state.travelTimeInformation = action.payload;
     },
   },

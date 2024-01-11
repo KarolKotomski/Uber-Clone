@@ -7,8 +7,13 @@ import {
 } from "@react-google-maps/api";
 import { useCallback, useEffect, useState } from "react";
 import { MapStyle } from "../styles/MapStyle";
-import { useSelector } from "react-redux";
-import { selectDestination, selectOrigin } from "../slices/navSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectDestination,
+  selectOrigin,
+  selectTravelTimeInformation,
+  setTravelTimeInformation,
+} from "../slices/navSlice";
 import circleIcon from "../icons/searchCircle.png";
 import squareIcon from "../icons/searchSquare.png";
 
@@ -25,12 +30,11 @@ const defaultMapCenter = {
 const GoogleMapSection = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [centerMap, setCenterMap] = useState(defaultMapCenter);
-  const [directionRoutePoints, setDirectionRoutePoints] = useState<
-    google.maps.DirectionsResult | undefined
-  >(undefined);
 
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
+  const travelTimeInformation = useSelector(selectTravelTimeInformation);
+  const dispatch = useDispatch();
 
   const onLoad = useCallback(function callback(map: google.maps.Map) {
     setMap(map);
@@ -71,10 +75,10 @@ const GoogleMapSection = () => {
   }, [destination]);
 
   useEffect(() => {
-    console.log("DIRECTION", directionRoutePoints);
+    console.log("DIRECTION", travelTimeInformation);
     console.log("origin", origin);
     console.log("destination", destination);
-  }, [directionRoutePoints, origin, destination]);
+  }, [travelTimeInformation, origin, destination]);
 
   const handleDirectionRoute = () => {
     const directionService = new google.maps.DirectionsService();
@@ -88,10 +92,10 @@ const GoogleMapSection = () => {
         },
         (result, status) => {
           if (status === "OK" && result) {
-            setDirectionRoutePoints(result);
+            dispatch(setTravelTimeInformation(result));
           } else {
             console.error(`Directions request failed due to ${status}`);
-            setDirectionRoutePoints(undefined);
+            dispatch(setTravelTimeInformation(null));
           }
         },
       );
@@ -162,13 +166,17 @@ const GoogleMapSection = () => {
         </MarkerF>
       )}
 
-      <DirectionsRenderer
-        directions={directionRoutePoints}
-        options={{
-          suppressMarkers: true,
-        }}
-      />
-      
+      {travelTimeInformation && (
+        <DirectionsRenderer
+          directions={travelTimeInformation}
+          options={{
+            suppressMarkers: true,
+            polylineOptions: {
+              strokeColor: "black",
+            },
+          }}
+        />
+      )}
     </GoogleMap>
   );
 };
