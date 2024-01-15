@@ -77,25 +77,16 @@ const GoogleMapSection = () => {
     console.log("map", map);
   }, [travelTimeInformation, origin, destination, map]);
 
-  const handleDirectionRoute = () => {
+  const handleDirectionRoute = async () => {
     const directionService = new google.maps.DirectionsService();
 
     if (origin && destination) {
-      directionService.route(
-        {
-          origin: origin.coordinates,
-          destination: destination.coordinates,
-          travelMode: google.maps.TravelMode.DRIVING,
-        },
-        (result, status) => {
-          if (status === "OK" && result) {
-            dispatch(setTravelTimeInformation(result));
-          } else {
-            console.error(`Directions request failed due to ${status}`);
-            dispatch(setTravelTimeInformation(null));
-          }
-        },
-      );
+      const response = await directionService.route({
+        origin: origin.coordinates,
+        destination: destination.coordinates,
+        travelMode: google.maps.TravelMode.DRIVING,
+      });
+      dispatch(setTravelTimeInformation(response));
     }
   };
 
@@ -163,7 +154,7 @@ const GoogleMapSection = () => {
         </MarkerF>
       )}
 
-      {origin && destination && travelTimeInformation && (
+      {travelTimeInformation && (
         <DirectionsRenderer
           directions={travelTimeInformation}
           options={{
