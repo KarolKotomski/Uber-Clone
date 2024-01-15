@@ -45,40 +45,37 @@ const GoogleMapSection = () => {
   }, []);
 
   useEffect(() => {
-    if (origin) {
-      setCenterMap(origin.coordinates);
-    }
-    if (!origin && destination) {
-      setCenterMap(destination.coordinates);
-    }
     if (!origin && !destination) {
       setCenterMap(defaultMapCenter);
     }
-    if (origin && destination) {
-      handleDirectionRoute();
-    }
-  }, [origin]);
 
-  useEffect(() => {
-    if (destination) {
-      setCenterMap(destination.coordinates);
-    }
-    if (!destination && origin) {
+    if (origin && !destination) {
       setCenterMap(origin.coordinates);
     }
-    if (!destination && !origin) {
-      setCenterMap(defaultMapCenter);
+
+    if (!origin && destination) {
+      setCenterMap(destination.coordinates);
     }
-    if (origin && destination) {
+
+    if (origin && destination && !travelTimeInformation) {
       handleDirectionRoute();
     }
-  }, [destination]);
+
+    if (origin && destination && travelTimeInformation) {
+      return;
+    }
+
+    if (!origin || !destination) {
+      dispatch(setTravelTimeInformation(null));
+    }
+  }, [origin, destination, travelTimeInformation]);
 
   useEffect(() => {
     console.log("DIRECTION", travelTimeInformation);
     console.log("origin", origin);
     console.log("destination", destination);
-  }, [travelTimeInformation, origin, destination]);
+    console.log("map", map);
+  }, [travelTimeInformation, origin, destination, map]);
 
   const handleDirectionRoute = () => {
     const directionService = new google.maps.DirectionsService();
@@ -166,7 +163,7 @@ const GoogleMapSection = () => {
         </MarkerF>
       )}
 
-      {travelTimeInformation && (
+      {origin && destination && travelTimeInformation && (
         <DirectionsRenderer
           directions={travelTimeInformation}
           options={{

@@ -13,7 +13,6 @@ import {
   selectOrigin,
   setDestination,
   setOrigin,
-  setTravelTimeInformation,
 } from "../slices/navSlice";
 
 type Props = {
@@ -64,7 +63,6 @@ const InputItem = ({ type, isRide }: Props) => {
   const handleClear = () => {
     setValue(null);
     setIsFilled(false);
-    dispatch(setTravelTimeInformation(null));
     type === "source"
       ? dispatch(setOrigin(null))
       : dispatch(setDestination(null));
