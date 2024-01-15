@@ -2,9 +2,10 @@ import InputItem from "./InputItem";
 
 type Props = {
   isRide: boolean;
+  handleActiveMenu?: () => void;
 };
 
-const SearchPanel = ({ isRide }: Props) => {
+const SearchPanel = ({ isRide, handleActiveMenu }: Props) => {
   return (
     <div className="relative mt-2 flex flex-col gap-3 lg:max-w-[25rem]">
       <div className="flex flex-col gap-3">

@@ -6,15 +6,29 @@ import Restaurant from "./icons/Restaurant";
 import Ticket from "./icons/Ticket";
 import UserButton from "./buttons/UserButton";
 import HamburgerButton from "./buttons/HamburgerButton";
+import { useContext } from "react";
+import {
+  SmallScreenContext,
+  SmallScreenContextType,
+} from "../context/SmallScreenContext";
 
 const RideNavbar = () => {
+  const { isMenuActive }: SmallScreenContextType =
+    useContext(SmallScreenContext)!;
+
   return (
     <header className="absolute left-0 right-0 top-0 z-10 border-whiteHover bg-transparent py-3 font-medium text-black lg:static lg:border-b-4 lg:bg-white">
       <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 xl:px-16">
         <nav className="flex items-center text-sm">
           <ul>
             <Link to="/">
-              <li className="mr-20 font-UberMove text-xl lg:text-3xl">Uber</li>
+              <li
+                className={`${
+                  isMenuActive ? "hidden" : "block"
+                } mr-20 font-UberMove text-xl lg:block lg:text-3xl`}
+              >
+                Uber
+              </li>
             </Link>
           </ul>
           <ul className="mx-6 hidden gap-8 leading-4 lg:flex">

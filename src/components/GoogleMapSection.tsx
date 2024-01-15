@@ -80,13 +80,17 @@ const GoogleMapSection = () => {
   const handleDirectionRoute = async () => {
     const directionService = new google.maps.DirectionsService();
 
-    if (origin && destination) {
-      const response = await directionService.route({
-        origin: origin.coordinates,
-        destination: destination.coordinates,
-        travelMode: google.maps.TravelMode.DRIVING,
-      });
-      dispatch(setTravelTimeInformation(response));
+    try {
+      if (origin && destination) {
+        const response = await directionService.route({
+          origin: origin.coordinates,
+          destination: destination.coordinates,
+          travelMode: google.maps.TravelMode.DRIVING,
+        });
+        dispatch(setTravelTimeInformation(response));
+      }
+    } catch (error) {
+      console.error("Error ocurred during direction fetching", error);
     }
   };
 

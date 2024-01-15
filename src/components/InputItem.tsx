@@ -85,7 +85,7 @@ const InputItem = ({ type, isRide }: Props) => {
     <div
       className={`relative flex items-center rounded-lg border-2 bg-lightGrey2 py-[0.1875rem] ${
         isFocused ? "border-black" : "border-lightGrey2"
-      } border-lightGrey2`}
+      } border-lightGrey2 `}
     >
       <div className="absolute left-3 top-1/2 w-5 -translate-y-1/2 text-black">
         {type === "source" && (
@@ -129,6 +129,9 @@ const InputItem = ({ type, isRide }: Props) => {
                 borderColor: "#00ffff00",
                 border: "0",
                 boxShadow: "0",
+                ":hover": {
+                  cursor: "text",
+                },
               }),
               valueContainer: (baseStyles) => ({
                 ...baseStyles,
