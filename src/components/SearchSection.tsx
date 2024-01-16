@@ -25,17 +25,22 @@ const SearchSection = () => {
   }, [origin, destination]);
 
   return (
-    <div className="flex flex-col gap-4 rounded-t-xl border-whiteHover bg-white p-4 lg:rounded-xl lg:border-2">
+    <div
+      className={`flex flex-col gap-2 rounded-t-xl border-whiteHover bg-white lg:p-4 ${
+        isMenuActive ? "px-4" : "p-4"
+      } lg:rounded-xl lg:border-2`}
+    >
       <h1
-        className={`font-UberMove text-xl font-bold ${
-          isMenuActive && "mt-12"
-        } lg:mt-0`}
+        className={`font-UberMove text-xl font-bold lg:block ${
+          isMenuActive ? "hidden" : "block"
+        }`}
       >
-        Book a ride
+        Get a Ride
       </h1>
+
       <SearchPanel isRide={true} />
       <button
-        className={`hidden rounded-lg px-[0.875rem] py-3 font-medium transition-colors duration-300 lg:block ${
+        className={`hidden rounded-lg px-[0.875rem] py-3 mt-3 font-medium transition-colors duration-300 lg:block ${
           isButtonActive
             ? "cursor-pointer bg-black text-white hover:bg-greyActive"
             : "cursor-not-allowed bg-lightGrey text-placeholderGrey"

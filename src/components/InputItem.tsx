@@ -94,16 +94,12 @@ const InputItem = ({ type, isRide }: Props) => {
     }
   }, [origin, destination]);
 
-  useEffect(() => {
-    console.log("consoled value", value);
-  }, [value]);
-
   return (
     <div
       className={`relative flex items-center rounded-lg border-2 bg-lightGrey2 py-[0.1875rem] ${
-        isFocused ? "border-black" : "border-lightGrey2"
+        isFocused ? "border-[#000]" : "border-lightGrey2"
       } border-lightGrey2 `}
-      onClick={() => setIsMenuActive(true)}
+      onFocus={() => setIsMenuActive(true)}
     >
       <div className="absolute left-3 top-1/2 w-5 -translate-y-1/2 text-black">
         {type === "source" && (

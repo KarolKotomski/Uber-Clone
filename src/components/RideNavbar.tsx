@@ -18,8 +18,12 @@ const RideNavbar = () => {
     useContext(SmallScreenContext)!;
 
   return (
-    <header className="absolute left-0 right-0 top-0 z-10 border-whiteHover bg-transparent py-3 font-medium text-black lg:static lg:border-b-4 lg:bg-white">
-      <div className="mx-auto flex max-w-[88rem] items-center justify-between px-1 xl:px-16">
+    <header
+      className={`${
+        isMenuActive ? "static" : "absolute"
+      } left-0 right-0 top-0 z-10 border-whiteHover bg-transparent py-3 font-medium text-black lg:static lg:border-b-4 lg:bg-white`}
+    >
+      <div className="mx-auto flex max-w-[88rem] items-center justify-between px-4">
         <nav className="flex items-center text-sm">
           <ul>
             <Link to="/">
