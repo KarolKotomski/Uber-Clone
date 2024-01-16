@@ -27,7 +27,9 @@ const SearchSection = () => {
   return (
     <div className="flex flex-col gap-4 rounded-t-xl border-whiteHover bg-white p-4 lg:rounded-xl lg:border-2">
       <h1
-        className={`font-UberMove text-xl font-bold ${isMenuActive && "mt-12"}`}
+        className={`font-UberMove text-xl font-bold ${
+          isMenuActive && "mt-12"
+        } lg:mt-0`}
       >
         Book a ride
       </h1>

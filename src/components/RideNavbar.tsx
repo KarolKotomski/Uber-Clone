@@ -32,7 +32,7 @@ const RideNavbar = () => {
               </li>
             </Link>
             <li
-              className={`w-[0.875rem] ${isMenuActive ? "block" : "hidden"}`}
+              className={`lg:hidden ${isMenuActive ? "block" : "hidden"}`}
               onClick={() => setIsMenuActive(false)}
             >
               <ArrowButton />
