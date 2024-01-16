@@ -5,6 +5,15 @@ import uberPets from "../images/Uber_Pets.png";
 import uberXL from "../images/Uber_XL.png";
 import uberBlack from "../images/Uber_Black.png";
 
+export type Car = {
+  id: number;
+  name: string;
+  seat: number;
+  description: string;
+  amount: number;
+  image: string;
+};
+
 export const carUnitData = [
   {
     id: 1,
