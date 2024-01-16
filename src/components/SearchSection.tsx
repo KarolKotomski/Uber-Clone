@@ -26,8 +26,8 @@ const SearchSection = () => {
 
   return (
     <div
-      className={`flex flex-col gap-2 rounded-t-xl border-whiteHover bg-white lg:p-4 ${
-        isMenuActive ? "px-4" : "p-4"
+      className={`flex flex-col gap-2 border-whiteHover bg-white lg:p-4 ${
+        isMenuActive ? "px-4" : "rounded-t-xl p-4"
       } lg:rounded-xl lg:border-2`}
     >
       <h1
@@ -40,7 +40,7 @@ const SearchSection = () => {
 
       <SearchPanel isRide={true} />
       <button
-        className={`hidden rounded-lg px-[0.875rem] py-3 mt-3 font-medium transition-colors duration-300 lg:block ${
+        className={`mt-3 hidden rounded-lg px-[0.875rem] py-3 font-medium transition-colors duration-300 lg:block ${
           isButtonActive
             ? "cursor-pointer bg-black text-white hover:bg-greyActive"
             : "cursor-not-allowed bg-lightGrey text-placeholderGrey"
