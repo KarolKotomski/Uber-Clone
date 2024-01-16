@@ -13,6 +13,7 @@ import {
   selectOrigin,
   setDestination,
   setOrigin,
+  setTravelTimeInformation,
 } from "../slices/navSlice";
 import {
   SmallScreenContext,
@@ -60,15 +61,20 @@ const InputItem = ({ type, isRide }: Props) => {
           };
 
           type === "source"
-            ? dispatch(setOrigin(payLoad))
-            : dispatch(setDestination(payLoad));
+            ? (() => {
+                dispatch(setTravelTimeInformation(null));
+                dispatch(setOrigin(payLoad));
+              })()
+            : (() => {
+                dispatch(setTravelTimeInformation(null));
+                dispatch(setDestination(payLoad));
+              })();
         })
         .catch((error) => console.error("Error", error));
     }
   };
 
   const handleClear = () => {
-    setValue(null);
     setIsFilled(false);
     type === "source"
       ? dispatch(setOrigin(null))
@@ -87,6 +93,10 @@ const InputItem = ({ type, isRide }: Props) => {
       setIsFilled(false);
     }
   }, [origin, destination]);
+
+  useEffect(() => {
+    console.log("consoled value", value);
+  }, [value]);
 
   return (
     <div
