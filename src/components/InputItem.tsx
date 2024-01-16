@@ -5,7 +5,7 @@ import GooglePlacesAutocomplete, {
 import ClearValue from "./icons/ClearValue";
 import SearchCircle from "./icons/SearchCircle";
 import SearchSquare from "./icons/SearchSquare";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Option } from "react-google-places-autocomplete/build/types";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -14,6 +14,10 @@ import {
   setDestination,
   setOrigin,
 } from "../slices/navSlice";
+import {
+  SmallScreenContext,
+  SmallScreenContextType,
+} from "../context/SmallScreenContext";
 
 type Props = {
   type: "source" | "destination";
@@ -30,6 +34,9 @@ const InputItem = ({ type, isRide }: Props) => {
 
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
+
+  const { setIsMenuActive }: SmallScreenContextType =
+    useContext(SmallScreenContext)!;
 
   let placeholder;
   if (type === "source") {
@@ -86,6 +93,7 @@ const InputItem = ({ type, isRide }: Props) => {
       className={`relative flex items-center rounded-lg border-2 bg-lightGrey2 py-[0.1875rem] ${
         isFocused ? "border-black" : "border-lightGrey2"
       } border-lightGrey2 `}
+      onClick={() => setIsMenuActive(true)}
     >
       <div className="absolute left-3 top-1/2 w-5 -translate-y-1/2 text-black">
         {type === "source" && (
@@ -115,7 +123,6 @@ const InputItem = ({ type, isRide }: Props) => {
               setIsFilled(true);
             },
             placeholder: placeholder,
-            isClearable: true,
             components: {
               DropdownIndicator: () => null,
               CrossIcon: () => null,

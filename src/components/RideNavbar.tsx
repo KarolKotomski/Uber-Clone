@@ -11,14 +11,15 @@ import {
   SmallScreenContext,
   SmallScreenContextType,
 } from "../context/SmallScreenContext";
+import ArrowButton from "./buttons/ArrowButton";
 
 const RideNavbar = () => {
-  const { isMenuActive }: SmallScreenContextType =
+  const { isMenuActive, setIsMenuActive }: SmallScreenContextType =
     useContext(SmallScreenContext)!;
 
   return (
     <header className="absolute left-0 right-0 top-0 z-10 border-whiteHover bg-transparent py-3 font-medium text-black lg:static lg:border-b-4 lg:bg-white">
-      <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 xl:px-16">
+      <div className="mx-auto flex max-w-[88rem] items-center justify-between px-1 xl:px-16">
         <nav className="flex items-center text-sm">
           <ul>
             <Link to="/">
@@ -30,6 +31,12 @@ const RideNavbar = () => {
                 Uber
               </li>
             </Link>
+            <li
+              className={`w-[0.875rem] ${isMenuActive ? "block" : "hidden"}`}
+              onClick={() => setIsMenuActive(false)}
+            >
+              <ArrowButton />
+            </li>
           </ul>
           <ul className="mx-6 hidden gap-8 leading-4 lg:flex">
             <li>

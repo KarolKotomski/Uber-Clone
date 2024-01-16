@@ -6,12 +6,13 @@ type SmallScreenContextProps = {
 
 export type SmallScreenContextType = {
   isMenuActive: boolean | null;
-  setIsMenuActive: React.Dispatch<React.SetStateAction<boolean>> | null;
+  setIsMenuActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const SmallScreenContext = createContext<SmallScreenContextType | null>(
-  null,
-);
+export const SmallScreenContext = createContext<SmallScreenContextType>({
+  isMenuActive: false,
+  setIsMenuActive: () => {},
+});
 
 export const SmallScreenContextProvider = ({
   children,
