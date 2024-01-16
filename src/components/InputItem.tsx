@@ -16,9 +16,9 @@ import {
   setTravelTimeInformation,
 } from "../slices/navSlice";
 import {
-  SmallScreenContext,
-  SmallScreenContextType,
-} from "../context/SmallScreenContext";
+  SearchMenuContext,
+  SearchMenuContextType,
+} from "../context/SearchMenuContext";
 
 type Props = {
   type: "source" | "destination";
@@ -36,8 +36,8 @@ const InputItem = ({ type, isRide }: Props) => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
 
-  const { setIsMenuActive }: SmallScreenContextType =
-    useContext(SmallScreenContext)!;
+  const { setIsSearchMenuActive }: SearchMenuContextType =
+    useContext(SearchMenuContext)!;
 
   let placeholder;
   if (type === "source") {
@@ -99,7 +99,7 @@ const InputItem = ({ type, isRide }: Props) => {
       className={`relative flex items-center rounded-lg border-2 bg-lightGrey2 py-[0.1875rem] ${
         isFocused ? "border-[#000]" : "border-lightGrey2"
       } border-lightGrey2 `}
-      onFocus={() => setIsMenuActive(true)}
+      onFocus={() => setIsSearchMenuActive(true)}
     >
       <div className="absolute left-3 top-1/2 w-5 -translate-y-1/2 text-black">
         {type === "source" && (

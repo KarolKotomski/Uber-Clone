@@ -1,13 +1,13 @@
 import RideMain from "../components/RideMain";
 import RideNavbar from "../components/RideNavbar";
-import { SmallScreenContextProvider } from "../context/SmallScreenContext";
+import { SearchMenuContextProvider } from "../context/SearchMenuContext";
 
 const Ride = () => {
   return (
-    <SmallScreenContextProvider>
+    <SearchMenuContextProvider>
       <RideNavbar />
       <RideMain />
-    </SmallScreenContextProvider>
+    </SearchMenuContextProvider>
   );
 };
 

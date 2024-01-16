@@ -3,9 +3,9 @@ import { useSelector } from "react-redux";
 import { selectDestination, selectOrigin } from "../slices/navSlice";
 import SearchPanel from "./SearchPanel";
 import {
-  SmallScreenContext,
-  SmallScreenContextType,
-} from "../context/SmallScreenContext";
+  SearchMenuContext,
+  SearchMenuContextType,
+} from "../context/SearchMenuContext";
 
 const SearchSection = () => {
   const [isButtonActive, setIsButtonActive] = useState(false);
@@ -13,8 +13,8 @@ const SearchSection = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
 
-  const { isMenuActive }: SmallScreenContextType =
-    useContext(SmallScreenContext);
+  const { isSearchMenuActive }: SearchMenuContextType =
+    useContext(SearchMenuContext);
 
   useEffect(() => {
     if (origin && destination) {
@@ -27,12 +27,12 @@ const SearchSection = () => {
   return (
     <div
       className={`flex flex-col gap-2 border-whiteHover bg-white lg:p-4 ${
-        isMenuActive ? "px-4" : "rounded-t-xl p-4"
+        isSearchMenuActive ? "px-4" : "rounded-t-xl p-4"
       } lg:rounded-xl lg:border-2`}
     >
       <h1
         className={`font-UberMove text-xl font-bold lg:block ${
-          isMenuActive ? "hidden" : "block"
+          isSearchMenuActive ? "hidden" : "block"
         }`}
       >
         Get a Ride

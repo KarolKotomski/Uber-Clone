@@ -17,9 +17,9 @@ import {
 import circleIcon from "../icons/searchCircle.png";
 import squareIcon from "../icons/searchSquare.png";
 import {
-  SmallScreenContext,
-  SmallScreenContextType,
-} from "../context/SmallScreenContext";
+  SearchMenuContext,
+  SearchMenuContextType,
+} from "../context/SearchMenuContext";
 
 const containerStyle = {
   width: "100%",
@@ -40,8 +40,8 @@ const GoogleMapSection = () => {
   const travelTimeInformation = useSelector(selectTravelTimeInformation);
   const dispatch = useDispatch();
 
-  const { isMenuActive, setIsMenuActive }: SmallScreenContextType =
-    useContext(SmallScreenContext);
+  const { isSearchMenuActive, setIsSearchMenuActive }: SearchMenuContextType =
+    useContext(SearchMenuContext);
 
   const onLoad = useCallback(function callback(map: google.maps.Map) {
     setMap(map);
@@ -76,8 +76,8 @@ const GoogleMapSection = () => {
       dispatch(setTravelTimeInformation(null));
     }
 
-    if (origin && destination && !travelTimeInformation && isMenuActive) {
-      setIsMenuActive(false);
+    if (origin && destination && !travelTimeInformation && isSearchMenuActive) {
+      setIsSearchMenuActive(false);
       handleDirectionRoute();
     }
   }, [origin, destination, travelTimeInformation]);

@@ -8,19 +8,19 @@ import UserButton from "./buttons/UserButton";
 import HamburgerButton from "./buttons/HamburgerButton";
 import { useContext } from "react";
 import {
-  SmallScreenContext,
-  SmallScreenContextType,
-} from "../context/SmallScreenContext";
+  SearchMenuContext,
+  SearchMenuContextType,
+} from "../context/SearchMenuContext";
 import ArrowButton from "./buttons/ArrowButton";
 
 const RideNavbar = () => {
-  const { isMenuActive, setIsMenuActive }: SmallScreenContextType =
-    useContext(SmallScreenContext)!;
+  const { isSearchMenuActive, setIsSearchMenuActive }: SearchMenuContextType =
+    useContext(SearchMenuContext)!;
 
   return (
     <header
       className={`${
-        isMenuActive ? "static" : "absolute"
+        isSearchMenuActive ? "static" : "absolute"
       } left-0 right-0 top-0 z-10 border-whiteHover bg-transparent py-3 font-medium text-black lg:static lg:border-b-4 lg:bg-white`}
     >
       <div className="mx-auto flex max-w-[88rem] items-center justify-between px-4">
@@ -29,15 +29,15 @@ const RideNavbar = () => {
             <Link to="/">
               <li
                 className={`${
-                  isMenuActive ? "hidden" : "block"
+                  isSearchMenuActive ? "hidden" : "block"
                 } mr-20 font-UberMove text-xl lg:block lg:text-3xl`}
               >
                 Uber
               </li>
             </Link>
             <li
-              className={`lg:hidden ${isMenuActive ? "block" : "hidden"}`}
-              onClick={() => setIsMenuActive(false)}
+              className={`lg:hidden ${isSearchMenuActive ? "block" : "hidden"}`}
+              onClick={() => setIsSearchMenuActive(false)}
             >
               <ArrowButton />
             </li>
