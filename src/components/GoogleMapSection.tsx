@@ -5,7 +5,7 @@ import {
   OverlayView,
   OverlayViewF,
 } from "@react-google-maps/api";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { MapStyle } from "../styles/MapStyle";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -16,6 +16,10 @@ import {
 } from "../slices/navSlice";
 import circleIcon from "../icons/searchCircle.png";
 import squareIcon from "../icons/searchSquare.png";
+import {
+  SmallScreenContext,
+  SmallScreenContextType,
+} from "../context/SmallScreenContext";
 
 const containerStyle = {
   width: "100%",
@@ -35,6 +39,9 @@ const GoogleMapSection = () => {
   const destination = useSelector(selectDestination);
   const travelTimeInformation = useSelector(selectTravelTimeInformation);
   const dispatch = useDispatch();
+
+  const { isMenuActive, setIsMenuActive }: SmallScreenContextType =
+    useContext(SmallScreenContext);
 
   const onLoad = useCallback(function callback(map: google.maps.Map) {
     setMap(map);
@@ -67,6 +74,11 @@ const GoogleMapSection = () => {
 
     if (!origin || !destination) {
       dispatch(setTravelTimeInformation(null));
+    }
+
+    if (origin && destination && !travelTimeInformation && isMenuActive) {
+      setIsMenuActive(false);
+      handleDirectionRoute();
     }
   }, [origin, destination, travelTimeInformation]);
 
