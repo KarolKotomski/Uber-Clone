@@ -6,6 +6,10 @@ import {
   SearchMenuContext,
   SearchMenuContextType,
 } from "../context/SearchMenuContext";
+import {
+  CarSelectMenuContext,
+  CarSelectMenuContextType,
+} from "../context/CarSelectMenuContext";
 
 const SearchSection = () => {
   const [isButtonActive, setIsButtonActive] = useState(false);
@@ -15,6 +19,8 @@ const SearchSection = () => {
 
   const { isSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
+  const { setIsCarSelectMenuActive }: CarSelectMenuContextType =
+    useContext(CarSelectMenuContext);
 
   useEffect(() => {
     if (origin && destination) {
@@ -45,6 +51,7 @@ const SearchSection = () => {
             ? "cursor-pointer bg-black text-white hover:bg-greyActive"
             : "cursor-not-allowed bg-lightGrey text-placeholderGrey"
         }`}
+        onClick={() => setIsCarSelectMenuActive(true)}
       >
         Search
       </button>

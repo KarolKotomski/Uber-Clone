@@ -26,6 +26,7 @@ const CarSelectSection = () => {
       <h1 className="border-b-2 pb-4 pt-5 text-center font-medium">
         Select a Ride
       </h1>
+      <h2 className="text-2xl font-bold">Recomended</h2>
       <div className="grid grid-cols-1 gap-1 p-4">{handleCarUnits()}</div>
     </div>
   );
