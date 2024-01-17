@@ -27,7 +27,7 @@ const RideMain = () => {
     <main
       className={`mx-auto flex ${
         !isSearchMenuActive && isSmallScreen && "h-screen"
-      } max-w-[88rem] flex-col lg:flex-row-reverse lg:justify-between lg:gap-5 lg:py-10`}
+      } max-w-[88rem] flex-col lg:flex-row-reverse lg:gap-10 lg:py-10`}
     >
       <map
         className={`h-full lg:block ${
@@ -36,16 +36,16 @@ const RideMain = () => {
       >
         <GoogleMapSection />
       </map>
-      <div className="flex flex-col lg:gap-5 xl:flex-row">
+      <div className="flex flex-col lg:w-[23rem] lg:gap-0 xl:flex-row xl:gap-10">
         <div
-          className={`bg-lightGrey2 lg:min-w-[24rem] lg:bg-white lg:px-5 ${
+          className={`bg-lightGrey2 lg:block lg:min-w-[23rem] lg:bg-white lg:pl-5 ${
             isCarSelectMenuActive && "hidden"
-          } lg:block`}
+          } `}
         >
           <SearchSection />
         </div>
         {isCarSelectMenuActive && (
-          <div className="max-h-96 w-full bg-lightGrey2 lg:bg-white">
+          <div className="w-full bg-lightGrey2 lg:bg-white lg:pl-5 lg:pt-5">
             <CarSelectSection />
           </div>
         )}
