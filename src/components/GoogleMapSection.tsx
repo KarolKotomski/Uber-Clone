@@ -52,6 +52,9 @@ const GoogleMapSection = () => {
   }, []);
 
   useEffect(() => {
+    if (origin && destination && travelTimeInformation) {
+      return;
+    }
     if (!origin && !destination) {
       setCenterMap(defaultMapCenter);
     }
@@ -68,9 +71,6 @@ const GoogleMapSection = () => {
       handleDirectionRoute();
     }
 
-    if (origin && destination && travelTimeInformation) {
-      return;
-    }
 
     if (!origin || !destination) {
       dispatch(setTravelTimeInformation(null));

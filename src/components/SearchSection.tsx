@@ -6,10 +6,7 @@ import {
   SearchMenuContext,
   SearchMenuContextType,
 } from "../context/SearchMenuContext";
-import {
-  CarSelectMenuContext,
-  CarSelectMenuContextType,
-} from "../context/CarSelectMenuContext";
+import SearchButton from "./buttons/SearchButton";
 
 const SearchSection = () => {
   const [isButtonActive, setIsButtonActive] = useState(false);
@@ -19,8 +16,6 @@ const SearchSection = () => {
 
   const { isSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
-  const { setIsCarSelectMenuActive }: CarSelectMenuContextType =
-    useContext(CarSelectMenuContext);
 
   useEffect(() => {
     if (origin && destination) {
@@ -29,6 +24,10 @@ const SearchSection = () => {
       setIsButtonActive(false);
     }
   }, [origin, destination]);
+
+  useEffect(() => {
+    console.log("isButtonActive", isButtonActive);
+  }, [isButtonActive]);
 
   return (
     <div
@@ -45,16 +44,7 @@ const SearchSection = () => {
       </h1>
 
       <SearchPanel isRide={true} />
-      <button
-        className={`mt-3 hidden rounded-lg px-[0.875rem] py-3 font-medium transition-colors duration-300 lg:block ${
-          isButtonActive
-            ? "cursor-pointer bg-black text-white hover:bg-greyActive"
-            : "cursor-not-allowed bg-lightGrey text-placeholderGrey"
-        }`}
-        onClick={() => setIsCarSelectMenuActive(true)}
-      >
-        Search
-      </button>
+      <SearchButton isButtonActive={isButtonActive} />
     </div>
   );
 };

@@ -19,6 +19,10 @@ import {
   SearchMenuContext,
   SearchMenuContextType,
 } from "../context/SearchMenuContext";
+import {
+  CarSelectMenuContext,
+  CarSelectMenuContextType,
+} from "../context/CarSelectMenuContext";
 
 type Props = {
   type: "source" | "destination";
@@ -37,7 +41,10 @@ const InputItem = ({ type, isRide }: Props) => {
   const destination = useSelector(selectDestination);
 
   const { setIsSearchMenuActive }: SearchMenuContextType =
-    useContext(SearchMenuContext)!;
+    useContext(SearchMenuContext);
+
+  const { setIsCarSelectMenuActive }: CarSelectMenuContextType =
+    useContext(CarSelectMenuContext);
 
   let placeholder;
   if (type === "source") {
@@ -64,10 +71,12 @@ const InputItem = ({ type, isRide }: Props) => {
             ? (() => {
                 dispatch(setTravelTimeInformation(null));
                 dispatch(setOrigin(payLoad));
+                setIsCarSelectMenuActive(false);
               })()
             : (() => {
                 dispatch(setTravelTimeInformation(null));
                 dispatch(setDestination(payLoad));
+                setIsCarSelectMenuActive(false);
               })();
         })
         .catch((error) => console.error("Error", error));
