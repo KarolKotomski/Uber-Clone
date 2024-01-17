@@ -10,17 +10,23 @@ import {
   CarSelectMenuContext,
   CarSelectMenuContextType,
 } from "../context/CarSelectMenuContext";
+import {
+  SmallScreenContext,
+  SmallScreenContextType,
+} from "../context/SmallScreenContext";
 
 const RideMain = () => {
   const { isSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
   const { isCarSelectMenuActive }: CarSelectMenuContextType =
     useContext(CarSelectMenuContext);
+  const { isSmallScreen }: SmallScreenContextType =
+    useContext(SmallScreenContext);
 
   return (
     <main
-      className={`relative mx-auto flex ${
-        !isSearchMenuActive && "h-screen"
+      className={`mx-auto flex ${
+        !isSearchMenuActive && isSmallScreen && "h-screen"
       } max-w-[88rem] flex-col lg:flex-row-reverse lg:justify-between lg:gap-5 lg:py-10`}
     >
       <map
