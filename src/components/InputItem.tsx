@@ -85,6 +85,7 @@ const InputItem = ({ type, isRide }: Props) => {
 
   const handleClear = () => {
     setIsFilled(false);
+    setIsCarSelectMenuActive(false);
     type === "source"
       ? dispatch(setOrigin(null))
       : dispatch(setDestination(null));

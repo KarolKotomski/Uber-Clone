@@ -46,7 +46,7 @@ const RideMain = () => {
         >
           <SearchSection />
         </div>
-        {isCarSelectMenuActive && travelTimeInformation && (
+        {isCarSelectMenuActive && (
           <div className="max-h-96 w-full bg-lightGrey2 lg:bg-white">
             <CarSelectSection />
           </div>
