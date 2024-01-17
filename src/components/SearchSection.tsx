@@ -7,6 +7,14 @@ import {
   SearchMenuContextType,
 } from "../context/SearchMenuContext";
 import SearchButton from "./buttons/SearchButton";
+import {
+  CarSelectMenuContext,
+  CarSelectMenuContextType,
+} from "../context/CarSelectMenuContext";
+import {
+  SmallScreenContext,
+  SmallScreenContextType,
+} from "../context/SmallScreenContext";
 
 const SearchSection = () => {
   const [isButtonActive, setIsButtonActive] = useState(false);
@@ -17,17 +25,33 @@ const SearchSection = () => {
   const { isSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
 
+  const { setIsCarSelectMenuActive }: CarSelectMenuContextType =
+    useContext(CarSelectMenuContext);
+
+  const { isSmallScreen, setIsSmallScreen }: SmallScreenContextType =
+    useContext(SmallScreenContext);
+
   useEffect(() => {
-    if (origin && destination) {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (origin && destination && !isSmallScreen) {
       setIsButtonActive(true);
+    } else if (origin && destination && isSmallScreen) {
+      setIsCarSelectMenuActive(true);
     } else {
       setIsButtonActive(false);
     }
-  }, [origin, destination]);
-
-  useEffect(() => {
-    console.log("isButtonActive", isButtonActive);
-  }, [isButtonActive]);
+  }, [origin, destination, isSmallScreen]);
 
   return (
     <div
@@ -44,7 +68,7 @@ const SearchSection = () => {
       </h1>
 
       <SearchPanel isRide={true} />
-      <SearchButton isButtonActive={isButtonActive} />
+      {!isSmallScreen && <SearchButton isButtonActive={isButtonActive} />}
     </div>
   );
 };

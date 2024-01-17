@@ -82,12 +82,12 @@ const GoogleMapSection = () => {
     }
   }, [origin, destination, travelTimeInformation]);
 
-  useEffect(() => {
-    console.log("DIRECTION", travelTimeInformation);
-    console.log("origin", origin);
-    console.log("destination", destination);
-    console.log("map", map);
-  }, [travelTimeInformation, origin, destination, map]);
+  // useEffect(() => {
+  //   console.log("DIRECTION", travelTimeInformation);
+  //   console.log("origin", origin);
+  //   console.log("destination", destination);
+  //   console.log("map", map);
+  // }, [travelTimeInformation, origin, destination, map]);
 
   const handleDirectionRoute = async () => {
     const directionService = new google.maps.DirectionsService();

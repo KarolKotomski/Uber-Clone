@@ -6,8 +6,6 @@ import {
   SearchMenuContextType,
 } from "../context/SearchMenuContext";
 import CarSelectSection from "./CarSelectSection";
-import { useSelector } from "react-redux";
-import { selectTravelTimeInformation } from "../slices/navSlice";
 import {
   CarSelectMenuContext,
   CarSelectMenuContextType,
@@ -18,12 +16,6 @@ const RideMain = () => {
     useContext(SearchMenuContext);
   const { isCarSelectMenuActive }: CarSelectMenuContextType =
     useContext(CarSelectMenuContext);
-
-  const travelTimeInformation = useSelector(selectTravelTimeInformation);
-
-  useEffect(() => {
-    console.log("isCarSelectedMenuActive", isCarSelectMenuActive);
-  }, [isCarSelectMenuActive]);
 
   return (
     <main
@@ -41,7 +33,7 @@ const RideMain = () => {
       <div className="flex flex-col lg:gap-5 xl:flex-row">
         <div
           className={`bg-lightGrey2 lg:min-w-[24rem] lg:bg-white lg:px-5 ${
-            travelTimeInformation && isCarSelectMenuActive && "hidden"
+            isCarSelectMenuActive && "hidden"
           } lg:block`}
         >
           <SearchSection />
