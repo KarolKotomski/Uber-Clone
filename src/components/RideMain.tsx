@@ -30,22 +30,22 @@ const RideMain = () => {
       } max-w-[88rem] flex-col lg:flex-row-reverse lg:gap-10 lg:py-10`}
     >
       <map
-        className={`h-full lg:block ${
+        className={`h-full  ${
           isSearchMenuActive && "hidden"
-        } lg:h-[83vh] lg:min-w-[20rem] lg:flex-1 lg:pr-5`}
+        } lg:block lg:h-[83vh] lg:min-w-[20rem] lg:flex-1 lg:pr-5`}
       >
         <GoogleMapSection />
       </map>
-      <div className="flex flex-col lg:w-[23rem] lg:gap-0 xl:flex-row xl:gap-10">
+      <div className="flex flex-col lg:w-[23rem] lg:gap-0 xl:w-auto xl:flex-row xl:gap-10">
         <div
-          className={`bg-lightGrey2 lg:block lg:min-w-[23rem] lg:bg-white lg:pl-5 ${
+          className={`bg-lightGrey2 lg:block lg:flex-1 lg:bg-white lg:pl-5 xl:w-[23rem] ${
             isCarSelectMenuActive && "hidden"
           } `}
         >
           <SearchSection />
         </div>
         {isCarSelectMenuActive && (
-          <div className="w-full bg-lightGrey2 lg:bg-white lg:pl-5 lg:pt-5">
+          <div className="bg-lightGrey2 lg:bg-white lg:pl-5 lg:pt-5 xl:p-0">
             <CarSelectSection />
           </div>
         )}
