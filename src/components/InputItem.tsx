@@ -32,7 +32,6 @@ type Props = {
 const InputItem = ({ type, isRide }: Props) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
-
   const [value, setValue] = useState<Option | null>(null);
 
   const dispatch = useDispatch();
@@ -77,7 +76,7 @@ const InputItem = ({ type, isRide }: Props) => {
                 dispatch(setTravelTimeInformation(null));
                 dispatch(setDestination(payLoad));
                 setIsCarSelectMenuActive(false);
-              })();
+            })();
         })
         .catch((error) => console.error("Error", error));
     }

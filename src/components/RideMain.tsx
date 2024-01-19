@@ -25,27 +25,27 @@ const RideMain = () => {
 
   return (
     <main
-      className={`mx-auto flex ${
+      className={`mx-auto grid ${
         !isSearchMenuActive && isSmallScreen && "h-screen"
-      } max-w-[88rem] flex-col lg:flex-row-reverse lg:gap-10 lg:py-10`}
+      } max-w-[88rem] lg:absolute lg:bottom-10 lg:left-0 lg:right-0 lg:top-0 lg:grid-cols-[25rem,1fr] lg:gap-10 lg:pt-[6.75rem]`}
     >
       <map
-        className={`h-full  ${
-          isSearchMenuActive && "hidden"
-        } lg:block lg:h-[83vh] lg:min-w-[20rem] lg:flex-1 lg:pr-5`}
+        className={`${
+          isSearchMenuActive && isSmallScreen && "hidden"
+        } lg:relative lg:bottom-10 lg:right-0 lg:top-0 lg:pr-5`}
       >
         <GoogleMapSection />
       </map>
-      <div className="flex flex-col lg:w-[23rem] lg:gap-0 xl:w-auto xl:flex-row xl:gap-10">
+      <div className="flex flex-col overflow-y-scroll lg:-order-1 lg:gap-0">
         <div
-          className={`bg-lightGrey2 lg:block lg:flex-1 lg:bg-white lg:pl-5 xl:w-[23rem] ${
+          className={`bg-lightGrey2 lg:block lg:bg-white lg:pl-5 ${
             isCarSelectMenuActive && "hidden"
           } `}
         >
           <SearchSection />
         </div>
         {isCarSelectMenuActive && (
-          <div className="bg-lightGrey2 lg:bg-white lg:pl-5 lg:pt-5 xl:p-0">
+          <div className="overflow-y-scroll bg-lightGrey2 lg:bg-white lg:pl-5 lg:pt-5 xl:p-0">
             <CarSelectSection />
           </div>
         )}
