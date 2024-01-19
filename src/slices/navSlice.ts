@@ -1,13 +1,10 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../store";
-import { Option } from "react-google-places-autocomplete/build/types";
+import { LatLng, Option } from "react-google-places-autocomplete/build/types";
 
 type LocationData = {
   placeData: Option;
-  coordinates: {
-    lat: number;
-    lng: number;
-  };
+  coordinates: LatLng;
 };
 
 type NavState = {
@@ -29,8 +26,8 @@ export const navSlice = createSlice({
     setOrigin: (
       state,
       action: PayloadAction<{
-        placeData: any;
-        coordinates: { lat: number; lng: number };
+        placeData: Option;
+        coordinates: LatLng;
       } | null>,
     ) => {
       state.origin = action.payload;
@@ -38,8 +35,8 @@ export const navSlice = createSlice({
     setDestination: (
       state,
       action: PayloadAction<{
-        placeData: any;
-        coordinates: { lat: number; lng: number };
+        placeData: Option;
+        coordinates: LatLng;
       } | null>,
     ) => {
       state.destination = action.payload;
