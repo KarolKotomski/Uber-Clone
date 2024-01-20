@@ -25,19 +25,19 @@ const RideMain = () => {
 
   return (
     <main
-      className={`mx-auto grid ${
+      className={`mx-auto grid grid-rows-[1fr,auto] ${
         !isSearchMenuActive && isSmallScreen && "h-screen"
-      } max-w-[88rem] lg:px-5 lg:absolute lg:bottom-10 lg:left-0 lg:right-0 lg:top-0 lg:grid-cols-[25rem,1fr] lg:pt-[6.75rem]`}
+      } max-w-[88rem] lg:absolute lg:bottom-10 lg:left-0 lg:right-0 lg:top-0 lg:grid-cols-[25rem,1fr] lg:px-5 lg:pt-[6.75rem]`}
     >
       <map
         className={`${
           isSearchMenuActive && isSmallScreen && "hidden"
-        } lg:relative lg:bottom-10 lg:right-0 lg:top-0`}
+        } lg:bottom-10 lg:right-0 lg:top-0`}
       >
         <GoogleMapSection />
       </map>
       <div
-        className={`grid lg:pr-10 lg:-order-1 lg:grid-cols-1 lg:gap-5 ${
+        className={`lg:-order-1 lg:grid lg:grid-cols-1 lg:gap-5 lg:pr-10 ${
           isCarSelectMenuActive && "overflow-y-scroll"
         }`}
       >
