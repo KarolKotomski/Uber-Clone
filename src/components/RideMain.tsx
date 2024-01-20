@@ -41,9 +41,9 @@ const RideMain = () => {
         <GoogleMapSection />
       </map>
       <div
-        className={`lg:-order-1 lg:gap-5 lg:pr-10 ${
-          isCarSelectMenuActive && "overflow-y-scroll"
-        }`}
+        className={`lg:-order-1 lg:gap-5 ${
+          isCarSelectMenuActive ? "lg:pr-[1.5625rem]" : "lg:pr-10"
+        } ${isCarSelectMenuActive && "overflow-y-scroll"}`}
       >
         <div
           className={`bg-lightGrey2 lg:block lg:bg-white ${
