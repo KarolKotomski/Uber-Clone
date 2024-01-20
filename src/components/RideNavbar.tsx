@@ -54,13 +54,14 @@ const RideNavbar = () => {
           <ul>
             <li>
               <Link to="/">
-                {!isSearchMenuActive &&
+                {((!isSearchMenuActive &&
                   !isCarSelectMenuActive &&
-                  isSmallScreen && (
-                    <span className="mr-20 font-UberMove text-xl lg:text-3xl">
-                      Uber
-                    </span>
-                  )}
+                  isSmallScreen) ||
+                  !isSmallScreen) && (
+                  <span className="mr-20 font-UberMove text-xl lg:text-3xl">
+                    Uber
+                  </span>
+                )}
               </Link>
             </li>
             {isSearchMenuActive && isSmallScreen && (
