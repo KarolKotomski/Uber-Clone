@@ -23,6 +23,10 @@ import {
   CarSelectMenuContext,
   CarSelectMenuContextType,
 } from "../context/CarSelectMenuContext";
+import {
+  SmallScreenContext,
+  SmallScreenContextType,
+} from "../context/SmallScreenContext";
 
 type Props = {
   type: "source" | "destination";
@@ -44,6 +48,9 @@ const InputItem = ({ type, isRide }: Props) => {
 
   const { setIsCarSelectMenuActive }: CarSelectMenuContextType =
     useContext(CarSelectMenuContext);
+
+  const { isSmallScreen }: SmallScreenContextType =
+    useContext(SmallScreenContext);
 
   let placeholder;
   if (type === "source") {
@@ -76,7 +83,7 @@ const InputItem = ({ type, isRide }: Props) => {
                 dispatch(setTravelTimeInformation(null));
                 dispatch(setDestination(payLoad));
                 setIsCarSelectMenuActive(false);
-            })();
+              })();
         })
         .catch((error) => console.error("Error", error));
     }
@@ -108,7 +115,7 @@ const InputItem = ({ type, isRide }: Props) => {
       className={`relative flex items-center rounded-lg border-2 bg-lightGrey2 py-[0.1875rem] ${
         isFocused ? "border-[#000]" : "border-lightGrey2"
       } border-lightGrey2 `}
-      onFocus={() => setIsSearchMenuActive(true)}
+      onFocus={() => isSmallScreen && setIsSearchMenuActive(true)}
     >
       <div className="absolute left-3 top-1/2 w-5 -translate-y-1/2 text-black">
         {type === "source" && (
