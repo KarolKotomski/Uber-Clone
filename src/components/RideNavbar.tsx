@@ -69,7 +69,6 @@ const RideNavbar = () => {
                 onClick={() => {
                   setIsSearchMenuActive(false);
                   if (origin && destination) {
-                    dispatch(setOrigin(null));
                     dispatch(setDestination(null));
                   }
                 }}

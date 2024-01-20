@@ -76,7 +76,7 @@ const GoogleMapSection = () => {
       dispatch(setTravelTimeInformation(null));
     }
 
-    if (origin && destination && !travelTimeInformation && isSearchMenuActive) {
+    if (origin && destination && !travelTimeInformation) {
       setIsSearchMenuActive(false);
       handleDirectionRoute();
     }
