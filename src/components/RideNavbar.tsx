@@ -25,7 +25,6 @@ import {
   selectDestination,
   selectOrigin,
   setDestination,
-  setOrigin,
 } from "../slices/navSlice";
 
 const RideNavbar = () => {

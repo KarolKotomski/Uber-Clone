@@ -12,9 +12,8 @@ const CarSelectSection = () => {
   const handleCarUnits = () => {
     return carUnitData.map((unit) => {
       return (
-        <li>
+        <li key={unit.id}>
           <CarUnit
-            key={unit.id}
             car={unit}
             handleToggle={handleToggle}
             activeCarID={activeCarID}

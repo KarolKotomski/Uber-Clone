@@ -52,32 +52,19 @@ const GoogleMapSection = () => {
   }, []);
 
   useEffect(() => {
-    if (origin && destination && travelTimeInformation) {
-      return;
-    }
     if (!origin && !destination) {
       setCenterMap(defaultMapCenter);
-    }
-
-    if (origin && !destination) {
+    } else if (origin && !destination) {
       setCenterMap(origin.coordinates);
-    }
-
-    if (!origin && destination) {
+      dispatch(setTravelTimeInformation(null));
+    } else if (!origin && destination) {
       setCenterMap(destination.coordinates);
-    }
-
-    if (origin && destination && !travelTimeInformation) {
-      handleDirectionRoute();
-    }
-
-
-    if (!origin || !destination) {
       dispatch(setTravelTimeInformation(null));
     }
 
     if (origin && destination && !travelTimeInformation) {
       setIsSearchMenuActive(false);
+      setCenterMap(defaultMapCenter);
       handleDirectionRoute();
     }
   }, [origin, destination, travelTimeInformation]);
@@ -91,7 +78,6 @@ const GoogleMapSection = () => {
 
   const handleDirectionRoute = async () => {
     const directionService = new google.maps.DirectionsService();
-
     try {
       if (origin && destination) {
         const response = await directionService.route({
@@ -103,6 +89,21 @@ const GoogleMapSection = () => {
       }
     } catch (error) {
       console.error("Error ocurred during direction fetching", error);
+      fitMap();
+    }
+  };
+
+  const fitMap = async () => {
+    const bounds = new google.maps.LatLngBounds();
+    try {
+      if (map) {
+        origin && bounds.extend(new google.maps.LatLng(origin.coordinates));
+        destination &&
+          bounds.extend(new google.maps.LatLng(destination.coordinates));
+        map.fitBounds(bounds);
+      }
+    } catch (error) {
+      console.error("Unable to fit map", error);
     }
   };
 
