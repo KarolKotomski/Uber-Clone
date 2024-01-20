@@ -11,9 +11,11 @@ const HomeNavbar = () => {
       <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 xl:px-16">
         <nav className="flex items-center text-sm">
           <ul>
-            <Link to="/">
-              <li className="font-UberMove text-xl md:text-2xl">Uber</li>
-            </Link>
+            <li>
+              <Link to="/">
+                <span className="font-UberMove text-xl md:text-2xl">Uber</span>
+              </Link>
+            </li>
           </ul>
           <ul className="mx-6 hidden gap-1 leading-4 md:flex">
             <li>

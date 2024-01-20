@@ -26,15 +26,17 @@ const RideNavbar = () => {
       <div className="mx-auto flex max-w-[88rem] items-center justify-between px-4">
         <nav className="flex items-center text-sm">
           <ul>
-            <Link to="/">
-              <li
-                className={`${
-                  isSearchMenuActive ? "hidden" : "block"
-                } mr-20 font-UberMove text-xl lg:block lg:text-3xl`}
-              >
-                Uber
-              </li>
-            </Link>
+            <li>
+              <Link to="/">
+                <span
+                  className={`${
+                    isSearchMenuActive ? "hidden" : "block"
+                  } mr-20 font-UberMove text-xl lg:block lg:text-3xl`}
+                >
+                  Uber
+                </span>
+              </Link>
+            </li>
             <li
               className={`lg:hidden ${isSearchMenuActive ? "block" : "hidden"}`}
               onClick={() => setIsSearchMenuActive(false)}

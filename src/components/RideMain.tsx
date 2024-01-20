@@ -1,6 +1,6 @@
 import SearchSection from "./SearchSection";
 import GoogleMapSection from "./GoogleMapSection";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import {
   SearchMenuContext,
   SearchMenuContextType,
@@ -25,9 +25,13 @@ const RideMain = () => {
 
   return (
     <main
-      className={`mx-auto grid grid-rows-[1fr,auto] ${
+      className={`mx-auto grid max-w-[88rem] ${
         !isSearchMenuActive && isSmallScreen && "h-screen"
-      } max-w-[88rem] lg:absolute lg:bottom-10 lg:left-0 lg:right-0 lg:top-0 lg:grid-cols-[25rem,1fr] lg:px-5 lg:pt-[6.75rem]`}
+      } ${
+        isSmallScreen && isCarSelectMenuActive
+          ? "grid-rows-2"
+          : "grid-rows-[1fr,auto]"
+      } lg:absolute lg:bottom-10 lg:left-0 lg:right-0 lg:top-[6.75rem] lg:grid-cols-[25rem,1fr] lg:px-5`}
     >
       <map
         className={`${
@@ -37,7 +41,7 @@ const RideMain = () => {
         <GoogleMapSection />
       </map>
       <div
-        className={`lg:-order-1 lg:grid lg:grid-cols-1 lg:gap-5 lg:pr-10 ${
+        className={`lg:-order-1 lg:gap-5 lg:pr-10 ${
           isCarSelectMenuActive && "overflow-y-scroll"
         }`}
       >
@@ -49,7 +53,7 @@ const RideMain = () => {
           <SearchSection />
         </div>
         {isCarSelectMenuActive && (
-          <div className="bg-lightGrey2 lg:bg-white">
+          <div className="bg-lightGrey2 lg:bg-white lg:pt-5">
             <CarSelectSection />
           </div>
         )}
