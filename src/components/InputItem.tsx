@@ -39,7 +39,6 @@ const InputItem = ({ type, isRide }: Props) => {
   const [value, setValue] = useState<Option | null>(null);
 
   const dispatch = useDispatch();
-
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
 

@@ -12,10 +12,37 @@ import {
   SearchMenuContextType,
 } from "../context/SearchMenuContext";
 import ArrowButton from "./buttons/ArrowButton";
+import {
+  SmallScreenContext,
+  SmallScreenContextType,
+} from "../context/SmallScreenContext";
+import {
+  CarSelectMenuContext,
+  CarSelectMenuContextType,
+} from "../context/CarSelectMenuContext";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectDestination,
+  selectOrigin,
+  setDestination,
+  setOrigin,
+} from "../slices/navSlice";
 
 const RideNavbar = () => {
   const { isSearchMenuActive, setIsSearchMenuActive }: SearchMenuContextType =
-    useContext(SearchMenuContext)!;
+    useContext(SearchMenuContext);
+
+  const { isSmallScreen }: SmallScreenContextType =
+    useContext(SmallScreenContext);
+
+  const {
+    isCarSelectMenuActive,
+    setIsCarSelectMenuActive,
+  }: CarSelectMenuContextType = useContext(CarSelectMenuContext);
+
+  const dispatch = useDispatch();
+  const origin = useSelector(selectOrigin);
+  const destination = useSelector(selectDestination);
 
   return (
     <header
@@ -28,21 +55,38 @@ const RideNavbar = () => {
           <ul>
             <li>
               <Link to="/">
-                <span
-                  className={`${
-                    isSearchMenuActive ? "hidden" : "block"
-                  } mr-20 font-UberMove text-xl lg:block lg:text-3xl`}
-                >
-                  Uber
-                </span>
+                {!isSearchMenuActive &&
+                  !isCarSelectMenuActive &&
+                  isSmallScreen && (
+                    <span className="mr-20 font-UberMove text-xl lg:text-3xl">
+                      Uber
+                    </span>
+                  )}
               </Link>
             </li>
-            <li
-              className={`lg:hidden ${isSearchMenuActive ? "block" : "hidden"}`}
-              onClick={() => setIsSearchMenuActive(false)}
-            >
-              <ArrowButton />
-            </li>
+            {isSearchMenuActive && isSmallScreen && (
+              <li
+                onClick={() => {
+                  setIsSearchMenuActive(false);
+                  if (origin && destination) {
+                    dispatch(setOrigin(null));
+                    dispatch(setDestination(null));
+                  }
+                }}
+              >
+                <ArrowButton />
+              </li>
+            )}
+            {isCarSelectMenuActive && isSmallScreen && (
+              <li
+                onClick={() => {
+                  setIsCarSelectMenuActive(false);
+                  setIsSearchMenuActive(true);
+                }}
+              >
+                <ArrowButton />
+              </li>
+            )}
           </ul>
           <ul className="mx-6 hidden gap-8 leading-4 lg:flex">
             <li>
