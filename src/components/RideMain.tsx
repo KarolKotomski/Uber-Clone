@@ -1,6 +1,6 @@
 import SearchSection from "./SearchSection";
 import GoogleMapSection from "./GoogleMapSection";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import {
   SearchMenuContext,
   SearchMenuContextType,
@@ -16,7 +16,7 @@ import {
 } from "../context/SmallScreenContext";
 import RideErrorScreen from "./RideErrorScreen";
 import { useSelector } from "react-redux";
-import { selectTravelTimeInformation } from "../slices/navSlice";
+import { selectDirections } from "../slices/navSlice";
 import {
   SearchButtonContext,
   SearchButtonContextType,
@@ -40,23 +40,16 @@ const RideMain = () => {
   const { isSearchButtonActive }: SearchButtonContextType =
     useContext(SearchButtonContext);
 
-  const travelTimeInformation = useSelector(selectTravelTimeInformation);
+  const directions = useSelector(selectDirections);
 
   const findRide = () => {
-      if (isSearchButtonActive && travelTimeInformation) {
-        setIsCarSelectMenuActive(true);
-      } else if (isSearchButtonActive && !travelTimeInformation) {
-        setIsCarSelectMenuActive(true);
-        setIsRideError(true);
-      }
+    if (isSearchButtonActive && directions) {
+      setIsCarSelectMenuActive(true);
+    } else if (isSearchButtonActive && !directions) {
+      setIsCarSelectMenuActive(true);
+      setIsRideError(true);
+    }
   };
-
-  useEffect(() => {
-    console.log("isCarSelectMenuActive",isCarSelectMenuActive)
-  },[isCarSelectMenuActive])
-  useEffect(() => {
-    console.log("RideError",isRideError)
-  },[isRideError])
 
   return (
     <main

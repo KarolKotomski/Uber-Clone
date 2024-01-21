@@ -11,8 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectDestination,
   selectOrigin,
-  selectTravelTimeInformation,
-  setTravelTimeInformation,
+  selectDirections,
+  setDirections,
 } from "../slices/navSlice";
 import circleIcon from "../icons/searchCircle.png";
 import squareIcon from "../icons/searchSquare.png";
@@ -39,7 +39,7 @@ const GoogleMapSection = () => {
 
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
-  const travelTimeInformation = useSelector(selectTravelTimeInformation);
+  const directions = useSelector(selectDirections);
   const dispatch = useDispatch();
 
   const { setIsSearchMenuActive }: SearchMenuContextType =
@@ -60,26 +60,26 @@ const GoogleMapSection = () => {
     } else if (origin && !destination && map) {
       setCenterMap(origin.coordinates);
       map.setZoom(zoom);
-      dispatch(setTravelTimeInformation(null));
+      dispatch(setDirections(null));
     } else if (!origin && destination && map) {
       setCenterMap(destination.coordinates);
       map.setZoom(zoom);
-      dispatch(setTravelTimeInformation(null));
+      dispatch(setDirections(null));
     }
 
-    if (origin && destination && !travelTimeInformation && map) {
+    if (origin && destination && !directions && map) {
       setIsSearchMenuActive(false);
       setCenterMap(defaultMapCenter);
       map.setZoom(zoom);
       handleDirectionRoute();
     }
-  }, [origin, destination, travelTimeInformation, map]);
+  }, [origin, destination, directions, map]);
 
   useEffect(() => {
-    console.log("DIRECTION", travelTimeInformation);
+    console.log("directions", directions);
     console.log("origin", origin);
     console.log("destination", destination);
-  }, [travelTimeInformation, origin, destination]);
+  }, [directions, origin, destination]);
 
   const handleDirectionRoute = async () => {
     const directionService = new google.maps.DirectionsService();
@@ -90,22 +90,23 @@ const GoogleMapSection = () => {
           destination: destination.coordinates,
           travelMode: google.maps.TravelMode.DRIVING,
         });
-        dispatch(setTravelTimeInformation(response));
+        dispatch(setDirections(response));
       }
     } catch (error) {
-      console.error("Error ocurred during direction fetching", error);
+      console.error("No route results error:", error);
+      dispatch(setDirections(undefined));
       fitMap();
     }
   };
 
   const fitMap = () => {
     const bounds = new google.maps.LatLngBounds();
-      if (map) {
-        origin && bounds.extend(new google.maps.LatLng(origin.coordinates));
-        destination &&
-          bounds.extend(new google.maps.LatLng(destination.coordinates));
-        map.fitBounds(bounds);
-      }
+    if (map) {
+      origin && bounds.extend(new google.maps.LatLng(origin.coordinates));
+      destination &&
+        bounds.extend(new google.maps.LatLng(destination.coordinates));
+      map.fitBounds(bounds);
+    }
   };
 
   return (
@@ -172,9 +173,9 @@ const GoogleMapSection = () => {
         </MarkerF>
       )}
 
-      {travelTimeInformation && (
+      {directions && (
         <DirectionsRenderer
-          directions={travelTimeInformation}
+          directions={directions}
           options={{
             suppressMarkers: true,
             polylineOptions: {

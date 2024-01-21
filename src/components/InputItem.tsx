@@ -13,7 +13,7 @@ import {
   selectOrigin,
   setDestination,
   setOrigin,
-  setTravelTimeInformation,
+  setDirections,
 } from "../slices/navSlice";
 import {
   SearchMenuContext,
@@ -82,16 +82,16 @@ const InputItem = ({ type, isRide }: Props) => {
 
           type === "source"
             ? (() => {
-                dispatch(setTravelTimeInformation(null));
-                dispatch(setOrigin(payLoad));
-                setIsCarSelectMenuActive(false);
                 setIsRideError(false);
+                setIsCarSelectMenuActive(false);
+                dispatch(setDirections(null));
+                dispatch(setOrigin(payLoad));
               })()
             : (() => {
-                dispatch(setTravelTimeInformation(null));
-                dispatch(setDestination(payLoad));
-                setIsCarSelectMenuActive(false);
                 setIsRideError(false);
+                setIsCarSelectMenuActive(false);
+                dispatch(setDirections(null));
+                dispatch(setDestination(payLoad));
               })();
         })
         .catch((error) => console.error("Error", error));

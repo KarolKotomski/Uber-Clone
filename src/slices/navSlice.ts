@@ -10,13 +10,13 @@ type LocationData = {
 type NavState = {
   origin: LocationData | null;
   destination: LocationData | null;
-  travelTimeInformation: google.maps.DirectionsResult | null;
+  directions: google.maps.DirectionsResult | null | undefined;
 };
 
 export const initialState: NavState = {
   origin: null,
   destination: null,
-  travelTimeInformation: null,
+  directions: null,
 };
 
 export const navSlice = createSlice({
@@ -41,25 +41,23 @@ export const navSlice = createSlice({
     ) => {
       state.destination = action.payload;
     },
-    setTravelTimeInformation: (
+    setDirections: (
       state,
-      action: PayloadAction<google.maps.DirectionsResult | null>,
+      action: PayloadAction<google.maps.DirectionsResult | null | undefined>,
     ) => {
-      state.travelTimeInformation = action.payload;
+      state.directions = action.payload;
     },
   },
 });
 
 //Actions:
 
-export const { setOrigin, setDestination, setTravelTimeInformation } =
-  navSlice.actions;
+export const { setOrigin, setDestination, setDirections } = navSlice.actions;
 
 //Selectors:
 
 export const selectOrigin = (state: RootState) => state.nav.origin;
 export const selectDestination = (state: RootState) => state.nav.destination;
-export const selectTravelTimeInformation = (state: RootState) =>
-  state.nav.travelTimeInformation;
+export const selectDirections = (state: RootState) => state.nav.directions;
 
 export default navSlice.reducer;
