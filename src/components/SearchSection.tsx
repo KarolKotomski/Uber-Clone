@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectDestination, selectOrigin } from "../slices/navSlice";
 import SearchPanel from "./SearchPanel";
@@ -15,10 +15,16 @@ import {
   SmallScreenContext,
   SmallScreenContextType,
 } from "../context/SmallScreenContext";
+import {
+  SearchButtonContext,
+  SearchButtonContextType,
+} from "../context/SearchButtonContext";
 
-const SearchSection = () => {
-  const [isButtonActive, setIsButtonActive] = useState(false);
+type Props = {
+  findRide: () => void;
+};
 
+const SearchSection = ({ findRide }: Props) => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
 
@@ -30,6 +36,9 @@ const SearchSection = () => {
 
   const { isSmallScreen, setIsSmallScreen }: SmallScreenContextType =
     useContext(SmallScreenContext);
+
+  const { setIsSearchButtonActive }: SearchButtonContextType =
+    useContext(SearchButtonContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -45,11 +54,11 @@ const SearchSection = () => {
 
   useEffect(() => {
     if (origin && destination && !isSmallScreen) {
-      setIsButtonActive(true);
+      setIsSearchButtonActive(true);
     } else if (origin && destination && isSmallScreen) {
       setIsCarSelectMenuActive(true);
     } else {
-      setIsButtonActive(false);
+      setIsSearchButtonActive(false);
     }
   }, [origin, destination, isSmallScreen]);
 
@@ -68,7 +77,11 @@ const SearchSection = () => {
       </h1>
 
       <SearchPanel isRide={true} />
-      {!isSmallScreen && <SearchButton isButtonActive={isButtonActive} />}
+      {!isSmallScreen && (
+        <div onClick={findRide}>
+          <SearchButton />
+        </div>
+      )}
     </div>
   );
 };

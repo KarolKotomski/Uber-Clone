@@ -1,6 +1,6 @@
 import SearchSection from "./SearchSection";
 import GoogleMapSection from "./GoogleMapSection";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import {
   SearchMenuContext,
   SearchMenuContextType,
@@ -14,14 +14,38 @@ import {
   SmallScreenContext,
   SmallScreenContextType,
 } from "../context/SmallScreenContext";
+import RideErrorScreen from "./RideErrorScreen";
+import { useSelector } from "react-redux";
+import { selectTravelTimeInformation } from "../slices/navSlice";
+import {
+  SearchButtonContext,
+  SearchButtonContextType,
+} from "../context/SearchButtonContext";
 
 const RideMain = () => {
+  const [isRideError, setIsRideError] = useState(false);
+
   const { isSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
-  const { isCarSelectMenuActive }: CarSelectMenuContextType =
-    useContext(CarSelectMenuContext);
+  const {
+    isCarSelectMenuActive,
+    setIsCarSelectMenuActive,
+  }: CarSelectMenuContextType = useContext(CarSelectMenuContext);
   const { isSmallScreen }: SmallScreenContextType =
     useContext(SmallScreenContext);
+  const { isSearchButtonActive }: SearchButtonContextType =
+    useContext(SearchButtonContext);
+
+  const travelTimeInformation = useSelector(selectTravelTimeInformation);
+
+  const findRide = () => {
+    if (isSearchButtonActive && travelTimeInformation) {
+      setIsCarSelectMenuActive(true);
+    } else if (isSearchButtonActive && !travelTimeInformation) {
+      setIsCarSelectMenuActive(true);
+      setIsRideError(true);
+    }
+  };
 
   return (
     <main
@@ -50,11 +74,11 @@ const RideMain = () => {
             isCarSelectMenuActive && "hidden"
           } `}
         >
-          <SearchSection />
+          <SearchSection findRide={findRide} />
         </div>
         {isCarSelectMenuActive && (
           <div className="bg-lightGrey2 lg:bg-white lg:pt-5">
-            <CarSelectSection />
+            {isRideError ? <RideErrorScreen /> : <CarSelectSection />}
           </div>
         )}
       </div>

@@ -31,6 +31,8 @@ const defaultMapCenter = {
   lng: 21.006048641809247,
 };
 
+const zoom = 15;
+
 const GoogleMapSection = () => {
   const [map, setMap] = useState<google.maps.Map | null>(null);
   const [centerMap, setCenterMap] = useState(defaultMapCenter);
@@ -50,8 +52,6 @@ const GoogleMapSection = () => {
   const onUnmount = useCallback(function callback(map: google.maps.Map) {
     setMap(null);
   }, []);
-
-  const zoom = 15;
 
   useEffect(() => {
     if (!origin && !destination && map) {
@@ -75,12 +75,12 @@ const GoogleMapSection = () => {
     }
   }, [origin, destination, travelTimeInformation, map]);
 
-  // useEffect(() => {
-  //   console.log("DIRECTION", travelTimeInformation);
-  //   console.log("origin", origin);
-  //   console.log("destination", destination);
-  //   console.log("map", map);
-  // }, [travelTimeInformation, origin, destination, map]);
+  useEffect(() => {
+    console.log("DIRECTION", travelTimeInformation);
+    console.log("origin", origin);
+    console.log("destination", destination);
+    console.log("map", map);
+  }, [travelTimeInformation, origin, destination, map]);
 
   const handleDirectionRoute = async () => {
     const directionService = new google.maps.DirectionsService();
