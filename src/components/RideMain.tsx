@@ -1,6 +1,6 @@
 import SearchSection from "./SearchSection";
 import GoogleMapSection from "./GoogleMapSection";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   SearchMenuContext,
   SearchMenuContextType,
@@ -21,10 +21,14 @@ import {
   SearchButtonContext,
   SearchButtonContextType,
 } from "../context/SearchButtonContext";
+import {
+  RideErrorScreenContext,
+  RideErrorScreenContextType,
+} from "../context/RideErrorScreenContext";
 
 const RideMain = () => {
-  const [isRideError, setIsRideError] = useState(false);
-
+  const { isRideError, setIsRideError }: RideErrorScreenContextType =
+    useContext(RideErrorScreenContext);
   const { isSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
   const {
@@ -39,13 +43,20 @@ const RideMain = () => {
   const travelTimeInformation = useSelector(selectTravelTimeInformation);
 
   const findRide = () => {
-    if (isSearchButtonActive && travelTimeInformation) {
-      setIsCarSelectMenuActive(true);
-    } else if (isSearchButtonActive && !travelTimeInformation) {
-      setIsCarSelectMenuActive(true);
-      setIsRideError(true);
-    }
+      if (isSearchButtonActive && travelTimeInformation) {
+        setIsCarSelectMenuActive(true);
+      } else if (isSearchButtonActive && !travelTimeInformation) {
+        setIsCarSelectMenuActive(true);
+        setIsRideError(true);
+      }
   };
+
+  useEffect(() => {
+    console.log("isCarSelectMenuActive",isCarSelectMenuActive)
+  },[isCarSelectMenuActive])
+  useEffect(() => {
+    console.log("RideError",isRideError)
+  },[isRideError])
 
   return (
     <main
@@ -78,7 +89,7 @@ const RideMain = () => {
         </div>
         {isCarSelectMenuActive && (
           <div className="bg-lightGrey2 lg:bg-white lg:pt-5">
-            {isRideError ? <RideErrorScreen /> : <CarSelectSection />}
+            {!isRideError ? <CarSelectSection /> : <RideErrorScreen />}
           </div>
         )}
       </div>

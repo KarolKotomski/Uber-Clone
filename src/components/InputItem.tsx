@@ -27,6 +27,10 @@ import {
   SmallScreenContext,
   SmallScreenContextType,
 } from "../context/SmallScreenContext";
+import {
+  RideErrorScreenContext,
+  RideErrorScreenContextType,
+} from "../context/RideErrorScreenContext";
 
 type Props = {
   type: "source" | "destination";
@@ -50,6 +54,10 @@ const InputItem = ({ type, isRide }: Props) => {
 
   const { isSmallScreen }: SmallScreenContextType =
     useContext(SmallScreenContext);
+
+  const { setIsRideError }: RideErrorScreenContextType = useContext(
+    RideErrorScreenContext,
+  );
 
   let placeholder;
   if (type === "source") {
@@ -77,11 +85,13 @@ const InputItem = ({ type, isRide }: Props) => {
                 dispatch(setTravelTimeInformation(null));
                 dispatch(setOrigin(payLoad));
                 setIsCarSelectMenuActive(false);
+                setIsRideError(false);
               })()
             : (() => {
                 dispatch(setTravelTimeInformation(null));
                 dispatch(setDestination(payLoad));
                 setIsCarSelectMenuActive(false);
+                setIsRideError(false);
               })();
         })
         .catch((error) => console.error("Error", error));
@@ -91,6 +101,7 @@ const InputItem = ({ type, isRide }: Props) => {
   const handleClear = () => {
     setIsFilled(false);
     setIsCarSelectMenuActive(false);
+    setIsRideError(false);
     type === "source"
       ? dispatch(setOrigin(null))
       : dispatch(setDestination(null));

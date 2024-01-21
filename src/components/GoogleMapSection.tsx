@@ -79,8 +79,7 @@ const GoogleMapSection = () => {
     console.log("DIRECTION", travelTimeInformation);
     console.log("origin", origin);
     console.log("destination", destination);
-    console.log("map", map);
-  }, [travelTimeInformation, origin, destination, map]);
+  }, [travelTimeInformation, origin, destination]);
 
   const handleDirectionRoute = async () => {
     const directionService = new google.maps.DirectionsService();
@@ -99,18 +98,14 @@ const GoogleMapSection = () => {
     }
   };
 
-  const fitMap = async () => {
+  const fitMap = () => {
     const bounds = new google.maps.LatLngBounds();
-    try {
       if (map) {
         origin && bounds.extend(new google.maps.LatLng(origin.coordinates));
         destination &&
           bounds.extend(new google.maps.LatLng(destination.coordinates));
         map.fitBounds(bounds);
       }
-    } catch (error) {
-      console.error("Unable to fit map", error);
-    }
   };
 
   return (
