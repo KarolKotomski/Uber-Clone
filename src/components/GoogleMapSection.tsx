@@ -40,7 +40,7 @@ const GoogleMapSection = () => {
   const travelTimeInformation = useSelector(selectTravelTimeInformation);
   const dispatch = useDispatch();
 
-  const { isSearchMenuActive, setIsSearchMenuActive }: SearchMenuContextType =
+  const { setIsSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
 
   const onLoad = useCallback(function callback(map: google.maps.Map) {
@@ -51,23 +51,29 @@ const GoogleMapSection = () => {
     setMap(null);
   }, []);
 
+  const zoom = 15;
+
   useEffect(() => {
-    if (!origin && !destination) {
+    if (!origin && !destination && map) {
       setCenterMap(defaultMapCenter);
-    } else if (origin && !destination) {
+      map.setZoom(zoom);
+    } else if (origin && !destination && map) {
       setCenterMap(origin.coordinates);
+      map.setZoom(zoom);
       dispatch(setTravelTimeInformation(null));
-    } else if (!origin && destination) {
+    } else if (!origin && destination && map) {
       setCenterMap(destination.coordinates);
+      map.setZoom(zoom);
       dispatch(setTravelTimeInformation(null));
     }
 
-    if (origin && destination && !travelTimeInformation) {
+    if (origin && destination && !travelTimeInformation && map) {
       setIsSearchMenuActive(false);
       setCenterMap(defaultMapCenter);
+      map.setZoom(zoom);
       handleDirectionRoute();
     }
-  }, [origin, destination, travelTimeInformation]);
+  }, [origin, destination, travelTimeInformation, map]);
 
   // useEffect(() => {
   //   console.log("DIRECTION", travelTimeInformation);
@@ -111,7 +117,7 @@ const GoogleMapSection = () => {
     <GoogleMap
       mapContainerStyle={containerStyle}
       center={centerMap}
-      zoom={15}
+      zoom={zoom}
       onLoad={onLoad}
       onUnmount={onUnmount}
       options={{
