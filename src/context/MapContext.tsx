@@ -31,6 +31,7 @@ export type MapContextType = {
   centerMap: LatLng;
   setCenterMap: React.Dispatch<React.SetStateAction<LatLng>>;
   handleDirectionRoute: () => Promise<void>;
+  findRide: () => void;
 };
 
 export const defaultMapCenter = {
@@ -46,6 +47,7 @@ export const MapContext = createContext<MapContextType>({
   centerMap: defaultMapCenter,
   setCenterMap: () => {},
   handleDirectionRoute: async () => {},
+  findRide: () => {},
 });
 
 export const MapContextProvider = ({ children }: MapContextProps) => {
@@ -77,7 +79,6 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
           travelMode: google.maps.TravelMode.DRIVING,
         });
         dispatch(setDirections(response));
-        findRide();
       }
     } catch (error) {
       console.error("No route results error:", error);
@@ -89,9 +90,11 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
   const findRide = () => {
     if (isSearchButtonActive && directions) {
       setIsRideResultsActive(true);
+      console.log("wykonano1");
     } else if (isSearchButtonActive && !directions) {
       setIsRideResultsActive(true);
       setIsRideError(true);
+      console.log("wykonano2");
     }
   };
 
@@ -111,6 +114,7 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
     centerMap,
     setCenterMap,
     handleDirectionRoute,
+    findRide,
   };
 
   return <MapContext.Provider value={value}>{children}</MapContext.Provider>;

@@ -16,6 +16,12 @@ import {
   SearchButtonContextType,
 } from "../context/SearchButtonContext";
 import { MapContext, MapContextType } from "../context/MapContext";
+import RideResults from "./RideResults";
+import {
+  RideResultsContext,
+  RideResultsContextType,
+} from "../context/RideResultsContext";
+import { RideErrorScreenContext } from "../context/RideErrorScreenContext";
 
 const SearchSection = () => {
   const origin = useSelector(selectOrigin);
@@ -31,6 +37,8 @@ const SearchSection = () => {
     useContext(SearchButtonContext);
 
   const { handleDirectionRoute }: MapContextType = useContext(MapContext);
+
+  const { findRide }: MapContextType = useContext(MapContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -49,7 +57,7 @@ const SearchSection = () => {
       setIsSearchButtonActive(true);
     } else if (origin && destination && isSmallScreen) {
       setIsSearchButtonActive(true);
-      handleDirectionRoute();
+      // findRide();
     } else {
       setIsSearchButtonActive(false);
     }
@@ -71,7 +79,7 @@ const SearchSection = () => {
 
       <SearchPanel isRide={true} />
       {!isSmallScreen && (
-        <div onClick={handleDirectionRoute}>
+        <div onClick={findRide}>
           <SearchButton />
         </div>
       )}

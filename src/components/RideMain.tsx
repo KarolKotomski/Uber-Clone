@@ -31,6 +31,11 @@ const RideMain = () => {
   const { isSmallScreen }: SmallScreenContextType =
     useContext(SmallScreenContext);
 
+  useEffect(() => {
+    console.log("rideResults", isRideResultsActive);
+    console.log("RideError", isRideError);
+  }, [isRideResultsActive, isRideError]);
+
   return (
     <main
       className={`mx-auto grid max-w-[88rem] ${
