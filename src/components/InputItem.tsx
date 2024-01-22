@@ -42,6 +42,10 @@ const InputItem = ({ type, isRide }: Props) => {
   const [isFilled, setIsFilled] = useState(false);
   const [value, setValue] = useState<Option | null>(null);
 
+  useEffect(() => {
+    console.log("isFocused", isFocused);
+  }, [isFocused]);
+
   const dispatch = useDispatch();
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
@@ -123,8 +127,8 @@ const InputItem = ({ type, isRide }: Props) => {
   return (
     <div
       className={`relative flex items-center rounded-lg border-2 bg-lightGrey2 py-[0.1875rem] ${
-        isFocused ? "border-[#000]" : "border-lightGrey2"
-      } border-lightGrey2 `}
+        isFocused ? "border-black" : "border-lightGrey2"
+      }`}
       onFocus={() => isSmallScreen && setIsSearchMenuActive(true)}
     >
       <div className="absolute left-3 top-1/2 w-5 -translate-y-1/2 text-black">
