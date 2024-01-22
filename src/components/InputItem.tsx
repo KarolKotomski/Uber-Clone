@@ -14,6 +14,7 @@ import {
   setDestination,
   setOrigin,
   setDirections,
+  setDistance,
 } from "../slices/navSlice";
 import {
   SearchMenuContext,
@@ -41,10 +42,6 @@ const InputItem = ({ type, isRide }: Props) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [value, setValue] = useState<Option | null>(null);
-
-  useEffect(() => {
-    console.log("isFocused", isFocused);
-  }, [isFocused]);
 
   const dispatch = useDispatch();
   const origin = useSelector(selectOrigin);
@@ -89,12 +86,14 @@ const InputItem = ({ type, isRide }: Props) => {
                 setIsRideError(false);
                 setIsRideResultsActive(false);
                 dispatch(setDirections(null));
+                dispatch(setDistance(null));
                 dispatch(setOrigin(payLoad));
               })()
             : (() => {
                 setIsRideError(false);
                 setIsRideResultsActive(false);
                 dispatch(setDirections(null));
+                dispatch(setDistance(null));
                 dispatch(setDestination(payLoad));
               })();
         })
@@ -106,6 +105,7 @@ const InputItem = ({ type, isRide }: Props) => {
     setIsFilled(false);
     setIsRideResultsActive(false);
     setIsRideError(false);
+    dispatch(setDistance(null));
     type === "source"
       ? dispatch(setOrigin(null))
       : dispatch(setDestination(null));

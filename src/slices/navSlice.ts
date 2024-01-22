@@ -11,12 +11,14 @@ type NavState = {
   origin: LocationData | null;
   destination: LocationData | null;
   directions: google.maps.DirectionsResult | null | undefined;
+  distance: number | null;
 };
 
 export const initialState: NavState = {
   origin: null,
   destination: null,
   directions: null,
+  distance: null,
 };
 
 export const navSlice = createSlice({
@@ -47,17 +49,22 @@ export const navSlice = createSlice({
     ) => {
       state.directions = action.payload;
     },
+    setDistance: (state, action: PayloadAction<number | null>) => {
+      state.distance = action.payload;
+    },
   },
 });
 
 //Actions:
 
-export const { setOrigin, setDestination, setDirections } = navSlice.actions;
+export const { setOrigin, setDestination, setDirections, setDistance } =
+  navSlice.actions;
 
 //Selectors:
 
 export const selectOrigin = (state: RootState) => state.nav.origin;
 export const selectDestination = (state: RootState) => state.nav.destination;
 export const selectDirections = (state: RootState) => state.nav.directions;
+export const selectDistance = (state: RootState) => state.nav.distance;
 
 export default navSlice.reducer;

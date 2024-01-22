@@ -13,6 +13,7 @@ import {
   selectOrigin,
   selectDirections,
   setDirections,
+  selectDistance,
 } from "../slices/navSlice";
 import circleIcon from "../icons/searchCircle.png";
 import squareIcon from "../icons/searchSquare.png";
@@ -40,6 +41,7 @@ const GoogleMapSection = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
   const directions = useSelector(selectDirections);
+  const distance = useSelector(selectDistance);
   const dispatch = useDispatch();
 
   const { setIsSearchMenuActive }: SearchMenuContextType =
@@ -79,7 +81,8 @@ const GoogleMapSection = () => {
     console.log("directions", directions);
     console.log("origin", origin);
     console.log("destination", destination);
-  }, [directions, origin, destination]);
+    console.log("distance", distance);
+  }, [directions, origin, destination, distance]);
 
   const handleDirectionRoute = async () => {
     const directionService = new google.maps.DirectionsService();

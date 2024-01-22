@@ -1,6 +1,6 @@
 import SearchSection from "./SearchSection";
 import GoogleMapSection from "./GoogleMapSection";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import {
   SearchMenuContext,
   SearchMenuContextType,
@@ -14,7 +14,12 @@ import {
   SmallScreenContextType,
 } from "../context/SmallScreenContext";
 import { useSelector } from "react-redux";
-import { selectDirections } from "../slices/navSlice";
+import {
+  selectDestination,
+  selectDirections,
+  selectOrigin,
+  setDistance,
+} from "../slices/navSlice";
 import {
   SearchButtonContext,
   SearchButtonContextType,
@@ -24,8 +29,14 @@ import {
   RideErrorScreenContextType,
 } from "../context/RideErrorScreenContext";
 import RideResults from "./RideResults";
+import { useDispatch } from "react-redux";
 
 const RideMain = () => {
+  const origin = useSelector(selectOrigin);
+  const destination = useSelector(selectDestination);
+  const directions = useSelector(selectDirections);
+  const dispatch = useDispatch();
+
   const { isRideError, setIsRideError }: RideErrorScreenContextType =
     useContext(RideErrorScreenContext);
   const { isSearchMenuActive }: SearchMenuContextType =
@@ -39,10 +50,19 @@ const RideMain = () => {
   const { isSearchButtonActive }: SearchButtonContextType =
     useContext(SearchButtonContext);
 
-  const directions = useSelector(selectDirections);
+  const calculateDistance = () => {
+    if (origin && destination) {
+      const distance = google.maps.geometry.spherical.computeDistanceBetween(
+        origin.coordinates,
+        destination.coordinates,
+      );
+      dispatch(setDistance(distance / 1000));
+    }
+  };
 
   const findRide = () => {
     if (isSearchButtonActive && directions) {
+      calculateDistance();
       setIsRideResultsActive(true);
     } else if (isSearchButtonActive && !directions) {
       setIsRideResultsActive(true);
