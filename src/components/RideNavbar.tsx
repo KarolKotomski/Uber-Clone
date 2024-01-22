@@ -17,9 +17,9 @@ import {
   SmallScreenContextType,
 } from "../context/SmallScreenContext";
 import {
-  CarSelectMenuContext,
-  CarSelectMenuContextType,
-} from "../context/CarSelectMenuContext";
+  RideResultsContext,
+  RideResultsContextType,
+} from "../context/RideResultsContext";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectDestination,
@@ -35,9 +35,9 @@ const RideNavbar = () => {
     useContext(SmallScreenContext);
 
   const {
-    isCarSelectMenuActive,
-    setIsCarSelectMenuActive,
-  }: CarSelectMenuContextType = useContext(CarSelectMenuContext);
+    isRideResultsActive,
+    setIsRideResultsActive,
+  }: RideResultsContextType = useContext(RideResultsContext);
 
   const dispatch = useDispatch();
   const origin = useSelector(selectOrigin);
@@ -55,7 +55,7 @@ const RideNavbar = () => {
             <li>
               <Link to="/">
                 {((!isSearchMenuActive &&
-                  !isCarSelectMenuActive &&
+                  !isRideResultsActive &&
                   isSmallScreen) ||
                   !isSmallScreen) && (
                   <span className="mr-20 font-UberMove text-xl lg:text-3xl">
@@ -76,10 +76,10 @@ const RideNavbar = () => {
                 <ArrowButton />
               </li>
             )}
-            {isCarSelectMenuActive && isSmallScreen && (
+            {isRideResultsActive && isSmallScreen && (
               <li
                 onClick={() => {
-                  setIsCarSelectMenuActive(false);
+                  setIsRideResultsActive(false);
                   setIsSearchMenuActive(true);
                 }}
               >

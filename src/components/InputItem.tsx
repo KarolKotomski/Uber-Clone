@@ -20,9 +20,9 @@ import {
   SearchMenuContextType,
 } from "../context/SearchMenuContext";
 import {
-  CarSelectMenuContext,
-  CarSelectMenuContextType,
-} from "../context/CarSelectMenuContext";
+  RideResultsContext,
+  RideResultsContextType,
+} from "../context/RideResultsContext";
 import {
   SmallScreenContext,
   SmallScreenContextType,
@@ -49,8 +49,8 @@ const InputItem = ({ type, isRide }: Props) => {
   const { setIsSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
 
-  const { setIsCarSelectMenuActive }: CarSelectMenuContextType =
-    useContext(CarSelectMenuContext);
+  const { setIsRideResultsActive }: RideResultsContextType =
+    useContext(RideResultsContext);
 
   const { isSmallScreen }: SmallScreenContextType =
     useContext(SmallScreenContext);
@@ -83,13 +83,13 @@ const InputItem = ({ type, isRide }: Props) => {
           type === "source"
             ? (() => {
                 setIsRideError(false);
-                setIsCarSelectMenuActive(false);
+                setIsRideResultsActive(false);
                 dispatch(setDirections(null));
                 dispatch(setOrigin(payLoad));
               })()
             : (() => {
                 setIsRideError(false);
-                setIsCarSelectMenuActive(false);
+                setIsRideResultsActive(false);
                 dispatch(setDirections(null));
                 dispatch(setDestination(payLoad));
               })();
@@ -100,7 +100,7 @@ const InputItem = ({ type, isRide }: Props) => {
 
   const handleClear = () => {
     setIsFilled(false);
-    setIsCarSelectMenuActive(false);
+    setIsRideResultsActive(false);
     setIsRideError(false);
     type === "source"
       ? dispatch(setOrigin(null))
