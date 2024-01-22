@@ -64,9 +64,11 @@ const RideMain = () => {
     if (isSearchButtonActive && directions) {
       calculateDistance();
       setIsRideResultsActive(true);
+      console.log("wykonano1");
     } else if (isSearchButtonActive && !directions) {
       setIsRideResultsActive(true);
       setIsRideError(true);
+      console.log("wykonano2");
     }
   };
 

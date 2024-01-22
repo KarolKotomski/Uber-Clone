@@ -59,11 +59,15 @@ const GoogleMapSection = () => {
     if (!origin && !destination && map) {
       setCenterMap(defaultMapCenter);
       map.setZoom(zoom);
-    } else if (origin && !destination && map) {
+    }
+
+    if (origin && !destination && map) {
       setCenterMap(origin.coordinates);
       map.setZoom(zoom);
       dispatch(setDirections(null));
-    } else if (!origin && destination && map) {
+    }
+
+    if (!origin && destination && map) {
       setCenterMap(destination.coordinates);
       map.setZoom(zoom);
       dispatch(setDirections(null));

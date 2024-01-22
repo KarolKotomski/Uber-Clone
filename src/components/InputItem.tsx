@@ -80,20 +80,16 @@ const InputItem = ({ type, isRide }: Props) => {
             placeData: data,
             coordinates: latLng,
           };
+          setIsRideResultsActive(false);
+          setIsRideError(false);
+          dispatch(setDistance(null));
+          dispatch(setDirections(null));
 
           type === "source"
             ? (() => {
-                setIsRideError(false);
-                setIsRideResultsActive(false);
-                dispatch(setDirections(null));
-                dispatch(setDistance(null));
                 dispatch(setOrigin(payLoad));
               })()
             : (() => {
-                setIsRideError(false);
-                setIsRideResultsActive(false);
-                dispatch(setDirections(null));
-                dispatch(setDistance(null));
                 dispatch(setDestination(payLoad));
               })();
         })
