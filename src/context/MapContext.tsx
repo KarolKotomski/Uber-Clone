@@ -20,6 +20,7 @@ import {
   RideResultsContext,
   RideResultsContextType,
 } from "./RideResultsContext";
+import { SearchMenuContext } from "./SearchMenuContext";
 
 type MapContextProps = {
   children: React.ReactNode;
@@ -68,6 +69,8 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
 
   const { setIsRideResultsActive }: RideResultsContextType =
     useContext(RideResultsContext);
+  
+
 
   const handleDirectionRoute = async () => {
     const directionService = new google.maps.DirectionsService();
@@ -95,6 +98,8 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
       setIsRideResultsActive(true);
       setIsRideError(true);
       console.log("wykonano2");
+    } else {
+      console.log("bryndza");
     }
   };
 

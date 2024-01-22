@@ -16,12 +16,6 @@ import {
   SearchButtonContextType,
 } from "../context/SearchButtonContext";
 import { MapContext, MapContextType } from "../context/MapContext";
-import RideResults from "./RideResults";
-import {
-  RideResultsContext,
-  RideResultsContextType,
-} from "../context/RideResultsContext";
-import { RideErrorScreenContext } from "../context/RideErrorScreenContext";
 
 const SearchSection = () => {
   const origin = useSelector(selectOrigin);
@@ -35,8 +29,6 @@ const SearchSection = () => {
 
   const { setIsSearchButtonActive }: SearchButtonContextType =
     useContext(SearchButtonContext);
-
-  const { handleDirectionRoute }: MapContextType = useContext(MapContext);
 
   const { findRide }: MapContextType = useContext(MapContext);
 
@@ -57,6 +49,7 @@ const SearchSection = () => {
       setIsSearchButtonActive(true);
     } else if (origin && destination && isSmallScreen) {
       setIsSearchButtonActive(true);
+      console.log("KROK WYKONANY");
       // findRide();
     } else {
       setIsSearchButtonActive(false);

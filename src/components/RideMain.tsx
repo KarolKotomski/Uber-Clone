@@ -19,6 +19,10 @@ import {
   RideErrorScreenContextType,
 } from "../context/RideErrorScreenContext";
 import RideResults from "./RideResults";
+import {
+  SearchButtonContext,
+  SearchButtonContextType,
+} from "../context/SearchButtonContext";
 
 const RideMain = () => {
   const { isRideError }: RideErrorScreenContextType = useContext(
@@ -30,11 +34,14 @@ const RideMain = () => {
     useContext(RideResultsContext);
   const { isSmallScreen }: SmallScreenContextType =
     useContext(SmallScreenContext);
+  const { isSearchButtonActive }: SearchButtonContextType =
+    useContext(SearchButtonContext);
 
   useEffect(() => {
     console.log("rideResults", isRideResultsActive);
     console.log("RideError", isRideError);
-  }, [isRideResultsActive, isRideError]);
+    console.log("SearchButtonActive", isSearchButtonActive);
+  }, [isRideResultsActive, isRideError, isSearchButtonActive]);
 
   return (
     <main
