@@ -5,7 +5,6 @@ import {
   SearchMenuContext,
   SearchMenuContextType,
 } from "../context/SearchMenuContext";
-import CarSelectSection from "./CarSelectSection";
 import {
   CarSelectMenuContext,
   CarSelectMenuContextType,
@@ -14,7 +13,6 @@ import {
   SmallScreenContext,
   SmallScreenContextType,
 } from "../context/SmallScreenContext";
-import RideErrorScreen from "./RideErrorScreen";
 import { useSelector } from "react-redux";
 import { selectDirections } from "../slices/navSlice";
 import {
@@ -25,6 +23,7 @@ import {
   RideErrorScreenContext,
   RideErrorScreenContextType,
 } from "../context/RideErrorScreenContext";
+import RideResults from "./RideResults";
 
 const RideMain = () => {
   const { isRideError, setIsRideError }: RideErrorScreenContextType =
@@ -81,8 +80,12 @@ const RideMain = () => {
           <SearchSection findRide={findRide} />
         </div>
         {isCarSelectMenuActive && (
-          <div className="bg-lightGrey2 lg:bg-white lg:pt-5">
-            {!isRideError ? <CarSelectSection /> : <RideErrorScreen />}
+          <div
+            className={`lg:bg-white lg:pt-5 ${
+              isRideError ? "bg-white" : "bg-lightGrey2"
+            }`}
+          >
+            <RideResults /> : 
           </div>
         )}
       </div>
