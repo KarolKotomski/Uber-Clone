@@ -85,7 +85,7 @@ const RideMain = () => {
               isRideError ? "bg-white" : "bg-lightGrey2"
             }`}
           >
-            <RideResults /> :
+            <RideResults />
           </div>
         )}
       </div>

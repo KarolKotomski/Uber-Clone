@@ -2,8 +2,8 @@ import WarningSign from "./icons/WarningSign";
 
 const RideErrorScreen = () => {
   return (
-    <div className="flex flex-col p-5">
-      <div className="mx-auto w-16">
+    <div className="flex flex-col p-5 lg:p-0">
+      <div className="mx-auto my-5 w-16">
         <WarningSign />
       </div>
       <h5 className="font-medium">An error occurred</h5>
