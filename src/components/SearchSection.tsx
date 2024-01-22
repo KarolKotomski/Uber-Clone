@@ -1,10 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
-import {
-  selectDestination,
-  selectOrigin,
-  selectDirections,
-} from "../slices/navSlice";
+import { selectDestination, selectOrigin } from "../slices/navSlice";
 import SearchPanel from "./SearchPanel";
 import {
   SearchMenuContext,
@@ -19,15 +15,11 @@ import {
   SearchButtonContext,
   SearchButtonContextType,
 } from "../context/SearchButtonContext";
+import { MapContext, MapContextType } from "../context/MapContext";
 
-type Props = {
-  findRide: () => void;
-};
-
-const SearchSection = ({ findRide }: Props) => {
+const SearchSection = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
-  const directions = useSelector(selectDirections);
 
   const { isSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
@@ -37,6 +29,8 @@ const SearchSection = ({ findRide }: Props) => {
 
   const { setIsSearchButtonActive }: SearchButtonContextType =
     useContext(SearchButtonContext);
+
+  const { handleDirectionRoute }: MapContextType = useContext(MapContext);
 
   useEffect(() => {
     const handleResize = () => {
@@ -55,11 +49,11 @@ const SearchSection = ({ findRide }: Props) => {
       setIsSearchButtonActive(true);
     } else if (origin && destination && isSmallScreen) {
       setIsSearchButtonActive(true);
-      findRide();
+      handleDirectionRoute();
     } else {
       setIsSearchButtonActive(false);
     }
-  }, [origin, destination, isSmallScreen, directions]);
+  }, [origin, destination, isSmallScreen]);
 
   return (
     <div
@@ -77,7 +71,7 @@ const SearchSection = ({ findRide }: Props) => {
 
       <SearchPanel isRide={true} />
       {!isSmallScreen && (
-        <div onClick={findRide}>
+        <div onClick={handleDirectionRoute}>
           <SearchButton />
         </div>
       )}

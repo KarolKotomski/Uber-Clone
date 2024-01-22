@@ -5,7 +5,7 @@ import {
   OverlayView,
   OverlayViewF,
 } from "@react-google-maps/api";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect } from "react";
 import { MapStyle } from "../styles/MapStyle";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -21,23 +21,19 @@ import {
   SearchMenuContext,
   SearchMenuContextType,
 } from "../context/SearchMenuContext";
+import {
+  MapContext,
+  MapContextType,
+  defaultMapCenter,
+  zoom,
+} from "../context/MapContext";
 
 const containerStyle = {
   width: "100%",
   height: "100%",
 };
 
-const defaultMapCenter = {
-  lat: 52.231844543054066,
-  lng: 21.006048641809247,
-};
-
-const zoom = 15;
-
 const GoogleMapSection = () => {
-  const [map, setMap] = useState<google.maps.Map | null>(null);
-  const [centerMap, setCenterMap] = useState(defaultMapCenter);
-
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
   const directions = useSelector(selectDirections);
@@ -46,6 +42,13 @@ const GoogleMapSection = () => {
 
   const { setIsSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
+  const {
+    map,
+    setMap,
+    centerMap,
+    setCenterMap,
+    handleDirectionRoute,
+  }: MapContextType = useContext(MapContext);
 
   const onLoad = useCallback(function callback(map: google.maps.Map) {
     setMap(map);
@@ -81,40 +84,12 @@ const GoogleMapSection = () => {
     }
   }, [origin, destination, directions, map]);
 
-  useEffect(() => {
-    console.log("directions", directions);
-    console.log("origin", origin);
-    console.log("destination", destination);
-    console.log("distance", distance);
-  }, [directions, origin, destination, distance]);
-
-  const handleDirectionRoute = async () => {
-    const directionService = new google.maps.DirectionsService();
-    try {
-      if (origin && destination) {
-        const response = await directionService.route({
-          origin: origin.coordinates,
-          destination: destination.coordinates,
-          travelMode: google.maps.TravelMode.DRIVING,
-        });
-        dispatch(setDirections(response));
-      }
-    } catch (error) {
-      console.error("No route results error:", error);
-      dispatch(setDirections(undefined));
-      fitMap();
-    }
-  };
-
-  const fitMap = () => {
-    const bounds = new google.maps.LatLngBounds();
-    if (map) {
-      origin && bounds.extend(new google.maps.LatLng(origin.coordinates));
-      destination &&
-        bounds.extend(new google.maps.LatLng(destination.coordinates));
-      map.fitBounds(bounds);
-    }
-  };
+  // useEffect(() => {
+  //   console.log("directions", directions);
+  //   console.log("origin", origin);
+  //   console.log("destination", destination);
+  //   console.log("distance", distance);
+  // }, [directions, origin, destination, distance]);
 
   return (
     <GoogleMap

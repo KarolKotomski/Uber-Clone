@@ -13,64 +13,23 @@ import {
   SmallScreenContext,
   SmallScreenContextType,
 } from "../context/SmallScreenContext";
-import { useSelector } from "react-redux";
-import {
-  selectDestination,
-  selectDirections,
-  selectOrigin,
-  setDistance,
-} from "../slices/navSlice";
-import {
-  SearchButtonContext,
-  SearchButtonContextType,
-} from "../context/SearchButtonContext";
+
 import {
   RideErrorScreenContext,
   RideErrorScreenContextType,
 } from "../context/RideErrorScreenContext";
 import RideResults from "./RideResults";
-import { useDispatch } from "react-redux";
 
 const RideMain = () => {
-  const origin = useSelector(selectOrigin);
-  const destination = useSelector(selectDestination);
-  const directions = useSelector(selectDirections);
-  const dispatch = useDispatch();
-
-  const { isRideError, setIsRideError }: RideErrorScreenContextType =
-    useContext(RideErrorScreenContext);
+  const { isRideError }: RideErrorScreenContextType = useContext(
+    RideErrorScreenContext,
+  );
   const { isSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
-  const {
-    isRideResultsActive,
-    setIsRideResultsActive,
-  }: RideResultsContextType = useContext(RideResultsContext);
+  const { isRideResultsActive }: RideResultsContextType =
+    useContext(RideResultsContext);
   const { isSmallScreen }: SmallScreenContextType =
     useContext(SmallScreenContext);
-  const { isSearchButtonActive }: SearchButtonContextType =
-    useContext(SearchButtonContext);
-
-  const calculateDistance = () => {
-    if (origin && destination) {
-      const distance = google.maps.geometry.spherical.computeDistanceBetween(
-        origin.coordinates,
-        destination.coordinates,
-      );
-      dispatch(setDistance(distance / 1000));
-    }
-  };
-
-  const findRide = () => {
-    if (isSearchButtonActive && directions) {
-      calculateDistance();
-      setIsRideResultsActive(true);
-      console.log("wykonano1");
-    } else if (isSearchButtonActive && !directions) {
-      setIsRideResultsActive(true);
-      setIsRideError(true);
-      console.log("wykonano2");
-    }
-  };
 
   return (
     <main
@@ -99,7 +58,7 @@ const RideMain = () => {
             isRideResultsActive && "hidden"
           } `}
         >
-          <SearchSection findRide={findRide} />
+          <SearchSection />
         </div>
         {isRideResultsActive && (
           <div
