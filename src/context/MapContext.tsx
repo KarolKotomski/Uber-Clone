@@ -47,7 +47,7 @@ export const MapContext = createContext<MapContextType>({
   centerMap: defaultMapCenter,
   setCenterMap: () => {},
   handleDirectionRoute: async () => {},
-  findRide: () => {},
+  findRide: () => { },
 });
 
 export const MapContextProvider = ({ children }: MapContextProps) => {
@@ -91,6 +91,7 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
   const findRide = () => {
     if (isSearchButtonActive && directions) {
       setIsRideResultsActive(true);
+      calculateDistance();
       // console.log("znaleziono transport");
     } else if (isSearchButtonActive && directions === undefined) {
       setIsRideResultsActive(true);
@@ -100,6 +101,16 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
       return;
     } else {
       // console.log("brak reakcji");
+    }
+  };
+
+  const calculateDistance = () => {
+    if (origin && destination) {
+      const distance = google.maps.geometry.spherical.computeDistanceBetween(
+        origin.coordinates,
+        destination.coordinates,
+      );
+      console.log(distance / 1000);
     }
   };
 
