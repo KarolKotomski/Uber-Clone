@@ -13,6 +13,7 @@ import {
   selectOrigin,
   selectDirections,
   setDirections,
+  selectDistance,
 } from "../slices/navSlice";
 import circleIcon from "../icons/searchCircle.png";
 import squareIcon from "../icons/searchSquare.png";
@@ -36,6 +37,7 @@ const GoogleMapSection = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
   const directions = useSelector(selectDirections);
+  const distance = useSelector(selectDistance);
   const dispatch = useDispatch();
 
   const { setIsSearchMenuActive }: SearchMenuContextType =
@@ -88,12 +90,12 @@ const GoogleMapSection = () => {
     }
   }, [origin, destination, directions, map]);
 
-  // useEffect(() => {
-  //   console.log("directions", directions);
-  //   console.log("origin", origin);
-  //   console.log("destination", destination);
-  //   console.log("distance", distance);
-  // }, [directions, origin, destination, distance]);
+  useEffect(() => {
+    console.log("directions", directions);
+    console.log("origin", origin);
+    console.log("destination", destination);
+    console.log("distance", distance);
+  }, [directions, origin, destination, distance]);
 
   return (
     <GoogleMap

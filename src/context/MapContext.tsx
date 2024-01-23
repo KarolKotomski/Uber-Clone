@@ -4,8 +4,10 @@ import { useSelector } from "react-redux";
 import {
   selectDestination,
   selectDirections,
+  selectDistance,
   selectOrigin,
   setDirections,
+  setDistance,
 } from "../slices/navSlice";
 import { LatLng } from "react-google-places-autocomplete/build/types";
 import {
@@ -47,7 +49,7 @@ export const MapContext = createContext<MapContextType>({
   centerMap: defaultMapCenter,
   setCenterMap: () => {},
   handleDirectionRoute: async () => {},
-  findRide: () => { },
+  findRide: () => {},
 });
 
 export const MapContextProvider = ({ children }: MapContextProps) => {
@@ -110,7 +112,7 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
         origin.coordinates,
         destination.coordinates,
       );
-      console.log(distance / 1000);
+      dispatch(setDistance(distance / 1000));
     }
   };
 

@@ -1,5 +1,7 @@
+import { useSelector } from "react-redux";
 import { Car } from "../utilities/CarUnitData";
 import Person from "./icons/Person";
+import { selectDistance } from "../slices/navSlice";
 
 type Props = {
   car: Car;
@@ -8,6 +10,8 @@ type Props = {
 };
 
 const CarUnit = ({ car, handleToggle, activeCarID }: Props) => {
+  const distance = useSelector(selectDistance);
+
   return (
     <div
       className={`${
@@ -30,8 +34,8 @@ const CarUnit = ({ car, handleToggle, activeCarID }: Props) => {
           <p className="text-sm">Time travel</p>
           <p className="text-sm text-greyActive">{car.description}</p>
         </div>
-        <div className="flex items-center pl-4 text-lg font-medium shrink-0">
-          300 pln
+        <div className="flex shrink-0 items-center pl-4 text-lg font-medium">
+          $ {distance && (car.amount * distance).toFixed(2)}
         </div>
       </div>
     </div>
