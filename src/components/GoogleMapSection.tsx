@@ -13,7 +13,6 @@ import {
   selectOrigin,
   selectDirections,
   setDirections,
-  selectDistance,
 } from "../slices/navSlice";
 import circleIcon from "../icons/searchCircle.png";
 import squareIcon from "../icons/searchSquare.png";
@@ -37,7 +36,6 @@ const GoogleMapSection = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
   const directions = useSelector(selectDirections);
-  const distance = useSelector(selectDistance);
   const dispatch = useDispatch();
 
   const { setIsSearchMenuActive }: SearchMenuContextType =
@@ -62,18 +60,21 @@ const GoogleMapSection = () => {
     if (!origin && !destination && map) {
       setCenterMap(defaultMapCenter);
       map.setZoom(zoom);
+      // console.log("defaultCenter")
     }
 
     if (origin && !destination && map) {
       setCenterMap(origin.coordinates);
       map.setZoom(zoom);
       dispatch(setDirections(null));
+      // console.log("brak destination")
     }
 
     if (!origin && destination && map) {
       setCenterMap(destination.coordinates);
       map.setZoom(zoom);
       dispatch(setDirections(null));
+      // console.log("brak origin")
     }
 
     if (origin && destination && !directions && map) {
@@ -81,6 +82,9 @@ const GoogleMapSection = () => {
       setCenterMap(defaultMapCenter);
       map.setZoom(zoom);
       handleDirectionRoute();
+      // console.log("WYKONANO-SEARCH");
+    } else {
+      // console.log("BRAK AKCJI")
     }
   }, [origin, destination, directions, map]);
 

@@ -1,6 +1,10 @@
 import { useContext, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { selectDestination, selectOrigin } from "../slices/navSlice";
+import {
+  selectDestination,
+  selectDirections,
+  selectOrigin,
+} from "../slices/navSlice";
 import SearchPanel from "./SearchPanel";
 import {
   SearchMenuContext,
@@ -20,6 +24,7 @@ import { MapContext, MapContextType } from "../context/MapContext";
 const SearchSection = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
+  const directions = useSelector(selectDirections);
 
   const { isSearchMenuActive }: SearchMenuContextType =
     useContext(SearchMenuContext);
@@ -45,16 +50,15 @@ const SearchSection = () => {
   }, []);
 
   useEffect(() => {
-    if (origin && destination && !isSmallScreen) {
+    if (origin && destination) {
       setIsSearchButtonActive(true);
-    } else if (origin && destination && isSmallScreen) {
-      setIsSearchButtonActive(true);
-      console.log("KROK WYKONANY");
-      // findRide();
-    } else {
-      setIsSearchButtonActive(false);
     }
-  }, [origin, destination, isSmallScreen]);
+  }, [origin, destination]);
+
+  useEffect(() => {
+    isSmallScreen && findRide();
+    // console.log("KONIEC");
+  }, [directions, isSmallScreen]);
 
   return (
     <div

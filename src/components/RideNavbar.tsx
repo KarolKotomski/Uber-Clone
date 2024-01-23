@@ -26,6 +26,10 @@ import {
   selectOrigin,
   setDestination,
 } from "../slices/navSlice";
+import {
+  RideErrorScreenContext,
+  RideErrorScreenContextType,
+} from "../context/RideErrorScreenContext";
 
 const RideNavbar = () => {
   const { isSearchMenuActive, setIsSearchMenuActive }: SearchMenuContextType =
@@ -38,6 +42,10 @@ const RideNavbar = () => {
     isRideResultsActive,
     setIsRideResultsActive,
   }: RideResultsContextType = useContext(RideResultsContext);
+
+  const { setIsRideError }: RideErrorScreenContextType = useContext(
+    RideErrorScreenContext,
+  );
 
   const dispatch = useDispatch();
   const origin = useSelector(selectOrigin);
@@ -80,6 +88,7 @@ const RideNavbar = () => {
               <li
                 onClick={() => {
                   setIsRideResultsActive(false);
+                  setIsRideError(false);
                   setIsSearchMenuActive(true);
                 }}
               >

@@ -20,7 +20,6 @@ import {
   RideResultsContext,
   RideResultsContextType,
 } from "./RideResultsContext";
-import { SearchMenuContext } from "./SearchMenuContext";
 
 type MapContextProps = {
   children: React.ReactNode;
@@ -69,8 +68,6 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
 
   const { setIsRideResultsActive }: RideResultsContextType =
     useContext(RideResultsContext);
-  
-
 
   const handleDirectionRoute = async () => {
     const directionService = new google.maps.DirectionsService();
@@ -82,6 +79,7 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
           travelMode: google.maps.TravelMode.DRIVING,
         });
         dispatch(setDirections(response));
+        // console.log("handleDirectionRoute wykonane");
       }
     } catch (error) {
       console.error("No route results error:", error);
@@ -93,13 +91,15 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
   const findRide = () => {
     if (isSearchButtonActive && directions) {
       setIsRideResultsActive(true);
-      console.log("wykonano1");
-    } else if (isSearchButtonActive && !directions) {
+      // console.log("znaleziono transport");
+    } else if (isSearchButtonActive && directions === undefined) {
       setIsRideResultsActive(true);
       setIsRideError(true);
-      console.log("wykonano2");
+      // console.log("nie znaleziono transportu-error");
+    } else if (isSearchButtonActive && directions === null) {
+      return;
     } else {
-      console.log("bryndza");
+      // console.log("brak reakcji");
     }
   };
 
