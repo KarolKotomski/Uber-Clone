@@ -51,6 +51,8 @@ const SearchSection = () => {
   }, []);
 
   useEffect(() => {
+    if (!origin || !destination) return;
+
     if (origin && destination) {
       setIsSearchButtonActive(true);
     }

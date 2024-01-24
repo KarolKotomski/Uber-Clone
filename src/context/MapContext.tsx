@@ -108,11 +108,12 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
 
   const calculateDistance = () => {
     if (origin && destination) {
-      const distance = google.maps.geometry.spherical.computeDistanceBetween(
-        origin.coordinates,
-        destination.coordinates,
-      );
-      dispatch(setDistance(distance / 1000));
+      const calculatedDistance =
+        google.maps.geometry.spherical.computeDistanceBetween(
+          origin.coordinates,
+          destination.coordinates,
+        );
+      dispatch(setDistance(calculatedDistance / 1000));
     }
   };
 
