@@ -31,7 +31,6 @@ const CarUnit = ({ car, handleToggle, activeCarID }: Props) => {
               <p className="text-sm">{car.seat}</p>
             </div>
           </div>
-          <p className="text-sm">Time travel</p>
           <p className="text-sm text-greyActive">{car.description}</p>
         </div>
         <div className="flex shrink-0 items-center pl-4 text-lg font-medium">

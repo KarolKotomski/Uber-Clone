@@ -24,7 +24,7 @@ const CarSelectScreen = () => {
   };
 
   return (
-    <div className="p-5 lg:p-0">
+    <div className="p-2 xs:p-5 lg:p-0">
       <h2 className="pb-4 font-UberMove text-2xl font-bold">Recommended</h2>
       <ul className="grid grid-cols-1 gap-1">{handleCarUnits()}</ul>
     </div>
