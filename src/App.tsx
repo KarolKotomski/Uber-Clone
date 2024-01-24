@@ -5,7 +5,7 @@ import { store } from "./store";
 import { LoadScript } from "@react-google-maps/api";
 import { Library } from "@googlemaps/js-api-loader";
 import { Suspense, lazy } from "react";
-import FallBack from "./components/Fallback";
+import FallBack from "./pages/Fallback";
 
 const libraries: Library[] = ["places"];
 
