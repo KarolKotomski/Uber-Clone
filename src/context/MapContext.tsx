@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import {
   selectDestination,
   selectDirections,
-  selectDistance,
   selectOrigin,
   setDirections,
   setDistance,
@@ -81,7 +80,6 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
           travelMode: google.maps.TravelMode.DRIVING,
         });
         dispatch(setDirections(response));
-        // console.log("handleDirectionRoute wykonane");
       }
     } catch (error) {
       console.error("No route results error:", error);
@@ -94,15 +92,11 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
     if (isSearchButtonActive && directions) {
       setIsRideResultsActive(true);
       calculateDistance();
-      // console.log("znaleziono transport");
     } else if (isSearchButtonActive && directions === undefined) {
       setIsRideResultsActive(true);
       setIsRideError(true);
-      // console.log("nie znaleziono transportu-error");
     } else if (isSearchButtonActive && directions === null) {
       return;
-    } else {
-      // console.log("brak reakcji");
     }
   };
 

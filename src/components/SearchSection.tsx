@@ -20,7 +20,6 @@ import {
   SearchButtonContextType,
 } from "../context/SearchButtonContext";
 import { MapContext, MapContextType } from "../context/MapContext";
-import { calculateNewValue } from "@testing-library/user-event/dist/utils";
 
 const SearchSection = () => {
   const origin = useSelector(selectOrigin);
@@ -60,7 +59,6 @@ const SearchSection = () => {
 
   useEffect(() => {
     isSmallScreen && findRide();
-    // console.log("KONIEC");
   }, [directions, isSmallScreen]);
 
   return (
