@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext } from "react";
 import CarUnit from "./CarUnit";
 import { carUnitData } from "../utilities/CarUnitData";
+import { ActiveCarContext } from "../context/ActiveCarContext";
 
 const CarSelectScreen = () => {
-  const [activeCarID, setActiveCarID] = useState(1);
+  const { activeCarID, setActiveCarID } = useContext(ActiveCarContext);
 
   const handleCarUnits = () => {
     return carUnitData.map((unit) => {

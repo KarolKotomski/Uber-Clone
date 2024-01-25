@@ -6,6 +6,7 @@ import { SearchButtonContextProvider } from "../context/SearchButtonContext";
 import { RideErrorScreenContextProvider } from "../context/RideErrorScreenContext";
 import { RideResultsContextProvider } from "../context/RideResultsContext";
 import { MapContextProvider } from "../context/MapContext";
+import { ActiveCarContextProvider } from "../context/ActiveCarContext";
 
 const Ride = () => {
   return (
@@ -15,8 +16,10 @@ const Ride = () => {
           <SearchButtonContextProvider>
             <RideErrorScreenContextProvider>
               <MapContextProvider>
-                <RideNavbar />
-                <RideMain />
+                <ActiveCarContextProvider>
+                  <RideNavbar />
+                  <RideMain />
+                </ActiveCarContextProvider>
               </MapContextProvider>
             </RideErrorScreenContextProvider>
           </SearchButtonContextProvider>
