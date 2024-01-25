@@ -15,10 +15,6 @@ const PayScreen = () => {
     foundUnit && setButtonText(`Order: ${foundUnit.name}`);
   }, [activeCarID]);
 
-  useEffect(() => {
-    console.log(activeCarID);
-  }, [activeCarID]);
-
   return (
     <div className="absolute bottom-0 left-0 right-3 bg-white text-sm lg:left-4 lg:w-[23.5rem] lg:pb-5">
       <div className="flex w-full flex-col items-center gap-4 border-t p-4 lg:rounded-xl lg:border-t-0 lg:shadow-[0_4px_16px_0px_rgba(0,0,0,0.16)]">

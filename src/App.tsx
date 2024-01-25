@@ -6,8 +6,6 @@ import { LoadScript } from "@react-google-maps/api";
 import { Library } from "@googlemaps/js-api-loader";
 import { Suspense, lazy } from "react";
 import FallBack from "./pages/Fallback";
-import PaymentComplete from "./pages/PaymentComplete";
-import { ActiveCarContextProvider } from "./context/ActiveCarContext";
 
 const libraries: Library[] = ["places"];
 
@@ -17,24 +15,22 @@ function App() {
   const Home = lazy(() => import("./pages/Home"));
   const Ride = lazy(() => import("./pages/Ride"));
   const NoMatch = lazy(() => import("./pages/NoMatch"));
-  // const PaymentComplete = lazy(() => import("./pages/PaymentComplete"));
+  const PaymentComplete = lazy(() => import("./pages/PaymentComplete"));
 
   return (
     <Provider store={store}>
-      <ActiveCarContextProvider>
-        <BrowserRouter>
-          <LoadScript googleMapsApiKey={apiKey} libraries={libraries}>
-            <Suspense fallback={<FallBack />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="ride" element={<Ride />} />
-                <Route path="payment_complete" element={<PaymentComplete />} />
-                <Route path="*" element={<NoMatch />} />
-              </Routes>
-            </Suspense>
-          </LoadScript>
-        </BrowserRouter>
-      </ActiveCarContextProvider>
+      <BrowserRouter>
+        <LoadScript googleMapsApiKey={apiKey} libraries={libraries}>
+          <Suspense fallback={<FallBack />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="ride" element={<Ride />} />
+              <Route path="payment_complete" element={<PaymentComplete />} />
+              <Route path="*" element={<NoMatch />} />
+            </Routes>
+          </Suspense>
+        </LoadScript>
+      </BrowserRouter>
     </Provider>
   );
 }

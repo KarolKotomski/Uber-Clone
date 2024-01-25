@@ -17,7 +17,7 @@ export const ActiveCarContext = createContext<ActiveCarContextType>({
 export const ActiveCarContextProvider = ({
   children,
 }: ActiveCarContextProps) => {
-  const [activeCarID, setActiveCarID] = useState(1);
+  const [activeCarID, setActiveCarID] = useState<number>(1);
 
   const value = {
     activeCarID,
