@@ -1,27 +1,15 @@
-import { useContext } from "react";
 import CarUnit from "./CarUnit";
 import { carUnitData } from "../utilities/CarUnitData";
-import { ActiveCarContext } from "../context/ActiveCarContext";
 
 const CarSelectScreen = () => {
-  const { activeCarID, setActiveCarID } = useContext(ActiveCarContext);
-
   const handleCarUnits = () => {
     return carUnitData.map((unit) => {
       return (
         <li key={unit.id}>
-          <CarUnit
-            car={unit}
-            handleToggle={handleToggle}
-            activeCarID={activeCarID}
-          />
+          <CarUnit car={unit} />
         </li>
       );
     });
-  };
-
-  const handleToggle = (id: number) => {
-    setActiveCarID(id);
   };
 
   return (

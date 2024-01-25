@@ -2,14 +2,16 @@ import { useSelector } from "react-redux";
 import { Car } from "../utilities/CarUnitData";
 import Person from "./icons/Person";
 import { selectDistance } from "../slices/navSlice";
+import { ActiveCarContext } from "../context/ActiveCarContext";
+import { useContext } from "react";
 
 type Props = {
   car: Car;
-  handleToggle: (id: number) => void;
-  activeCarID: number;
 };
 
-const CarUnit = ({ car, handleToggle, activeCarID }: Props) => {
+const CarUnit = ({ car }: Props) => {
+  const { activeCarID, setActiveCarID } = useContext(ActiveCarContext);
+
   const distance = useSelector(selectDistance);
 
   return (
@@ -17,7 +19,7 @@ const CarUnit = ({ car, handleToggle, activeCarID }: Props) => {
       className={`${
         activeCarID === car.id ? "border-black" : "border-white"
       } flex cursor-pointer gap-2 rounded-xl border-[0.1875rem]`}
-      onClick={() => handleToggle(car.id)}
+      onClick={() => setActiveCarID(car.id)}
     >
       <div className="flex w-[5.5rem] shrink-0 items-center">
         <img src={car.image} alt="car" />
