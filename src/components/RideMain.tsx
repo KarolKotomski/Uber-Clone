@@ -19,6 +19,7 @@ import {
   RideErrorScreenContextType,
 } from "../context/RideErrorScreenContext";
 import RideResults from "./RideResults";
+import PayScreen from "./PayScreen";
 
 const RideMain = () => {
   const { isRideError }: RideErrorScreenContextType = useContext(
@@ -33,18 +34,18 @@ const RideMain = () => {
 
   return (
     <main
-      className={`mx-auto grid max-w-[88rem] ${
+      className={`relative mx-auto grid max-w-[88rem] ${
         !isSearchMenuActive && isSmallScreen && "h-screen"
       } ${
         isSmallScreen && isRideResultsActive
           ? "grid-rows-2"
           : "grid-rows-[1fr,auto]"
-      } lg:absolute lg:bottom-10 lg:left-0 lg:right-0 lg:top-[6.75rem] lg:grid-cols-[25rem,1fr] lg:px-5`}
+      } lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:top-[6.75rem] lg:grid-cols-[25rem,1fr] lg:px-5`}
     >
       <map
         className={`${
           isSearchMenuActive && isSmallScreen && "hidden"
-        } lg:bottom-10 lg:right-0 lg:top-0`}
+        } lg:right-0 lg:top-0 lg:mb-5`}
       >
         <GoogleMapSection />
       </map>
@@ -67,6 +68,7 @@ const RideMain = () => {
             }`}
           >
             <RideResults />
+            {!isRideError && <PayScreen />}
           </div>
         )}
       </div>
