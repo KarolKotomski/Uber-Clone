@@ -33,6 +33,7 @@ export type MapContextType = {
   setCenterMap: React.Dispatch<React.SetStateAction<LatLng>>;
   handleDirectionRoute: () => Promise<void>;
   findRide: () => void;
+  fitMap: () => void;
 };
 
 export const defaultMapCenter = {
@@ -49,6 +50,7 @@ export const MapContext = createContext<MapContextType>({
   setCenterMap: () => {},
   handleDirectionRoute: async () => {},
   findRide: () => {},
+  fitMap: () => {},
 });
 
 export const MapContextProvider = ({ children }: MapContextProps) => {
@@ -128,6 +130,7 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
     setCenterMap,
     handleDirectionRoute,
     findRide,
+    fitMap,
   };
 
   return <MapContext.Provider value={value}>{children}</MapContext.Provider>;

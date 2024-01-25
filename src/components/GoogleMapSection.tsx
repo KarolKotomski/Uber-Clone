@@ -5,7 +5,7 @@ import {
   OverlayView,
   OverlayViewF,
 } from "@react-google-maps/api";
-import { useCallback, useContext, useEffect } from "react";
+import { useCallback, useContext, useEffect, useLayoutEffect } from "react";
 import { MapStyle } from "../styles/MapStyle";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -46,6 +46,7 @@ const GoogleMapSection = () => {
     centerMap,
     setCenterMap,
     handleDirectionRoute,
+    fitMap,
   }: MapContextType = useContext(MapContext);
 
   const onLoad = useCallback(function callback(map: google.maps.Map) {
@@ -81,6 +82,16 @@ const GoogleMapSection = () => {
       handleDirectionRoute();
     }
   }, [origin, destination, directions, map]);
+
+  useLayoutEffect(() => {
+    if (!origin || !destination) return;
+    const handleResizeMap = () => fitMap();
+
+    window.addEventListener("resize", handleResizeMap);
+    return () => {
+      window.removeEventListener("resize", handleResizeMap);
+    };
+  }, [window.innerWidth]);
 
   return (
     <GoogleMap
