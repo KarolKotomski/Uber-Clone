@@ -29,7 +29,10 @@ const PayScreen = () => {
           </span>
         </div>
         <div className="w-full text-base">
-          <StandardButton buttonText={buttonText} />
+          <StandardButton
+            buttonText={buttonText}
+            buttonLinkTo="/payment_complete"
+          />
         </div>
       </div>
     </div>

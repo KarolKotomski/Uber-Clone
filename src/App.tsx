@@ -15,6 +15,7 @@ function App() {
   const Home = lazy(() => import("./pages/Home"));
   const Ride = lazy(() => import("./pages/Ride"));
   const NoMatch = lazy(() => import("./pages/NoMatch"));
+  const PaymentComplete = lazy(() => import("./pages/PaymentComplete"));
 
   return (
     <Provider store={store}>
@@ -24,6 +25,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="ride" element={<Ride />} />
+              <Route path="payment_complete" element={<PaymentComplete />} />
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </Suspense>
