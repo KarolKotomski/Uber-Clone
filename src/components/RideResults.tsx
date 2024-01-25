@@ -1,15 +1,10 @@
 import { useContext } from "react";
-import {
-  RideErrorScreenContext,
-  RideErrorScreenContextType,
-} from "../context/RideErrorScreenContext";
+import { RideErrorScreenContext } from "../context/RideErrorScreenContext";
 import CarSelectScreen from "./CarSelectScreen";
 import RideErrorScreen from "./RideErrorScreen";
 
 const RideResults = () => {
-  const { isRideError }: RideErrorScreenContextType = useContext(
-    RideErrorScreenContext,
-  );
+  const { isRideError } = useContext(RideErrorScreenContext);
 
   return (
     <div className="flex flex-col rounded-t-xl border-whiteHover bg-white">

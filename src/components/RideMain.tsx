@@ -3,34 +3,25 @@ import GoogleMapSection from "./GoogleMapSection";
 import { useContext } from "react";
 import {
   SearchMenuContext,
-  SearchMenuContextType,
 } from "../context/SearchMenuContext";
 import {
   RideResultsContext,
-  RideResultsContextType,
 } from "../context/RideResultsContext";
 import {
   SmallScreenContext,
-  SmallScreenContextType,
 } from "../context/SmallScreenContext";
 
 import {
   RideErrorScreenContext,
-  RideErrorScreenContextType,
 } from "../context/RideErrorScreenContext";
 import RideResults from "./RideResults";
 import PayScreen from "./PayScreen";
 
 const RideMain = () => {
-  const { isRideError }: RideErrorScreenContextType = useContext(
-    RideErrorScreenContext,
-  );
-  const { isSearchMenuActive }: SearchMenuContextType =
-    useContext(SearchMenuContext);
-  const { isRideResultsActive }: RideResultsContextType =
-    useContext(RideResultsContext);
-  const { isSmallScreen }: SmallScreenContextType =
-    useContext(SmallScreenContext);
+  const { isRideError } = useContext(RideErrorScreenContext);
+  const { isSearchMenuActive } = useContext(SearchMenuContext);
+  const { isRideResultsActive } = useContext(RideResultsContext);
+  const { isSmallScreen } = useContext(SmallScreenContext);
 
   return (
     <main

@@ -6,36 +6,24 @@ import {
   selectOrigin,
 } from "../slices/navSlice";
 import SearchPanel from "./SearchPanel";
-import {
-  SearchMenuContext,
-  SearchMenuContextType,
-} from "../context/SearchMenuContext";
+import { SearchMenuContext } from "../context/SearchMenuContext";
 import SearchButton from "./buttons/SearchButton";
-import {
-  SmallScreenContext,
-  SmallScreenContextType,
-} from "../context/SmallScreenContext";
-import {
-  SearchButtonContext,
-  SearchButtonContextType,
-} from "../context/SearchButtonContext";
-import { MapContext, MapContextType } from "../context/MapContext";
+import { SmallScreenContext } from "../context/SmallScreenContext";
+import { SearchButtonContext } from "../context/SearchButtonContext";
+import { MapContext } from "../context/MapContext";
 
 const SearchSection = () => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
   const directions = useSelector(selectDirections);
 
-  const { isSearchMenuActive }: SearchMenuContextType =
-    useContext(SearchMenuContext);
+  const { isSearchMenuActive } = useContext(SearchMenuContext);
 
-  const { isSmallScreen, setIsSmallScreen }: SmallScreenContextType =
-    useContext(SmallScreenContext);
+  const { isSmallScreen, setIsSmallScreen } = useContext(SmallScreenContext);
 
-  const { setIsSearchButtonActive }: SearchButtonContextType =
-    useContext(SearchButtonContext);
+  const { setIsSearchButtonActive } = useContext(SearchButtonContext);
 
-  const { findRide }: MapContextType = useContext(MapContext);
+  const { findRide } = useContext(MapContext);
 
   useEffect(() => {
     const handleResize = () => {

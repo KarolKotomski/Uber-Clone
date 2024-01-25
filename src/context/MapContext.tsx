@@ -9,18 +9,9 @@ import {
   setDistance,
 } from "../slices/navSlice";
 import { LatLng } from "react-google-places-autocomplete/build/types";
-import {
-  SearchButtonContext,
-  SearchButtonContextType,
-} from "./SearchButtonContext";
-import {
-  RideErrorScreenContext,
-  RideErrorScreenContextType,
-} from "./RideErrorScreenContext";
-import {
-  RideResultsContext,
-  RideResultsContextType,
-} from "./RideResultsContext";
+import { SearchButtonContext } from "./SearchButtonContext";
+import { RideErrorScreenContext } from "./RideErrorScreenContext";
+import { RideResultsContext } from "./RideResultsContext";
 
 type MapContextProps = {
   children: React.ReactNode;
@@ -62,15 +53,11 @@ export const MapContextProvider = ({ children }: MapContextProps) => {
   const directions = useSelector(selectDirections);
   const dispatch = useDispatch();
 
-  const { isSearchButtonActive }: SearchButtonContextType =
-    useContext(SearchButtonContext);
+  const { isSearchButtonActive } = useContext(SearchButtonContext);
 
-  const { setIsRideError }: RideErrorScreenContextType = useContext(
-    RideErrorScreenContext,
-  );
+  const { setIsRideError } = useContext(RideErrorScreenContext);
 
-  const { setIsRideResultsActive }: RideResultsContextType =
-    useContext(RideResultsContext);
+  const { setIsRideResultsActive } = useContext(RideResultsContext);
 
   const handleDirectionRoute = async () => {
     const directionService = new google.maps.DirectionsService();

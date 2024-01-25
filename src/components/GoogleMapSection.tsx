@@ -16,16 +16,8 @@ import {
 } from "../slices/navSlice";
 import circleIcon from "../icons/searchCircle.png";
 import squareIcon from "../icons/searchSquare.png";
-import {
-  SearchMenuContext,
-  SearchMenuContextType,
-} from "../context/SearchMenuContext";
-import {
-  MapContext,
-  MapContextType,
-  defaultMapCenter,
-  zoom,
-} from "../context/MapContext";
+import { SearchMenuContext } from "../context/SearchMenuContext";
+import { MapContext, defaultMapCenter, zoom } from "../context/MapContext";
 
 const containerStyle = {
   width: "100%",
@@ -38,16 +30,9 @@ const GoogleMapSection = () => {
   const directions = useSelector(selectDirections);
   const dispatch = useDispatch();
 
-  const { setIsSearchMenuActive }: SearchMenuContextType =
-    useContext(SearchMenuContext);
-  const {
-    map,
-    setMap,
-    centerMap,
-    setCenterMap,
-    handleDirectionRoute,
-    fitMap,
-  }: MapContextType = useContext(MapContext);
+  const { setIsSearchMenuActive } = useContext(SearchMenuContext);
+  const { map, setMap, centerMap, setCenterMap, handleDirectionRoute, fitMap } =
+    useContext(MapContext);
 
   const onLoad = useCallback(function callback(map: google.maps.Map) {
     setMap(map);

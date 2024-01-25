@@ -13,12 +13,6 @@ const PaymentComplete = () => {
 
   const { activeCarID } = useContext(ActiveCarContext);
 
-  useEffect(() => {
-    const foundUnit = carUnitData.find((unit) => activeCarID === unit.id);
-
-    foundUnit && setUberType(foundUnit.name);
-  }, [activeCarID]);
-
   const handleClick = () => {
     dispatch(setOrigin(null));
     dispatch(setDestination(null));
@@ -27,7 +21,6 @@ const PaymentComplete = () => {
 
   useEffect(() => {
     console.log(activeCarID);
-    console.log("useEffect in PaymentComplete is called");
   }, [activeCarID]);
 
   return (
@@ -42,10 +35,18 @@ const PaymentComplete = () => {
         You've successfully ordered an Uber {uberType}.<br /> Have a great ride!
       </p>
       <div onClick={handleClick}>
-        <StandardButton buttonLinkTo="/" buttonText="HomePage" />
+        <StandardButton buttonLinkTo="/" buttonText="Home Page" />
       </div>
     </div>
   );
 };
 
 export default PaymentComplete;
+
+// useEffect(() => {
+//   const foundUnit = carUnitData.find((unit) => activeCarID === unit.id);
+
+//   foundUnit && setUberType(foundUnit.name);
+//   console.log(activeCarID);
+//   console.log("useEffect in PaymentComplete is called");
+// }, [activeCarID]);

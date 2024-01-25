@@ -7,45 +7,28 @@ import Ticket from "./icons/Ticket";
 import UserButton from "./buttons/UserButton";
 import HamburgerButton from "./buttons/HamburgerButton";
 import { useContext } from "react";
-import {
-  SearchMenuContext,
-  SearchMenuContextType,
-} from "../context/SearchMenuContext";
+import { SearchMenuContext } from "../context/SearchMenuContext";
 import ArrowButton from "./buttons/ArrowButton";
-import {
-  SmallScreenContext,
-  SmallScreenContextType,
-} from "../context/SmallScreenContext";
-import {
-  RideResultsContext,
-  RideResultsContextType,
-} from "../context/RideResultsContext";
+import { SmallScreenContext } from "../context/SmallScreenContext";
+import { RideResultsContext } from "../context/RideResultsContext";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectDestination,
   selectOrigin,
   setDestination,
 } from "../slices/navSlice";
-import {
-  RideErrorScreenContext,
-  RideErrorScreenContextType,
-} from "../context/RideErrorScreenContext";
+import { RideErrorScreenContext } from "../context/RideErrorScreenContext";
 
 const RideNavbar = () => {
-  const { isSearchMenuActive, setIsSearchMenuActive }: SearchMenuContextType =
+  const { isSearchMenuActive, setIsSearchMenuActive } =
     useContext(SearchMenuContext);
 
-  const { isSmallScreen }: SmallScreenContextType =
-    useContext(SmallScreenContext);
+  const { isSmallScreen } = useContext(SmallScreenContext);
 
-  const {
-    isRideResultsActive,
-    setIsRideResultsActive,
-  }: RideResultsContextType = useContext(RideResultsContext);
+  const { isRideResultsActive, setIsRideResultsActive } =
+    useContext(RideResultsContext);
 
-  const { setIsRideError }: RideErrorScreenContextType = useContext(
-    RideErrorScreenContext,
-  );
+  const { setIsRideError } = useContext(RideErrorScreenContext);
 
   const dispatch = useDispatch();
   const origin = useSelector(selectOrigin);

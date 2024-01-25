@@ -16,22 +16,10 @@ import {
   setDirections,
   setDistance,
 } from "../slices/navSlice";
-import {
-  SearchMenuContext,
-  SearchMenuContextType,
-} from "../context/SearchMenuContext";
-import {
-  RideResultsContext,
-  RideResultsContextType,
-} from "../context/RideResultsContext";
-import {
-  SmallScreenContext,
-  SmallScreenContextType,
-} from "../context/SmallScreenContext";
-import {
-  RideErrorScreenContext,
-  RideErrorScreenContextType,
-} from "../context/RideErrorScreenContext";
+import { SearchMenuContext } from "../context/SearchMenuContext";
+import { RideResultsContext } from "../context/RideResultsContext";
+import { SmallScreenContext } from "../context/SmallScreenContext";
+import { RideErrorScreenContext } from "../context/RideErrorScreenContext";
 
 type Props = {
   type: "source" | "destination";
@@ -47,18 +35,13 @@ const InputItem = ({ type, isRide }: Props) => {
   const origin = useSelector(selectOrigin);
   const destination = useSelector(selectDestination);
 
-  const { setIsSearchMenuActive }: SearchMenuContextType =
-    useContext(SearchMenuContext);
+  const { setIsSearchMenuActive } = useContext(SearchMenuContext);
 
-  const { setIsRideResultsActive }: RideResultsContextType =
-    useContext(RideResultsContext);
+  const { setIsRideResultsActive } = useContext(RideResultsContext);
 
-  const { isSmallScreen }: SmallScreenContextType =
-    useContext(SmallScreenContext);
+  const { isSmallScreen } = useContext(SmallScreenContext);
 
-  const { setIsRideError }: RideErrorScreenContextType = useContext(
-    RideErrorScreenContext,
-  );
+  const { setIsRideError } = useContext(RideErrorScreenContext);
 
   let placeholder;
   if (type === "source") {
