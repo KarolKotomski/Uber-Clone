@@ -1,5 +1,5 @@
 import DownloadUnit from "./DownloadUnit";
-import { downloadList } from "../data/data";
+import { downloadList } from "../utilities/PageContentData";
 
 const Download = () => {
   return (

@@ -1,6 +1,6 @@
 import Banner from "./Banner";
 import Download from "./Download";
-import { bannerContentList } from "../data/data";
+import { bannerContentList } from "../utilities/PageContentData";
 
 const HomeMain = () => {
   return (

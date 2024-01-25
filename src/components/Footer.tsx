@@ -1,7 +1,7 @@
 import google from "../icons/google.svg";
 import apple from "../icons/apple.svg";
 import FooterListUnit from "./FooterListUnit";
-import { footerList, icons } from "../data/data";
+import { footerList, icons } from "../utilities/PageContentData";
 import FooterIconUnit from "./FooterIconUnit";
 import { Link } from "react-router-dom";
 
@@ -19,7 +19,7 @@ const Footer = () => {
           <p className="w-fit cursor-pointer text-base transition-colors hover:text-[#AFAFAFAF]">
             Visit Help Center
           </p>
-          <p className="w-fit cursor-pointer mt-14 transition-colors hover:text-[#AFAFAFAF] md:hidden">
+          <p className="mt-14 w-fit cursor-pointer transition-colors hover:text-[#AFAFAFAF] md:hidden">
             How the Uber and Uber Eats apps and websites work
           </p>
         </div>
