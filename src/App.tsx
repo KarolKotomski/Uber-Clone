@@ -6,6 +6,7 @@ import { LoadScript } from "@react-google-maps/api";
 import { Library } from "@googlemaps/js-api-loader";
 import { Suspense, lazy } from "react";
 import FallBack from "./pages/Fallback";
+import { HomeNavModalContextProvider } from "./context/HomeNavModalContext";
 
 const libraries: Library[] = ["places"];
 
@@ -20,16 +21,18 @@ function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <LoadScript googleMapsApiKey={apiKey} libraries={libraries}>
-          <Suspense fallback={<FallBack />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="ride" element={<Ride />} />
-              <Route path="payment_complete" element={<PaymentComplete />} />
-              <Route path="*" element={<NoMatch />} />
-            </Routes>
-          </Suspense>
-        </LoadScript>
+        <HomeNavModalContextProvider>
+          <LoadScript googleMapsApiKey={apiKey} libraries={libraries}>
+            <Suspense fallback={<FallBack />}>
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="ride" element={<Ride />} />
+                <Route path="payment_complete" element={<PaymentComplete />} />
+                <Route path="*" element={<NoMatch />} />
+              </Routes>
+            </Suspense>
+          </LoadScript>
+        </HomeNavModalContextProvider>
       </BrowserRouter>
     </Provider>
   );

@@ -11,10 +11,10 @@ const HomeNavModal = () => {
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 top-[3.75rem] z-50 grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] ${isHomeNavModalActive ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}
+      className={`fixed bottom-0 left-0 right-0 top-[3.75rem] grid  transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] ${isHomeNavModalActive ? "z-50 grid-rows-[1fr]" : "-z-10 grid-rows-[0fr]"}`}
     >
       <div className="overflow-hidden bg-white px-6 text-black">
-        <ul className="flex flex-col gap-6 py-4 text-[2rem] font-bold ">
+        <ul className="flex flex-col gap-6 py-4 text-[2rem] font-bold">
           <li className="flex cursor-pointer items-center justify-between transition-colors hover:text-greyActive">
             <h2 className="font-UberMove">Company</h2>
             <span className="w-6">

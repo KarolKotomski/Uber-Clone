@@ -5,6 +5,7 @@ import { HomeNavModalContext } from "../context/HomeNavModalContext";
 import Globe from "./icons/Globe";
 import Mesh from "./icons/Mesh";
 import HamburgerTwoLines from "./icons/HamburgerTwoLines";
+import HomeNavModal from "./HomeNavModal";
 
 const HomeNavbar = () => {
   const { isHomeNavModalActive, setIsHomeNavModalActive } =
@@ -74,6 +75,7 @@ const HomeNavbar = () => {
           </ul>
         </nav>
       </div>
+      <HomeNavModal />
     </header>
   );
 };
