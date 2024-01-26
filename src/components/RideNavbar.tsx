@@ -5,7 +5,6 @@ import Package from "./icons/Package";
 import Restaurant from "./icons/Restaurant";
 import Ticket from "./icons/Ticket";
 import UserButton from "./buttons/UserButton";
-import HamburgerButton from "./buttons/HamburgerButton";
 import { useContext } from "react";
 import { SearchMenuContext } from "../context/SearchMenuContext";
 import ArrowButton from "./buttons/ArrowButton";
@@ -18,6 +17,7 @@ import {
   setDestination,
 } from "../slices/navSlice";
 import { RideErrorScreenContext } from "../context/RideErrorScreenContext";
+import HamburgerThreeLines from "./icons/HamburgerThreeLines";
 
 const RideNavbar = () => {
   const { isSearchMenuActive, setIsSearchMenuActive } =
@@ -99,8 +99,8 @@ const RideNavbar = () => {
             <li className="hidden lg:flex">
               <UserButton />
             </li>
-            <li className="lg:hidden">
-              <HamburgerButton />
+            <li className="rounded-full bg-white p-[0.875rem] lg:hidden">
+              <HamburgerThreeLines />
             </li>
           </ul>
         </nav>

@@ -1,6 +1,6 @@
-const Hamburger = () => {
+const HamburgerThreeLines = () => {
   return (
-    <svg viewBox="0 0 24 24" className="w-4">
+    <svg viewBox="0 0 24 24">
       <title>Three lines</title>
       <path
         fillRule="evenodd"
@@ -12,4 +12,4 @@ const Hamburger = () => {
   );
 };
 
-export default Hamburger;
+export default HamburgerThreeLines;

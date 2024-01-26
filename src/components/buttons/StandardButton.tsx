@@ -4,7 +4,8 @@ type Props = {
   buttonText?: string;
   buttonLinkTo?: string;
   buttonStyle: string;
-  icon?: string | React.ReactNode;
+  icon?: React.ReactNode;
+  iconCustomStyle?: string;
 };
 
 const StandardButton = ({
@@ -12,6 +13,7 @@ const StandardButton = ({
   buttonText,
   buttonLinkTo = "",
   icon,
+  iconCustomStyle,
 }: Props) => {
   let applyStyle;
   if (buttonStyle === "black") {
@@ -30,9 +32,9 @@ const StandardButton = ({
         type="button"
         className={`w-full rounded-lg px-[1.5625rem] py-[0.875rem] font-medium leading-5 transition-colors duration-200 ${applyStyle}`}
       >
-        <span className="flex items-center justify-center gap-2">
-          {icon} {buttonText}
-        </span>
+        <div className="flex items-center justify-center gap-2">
+          <span className={iconCustomStyle}>{icon}</span> {buttonText}
+        </div>
       </button>
     </Link>
   );

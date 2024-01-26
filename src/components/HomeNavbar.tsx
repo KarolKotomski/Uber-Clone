@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
-import caretIcon from "../icons/caret.png";
-import globeIcon from "../icons/globe.png";
-import dotsIcon from "../icons/dots.png";
-import hamburgerIcon from "../icons/hamburger.png";
 import HomeNavbarButton from "./buttons/HomeNavbarButton";
-import HomeNavModal from "./HomeNavModal";
 import { useContext } from "react";
 import { HomeNavModalContext } from "../context/HomeNavModalContext";
+import Globe from "./icons/Globe";
+import Mesh from "./icons/Mesh";
+import HamburgerTwoLines from "./icons/HamburgerTwoLines";
 
 const HomeNavbar = () => {
   const { isHomeNavModalActive, setIsHomeNavModalActive } =
@@ -27,16 +25,15 @@ const HomeNavbar = () => {
             <li>
               <HomeNavbarButton
                 labelText="Company"
-                altText="caret"
-                icon={caretIcon}
                 iconCustomStyle="w-[1.125rem]"
+                buttonStyle="white/black"
               />
             </li>
             <li>
-              <HomeNavbarButton labelText="Safety" />
+              <HomeNavbarButton labelText="Safety" buttonStyle="white/black" />
             </li>
             <li>
-              <HomeNavbarButton labelText="Help" />
+              <HomeNavbarButton labelText="Help" buttonStyle="white/black" />
             </li>
           </ul>
         </nav>
@@ -44,39 +41,39 @@ const HomeNavbar = () => {
           <ul className="flex items-center gap-2 text-sm leading-4">
             <li className="hidden md:block">
               <HomeNavbarButton
+                buttonStyle="white/black"
                 labelText="EN"
-                altText="globe"
-                icon={globeIcon}
+                icon={<Globe />}
                 iconOnTheLeft={true}
               />
             </li>
             <li className="hidden md:block">
               <HomeNavbarButton
+                buttonStyle="white/black"
                 labelText="Products"
-                altText="dots looking like a mesh"
-                icon={dotsIcon}
+                icon={<Mesh />}
+                iconCustomStyle="fill-white"
                 iconOnTheLeft={true}
               />
             </li>
             <li>
-              <HomeNavbarButton labelText="Log in" />
+              <HomeNavbarButton labelText="Log in" buttonStyle="white/black" />
             </li>
             <li>
-              <HomeNavbarButton
-                labelText="Sign up"
-                buttonCustomStyle="text-black bg-white hover:bg-whiteHover active:bg-greyActive"
-              />
+              <HomeNavbarButton labelText="Sign up" buttonStyle="black/white" />
             </li>
             <li
               className="md:hidden"
               onClick={() => setIsHomeNavModalActive(!isHomeNavModalActive)}
             >
-              <HomeNavbarButton altText="hamburger menu" icon={hamburgerIcon} />
+              <HomeNavbarButton
+                buttonStyle="white/black"
+                icon={<HamburgerTwoLines />}
+              />
             </li>
           </ul>
         </nav>
       </div>
-      {isHomeNavModalActive && <HomeNavModal />}
     </header>
   );
 };

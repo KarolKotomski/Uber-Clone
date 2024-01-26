@@ -1,32 +1,39 @@
 type Props = {
   labelText?: string;
-  altText?: string;
-  icon?: string;
+  icon?: React.ReactNode;
   iconOnTheLeft?: boolean;
   iconCustomStyle?: string;
-  buttonCustomStyle?: string;
+  buttonStyle: string;
 };
 
 const HomeNavbarButton = ({
+  buttonStyle,
   labelText,
-  altText,
   icon,
   iconOnTheLeft,
   iconCustomStyle,
-  buttonCustomStyle,
 }: Props) => {
-  const buttonClass = `flex items-center gap-2 rounded-full px-[12px] py-[10px] transition-colors duration-200 hover:bg-greyHover active:bg-greyActive ${buttonCustomStyle}`;
+  let applyStyle;
+  if (buttonStyle === "white/black") {
+    applyStyle = "text-white bg-black hover:bg-greyHover";
+  }
+  if (buttonStyle === "black/white") {
+    applyStyle = "text-black bg-white hover:bg-lightGrey2";
+  }
+  if (buttonStyle === "black/grey") {
+    applyStyle = "text-black bg-white hover:bg-lightGrey";
+  }
 
-  const iconClass = `w-4 fill-white text-white ${iconCustomStyle}`;
+  const iconClass = `w-4 ${iconCustomStyle}`;
 
   return (
-    <button className={buttonClass}>
+    <button
+      className={`flex items-center gap-2 rounded-full px-[12px] py-[10px] transition-colors duration-300 ${applyStyle}`}
+    >
       {!iconOnTheLeft && labelText}
-      {icon && altText && (
-        <div className={iconClass}>
-          <img src={icon} alt={altText} className="fill-white text-white " />
-        </div>
-      )}
+
+      {icon && <div className={iconClass}>{icon}</div>}
+
       {iconOnTheLeft && labelText}
     </button>
   );
