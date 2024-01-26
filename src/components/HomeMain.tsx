@@ -18,6 +18,7 @@ const HomeMain = () => {
         <Banner
           content={bannerContentList[1]}
           buttonText="Get started"
+          buttonLinkTo="ride"
           switchPicture={true}
           secondaryButton={true}
           secondaryButtonText="Already have an account? Sign in"
@@ -27,6 +28,7 @@ const HomeMain = () => {
         <Banner
           content={bannerContentList[2]}
           buttonText="Get started"
+          buttonLinkTo="ride"
           secondaryButton={true}
           secondaryButtonText="Check out our solutions"
         />
