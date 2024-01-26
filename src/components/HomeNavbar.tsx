@@ -4,8 +4,12 @@ import globeIcon from "../icons/globe.png";
 import dotsIcon from "../icons/dots.png";
 import hamburgerIcon from "../icons/hamburger.png";
 import HomeNavbarButton from "./buttons/HomeNavbarButton";
+import HomeNavModal from "./HomeNavModal";
+import { useState } from "react";
 
 const HomeNavbar = () => {
+  const [isNavModalOpen, setIsNavModalOpen] = useState(false);
+
   return (
     <header className="bg-black py-3 font-medium text-white">
       <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 xl:px-16">
@@ -35,7 +39,7 @@ const HomeNavbar = () => {
           </ul>
         </nav>
         <nav>
-          <ul className="flex items-center gap-1 text-sm leading-4">
+          <ul className="flex items-center gap-2 text-sm leading-4">
             <li className="hidden md:block">
               <HomeNavbarButton
                 labelText="EN"
@@ -53,9 +57,12 @@ const HomeNavbar = () => {
               />
             </li>
             <li>
+              <HomeNavbarButton labelText="Log in" />
+            </li>
+            <li>
               <HomeNavbarButton
-                labelText="Log in"
-                buttonCustomStyle="ml-4 text-black bg-white hover:bg-whiteHover active:bg-greyActive"
+                labelText="Sign up"
+                buttonCustomStyle="text-black bg-white hover:bg-whiteHover active:bg-greyActive"
               />
             </li>
             <li className="md:hidden">
@@ -64,6 +71,7 @@ const HomeNavbar = () => {
           </ul>
         </nav>
       </div>
+      <HomeNavModal />
     </header>
   );
 };

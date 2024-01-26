@@ -25,7 +25,11 @@ const PaymentComplete = () => {
         <br /> Have a great and safe ride!
       </p>
       <div onClick={handleClick}>
-        <StandardButton buttonLinkTo="/" buttonText="Home Page" />
+        <StandardButton
+          buttonLinkTo="/"
+          buttonStyle="black"
+          buttonText="Home Page"
+        />
       </div>
     </div>
   );

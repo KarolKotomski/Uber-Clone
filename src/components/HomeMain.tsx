@@ -8,15 +8,16 @@ const HomeMain = () => {
       <section className="bg-black text-white">
         <Banner
           content={bannerContentList[0]}
+          buttonStyle="white"
           buttonText="See prices"
           buttonLinkTo="ride"
-          invertedColors={true}
           searchPanel={true}
         />
       </section>
       <section>
         <Banner
           content={bannerContentList[1]}
+          buttonStyle="black"
           buttonText="Get started"
           buttonLinkTo="ride"
           switchPicture={true}
@@ -27,6 +28,7 @@ const HomeMain = () => {
       <section>
         <Banner
           content={bannerContentList[2]}
+          buttonStyle="black"
           buttonText="Get started"
           buttonLinkTo="ride"
           secondaryButton={true}

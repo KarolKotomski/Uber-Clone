@@ -30,6 +30,7 @@ const PayScreen = () => {
         </div>
         <div className="w-full text-base">
           <StandardButton
+            buttonStyle="black"
             buttonText={buttonText}
             buttonLinkTo="/payment_complete"
           />

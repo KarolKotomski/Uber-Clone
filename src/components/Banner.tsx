@@ -10,9 +10,9 @@ type Props = {
     image: string;
     altText: string;
   };
+  buttonStyle: string;
   buttonText?: string;
   buttonLinkTo?: string;
-  invertedColors?: boolean;
   switchPicture?: boolean;
   searchPanel?: boolean;
   secondaryButton?: boolean;
@@ -21,9 +21,9 @@ type Props = {
 
 const Banner = ({
   content,
+  buttonStyle,
   buttonText,
   buttonLinkTo,
-  invertedColors,
   switchPicture,
   searchPanel,
   secondaryButton,
@@ -37,7 +37,7 @@ const Banner = ({
       } lg:gap-16 xl:p-16`}
     >
       <div className={`flex lg:w-1/2 ${switchPicture && "justify-end"}`}>
-        <div className="w-full flex flex-col justify-center gap-5 lg:w-4/5">
+        <div className="flex w-full flex-col justify-center gap-5 lg:w-4/5">
           <h1 className="font-UberMove text-4xl font-bold leading-[2.75rem] sm:text-[2.75rem] sm:leading-[3.25rem] lg:text-[3.25rem] lg:leading-[4rem]">
             {header}
           </h1>
@@ -49,7 +49,7 @@ const Banner = ({
             {buttonText && (
               <StandardButton
                 buttonText={buttonText}
-                invertedColors={invertedColors}
+                buttonStyle={buttonStyle}
                 buttonLinkTo={buttonLinkTo}
               />
             )}
