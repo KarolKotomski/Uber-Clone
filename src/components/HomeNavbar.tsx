@@ -6,6 +6,8 @@ import Globe from "./icons/Globe";
 import Mesh from "./icons/Mesh";
 import HamburgerTwoLines from "./icons/HamburgerTwoLines";
 import HomeNavModal from "./HomeNavModal";
+import ClearValue from "./icons/ClearValue";
+import CloseButton from "./buttons/CloseButton";
 
 const HomeNavbar = () => {
   const { isHomeNavModalActive, setIsHomeNavModalActive } =
@@ -63,14 +65,19 @@ const HomeNavbar = () => {
             <li>
               <HomeNavbarButton labelText="Sign up" buttonStyle="black/white" />
             </li>
-            <li
-              className="md:hidden"
-              onClick={() => setIsHomeNavModalActive(!isHomeNavModalActive)}
-            >
-              <HomeNavbarButton
-                buttonStyle="white/black"
-                icon={<HamburgerTwoLines />}
-              />
+            <li className="md:hidden">
+              {!isHomeNavModalActive ? (
+                <div onClick={() => setIsHomeNavModalActive(true)}>
+                  <HomeNavbarButton
+                    buttonStyle="white/black"
+                    icon={<HamburgerTwoLines />}
+                  />
+                </div>
+              ) : (
+                <div onClick={() => setIsHomeNavModalActive(false)}>
+                  <CloseButton />
+                </div>
+              )}
             </li>
           </ul>
         </nav>

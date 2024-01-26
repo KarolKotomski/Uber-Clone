@@ -28,7 +28,7 @@ const HomeNavbarButton = ({
 
   return (
     <button
-      className={`flex items-center gap-2 rounded-full px-[12px] py-[10px] transition-colors duration-300 ${applyStyle}`}
+      className={`flex items-center gap-2 rounded-full p-3 transition-colors duration-300 ${applyStyle}`}
     >
       {!iconOnTheLeft && labelText}
 
