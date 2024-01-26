@@ -5,10 +5,12 @@ import dotsIcon from "../icons/dots.png";
 import hamburgerIcon from "../icons/hamburger.png";
 import HomeNavbarButton from "./buttons/HomeNavbarButton";
 import HomeNavModal from "./HomeNavModal";
-import { useState } from "react";
+import { useContext } from "react";
+import { HomeNavModalContext } from "../context/HomeNavModalContext";
 
 const HomeNavbar = () => {
-  const [isNavModalOpen, setIsNavModalOpen] = useState(false);
+  const { isHomeNavModalActive, setIsHomeNavModalActive } =
+    useContext(HomeNavModalContext);
 
   return (
     <header className="bg-black py-3 font-medium text-white">
@@ -65,13 +67,16 @@ const HomeNavbar = () => {
                 buttonCustomStyle="text-black bg-white hover:bg-whiteHover active:bg-greyActive"
               />
             </li>
-            <li className="md:hidden">
+            <li
+              className="md:hidden"
+              onClick={() => setIsHomeNavModalActive(!isHomeNavModalActive)}
+            >
               <HomeNavbarButton altText="hamburger menu" icon={hamburgerIcon} />
             </li>
           </ul>
         </nav>
       </div>
-      <HomeNavModal />
+      {isHomeNavModalActive && <HomeNavModal />}
     </header>
   );
 };

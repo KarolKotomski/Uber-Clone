@@ -24,7 +24,7 @@ const PayScreen = () => {
             <p className="cursor-pointer font-medium">Mastercard •••• 1234</p>
           </div>
 
-          <span className="-rotate-90">
+          <span className="-rotate-90 w-5">
             <Chevron />
           </span>
         </div>
