@@ -6,8 +6,8 @@ import Globe from "./icons/Globe";
 import Mesh from "./icons/Mesh";
 import HamburgerTwoLines from "./icons/HamburgerTwoLines";
 import HomeNavModal from "./HomeNavModal";
-import ClearValue from "./icons/ClearValue";
 import CloseButton from "./buttons/CloseButton";
+import Chevron from "./icons/Chevron";
 
 const HomeNavbar = () => {
   const { isHomeNavModalActive, setIsHomeNavModalActive } =
@@ -30,6 +30,7 @@ const HomeNavbar = () => {
                 labelText="Company"
                 iconCustomStyle="w-[1.125rem]"
                 buttonStyle="white/black"
+                icon={<Chevron />}
               />
             </li>
             <li>
