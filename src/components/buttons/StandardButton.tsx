@@ -33,7 +33,7 @@ const StandardButton = ({
         className={`w-full rounded-lg px-[1.5625rem] py-[0.875rem] font-medium leading-5 transition-colors duration-200 ${applyStyle}`}
       >
         <div className="flex items-center justify-center gap-2">
-          <span className={iconCustomStyle}>{icon}</span> {buttonText}
+          {icon && <span className={iconCustomStyle}>{icon}</span>} {buttonText}
         </div>
       </button>
     </Link>
