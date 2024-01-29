@@ -5,7 +5,7 @@ import Package from "./icons/Package";
 import Restaurant from "./icons/Restaurant";
 import Ticket from "./icons/Ticket";
 import UserButton from "./buttons/UserButton";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { SearchMenuContext } from "../context/SearchMenuContext";
 import ArrowButton from "./buttons/ArrowButton";
 import { SmallScreenContext } from "../context/SmallScreenContext";
@@ -18,8 +18,11 @@ import {
 } from "../slices/navSlice";
 import { RideErrorScreenContext } from "../context/RideErrorScreenContext";
 import HamburgerThreeLines from "./icons/HamburgerThreeLines";
+import DropDownMenu from "./DropDownMenu";
 
 const RideNavbar = () => {
+  const [isDropdownMenuActive, setIsDropdownMenuActive] = useState(false);
+
   const { isSearchMenuActive, setIsSearchMenuActive } =
     useContext(SearchMenuContext);
 
@@ -92,12 +95,21 @@ const RideNavbar = () => {
           </ul>
         </nav>
         <nav>
-          <ul className="flex items-center gap-4 text-sm leading-4">
+          <ul className="relative flex items-center gap-4 text-sm leading-4">
             <li className="hidden lg:flex">
               <RideNavbarButton labelText="My trips" icon={<Ticket />} />
             </li>
-            <li className="hidden lg:flex">
+            <li
+              className="hidden lg:flex"
+              onMouseOver={() => setIsDropdownMenuActive(true)}
+              onMouseLeave={() => setIsDropdownMenuActive(false)}
+            >
               <UserButton />
+              {isDropdownMenuActive && (
+                <div className="absolute right-0 top-5 z-10 mt-3 cursor-pointer pt-8">
+                  <DropDownMenu />
+                </div>
+              )}
             </li>
             <li className="cursor-pointer rounded-full bg-white p-[0.875rem] lg:hidden">
               <HamburgerThreeLines />
