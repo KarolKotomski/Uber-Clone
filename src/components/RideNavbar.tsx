@@ -99,7 +99,7 @@ const RideNavbar = () => {
             <li className="hidden lg:flex">
               <UserButton />
             </li>
-            <li className="rounded-full bg-white p-[0.875rem] lg:hidden">
+            <li className="cursor-pointer rounded-full bg-white p-[0.875rem] lg:hidden">
               <HamburgerThreeLines />
             </li>
           </ul>
