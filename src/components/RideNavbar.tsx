@@ -138,6 +138,7 @@ const RideNavbar = () => {
         className={`fixed bottom-0 left-0 right-0 top-0 bg-black transition-opacity duration-500 lg:hidden ${
           isSideModalMenuActive ? "opacity-50" : "pointer-events-none opacity-0"
         }`}
+        onClick={() => setIsSideModalMenuActive(false)}
       ></div>
 
       <div
