@@ -5,7 +5,7 @@ import Package from "./icons/Package";
 import Restaurant from "./icons/Restaurant";
 import Ticket from "./icons/Ticket";
 import UserButton from "./buttons/UserButton";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { SearchMenuContext } from "../context/SearchMenuContext";
 import ArrowButton from "./buttons/ArrowButton";
 import { SmallScreenContext } from "../context/SmallScreenContext";
@@ -48,6 +48,18 @@ const RideNavbar = () => {
       document.body.style.overflow = "auto";
     }
   }, [isSideModalMenuActive]);
+
+  useLayoutEffect(() => {
+    const handleCloseMenu = () => {
+      if (isSideModalMenuActive && window.innerWidth >= 1024) {
+        setIsSideModalMenuActive(false);
+      }
+    };
+    window.addEventListener("resize", handleCloseMenu);
+    return () => {
+      window.removeEventListener("resize", handleCloseMenu);
+    };
+  }, [window.innerWidth]);
 
   return (
     <header
@@ -136,14 +148,14 @@ const RideNavbar = () => {
         </nav>
       </div>
       <div
-        className={`fixed bottom-0 left-0 right-0 top-0 bg-black transition-opacity duration-500 lg:hidden ${
+        className={`fixed bottom-0 left-0 right-0 top-0 bg-black transition-opacity duration-500 ${
           isSideModalMenuActive ? "opacity-50" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setIsSideModalMenuActive(false)}
       ></div>
 
       <div
-        className={`fixed bottom-0 right-0 top-0 w-full bg-white transition-transform duration-500 xs:max-w-[31.25rem] lg:hidden ${
+        className={`fixed bottom-0 right-0 top-0 w-full bg-white transition-transform duration-500 xs:max-w-[31.25rem] ${
           isSideModalMenuActive ? "translate-x-0" : "translate-x-full"
         }`}
       >

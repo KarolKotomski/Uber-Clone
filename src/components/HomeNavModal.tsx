@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useLayoutEffect } from "react";
 import StandardButton from "./buttons/StandardButton";
 import Chevron from "./icons/Chevron";
 import Mesh from "./icons/Mesh";
@@ -7,11 +7,24 @@ import HomeNavbarButton from "./buttons/HomeNavbarButton";
 import Globe from "./icons/Globe";
 
 const HomeNavModal = () => {
-  const { isHomeNavModalActive } = useContext(HomeNavModalContext);
+  const { isHomeNavModalActive, setIsHomeNavModalActive } =
+    useContext(HomeNavModalContext);
+
+  useLayoutEffect(() => {
+    const handleCloseMenu = () => {
+      if (isHomeNavModalActive && window.innerWidth >= 768) {
+        setIsHomeNavModalActive(false);
+      }
+    };
+    window.addEventListener("resize", handleCloseMenu);
+    return () => {
+      window.removeEventListener("resize", handleCloseMenu);
+    };
+  }, [window.innerWidth]);
 
   return (
     <div
-      className={`fixed bottom-0 left-0 right-0 top-[3.75rem] grid  transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] ${isHomeNavModalActive ? "z-50 grid-rows-[1fr]" : "-z-10 grid-rows-[0fr]"}`}
+      className={`fixed bottom-0 left-0 right-0 top-[3.75rem] grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1.0)] ${isHomeNavModalActive ? "z-50 grid-rows-[1fr]" : "-z-10 grid-rows-[0fr]"}`}
     >
       <div className="overflow-hidden bg-white px-6 text-black">
         <ul className="flex flex-col gap-6 py-4 text-[2rem] font-bold">
