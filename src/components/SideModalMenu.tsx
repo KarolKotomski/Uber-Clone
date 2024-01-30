@@ -22,43 +22,45 @@ const SideModalMenu = ({ handleClose }: Props) => {
         <h3 className="font-UberMove text-[2rem] font-bold">User</h3>
         <UserButton />
       </div>
-      <div className="grid grid-cols-3 items-center gap-4 whitespace-nowrap px-4 py-2">
-        <div className="rounded-lg bg-lightGrey2 transition-colors duration-300 hover:bg-whiteHover">
-          <DropdownMenuButton
-            icon={<Ticket />}
-            text="My rides"
-            isFlexCol={true}
-          />
+      <nav>
+        <div className="grid grid-cols-3 items-center gap-4 whitespace-nowrap px-4 py-2">
+          <div className="rounded-lg bg-lightGrey2 transition-colors duration-300 hover:bg-whiteHover">
+            <DropdownMenuButton
+              icon={<Ticket />}
+              text="My rides"
+              isFlexCol={true}
+            />
+          </div>
+          <div className="rounded-lg bg-lightGrey2 transition-colors duration-300 hover:bg-whiteHover">
+            <DropdownMenuButton
+              icon={<Wallet />}
+              text="Wallet"
+              isFlexCol={true}
+            />
+          </div>
+          <div className="rounded-lg bg-lightGrey2 transition-colors duration-300 hover:bg-whiteHover">
+            <DropdownMenuButton
+              icon={<Tag />}
+              text="Discounts"
+              isFlexCol={true}
+            />
+          </div>
         </div>
-        <div className="rounded-lg bg-lightGrey2 transition-colors duration-300 hover:bg-whiteHover">
-          <DropdownMenuButton
-            icon={<Wallet />}
-            text="Wallet"
-            isFlexCol={true}
-          />
+        <div>
+          <div className="transition-colors duration-300 hover:bg-lightGrey">
+            <DropdownMenuButton icon={<HeadSet />} text="Support" />
+          </div>
+          <div className="transition-colors duration-300 hover:bg-lightGrey">
+            <DropdownMenuButton
+              icon={<AccountPerson />}
+              text="Account management"
+            />
+          </div>
+          <div className="transition-colors duration-300 hover:bg-lightGrey">
+            <DropdownMenuButton icon={<Gear />} text="Settings" />
+          </div>
         </div>
-        <div className="rounded-lg bg-lightGrey2 transition-colors duration-300 hover:bg-whiteHover">
-          <DropdownMenuButton
-            icon={<Tag />}
-            text="Discounts"
-            isFlexCol={true}
-          />
-        </div>
-      </div>
-      <div className="">
-        <div className="transition-colors duration-300 hover:bg-lightGrey">
-          <DropdownMenuButton icon={<HeadSet />} text="Support" />
-        </div>
-        <div className="transition-colors duration-300 hover:bg-lightGrey">
-          <DropdownMenuButton
-            icon={<AccountPerson />}
-            text="Account management"
-          />
-        </div>
-        <div className="transition-colors duration-300 hover:bg-lightGrey">
-          <DropdownMenuButton icon={<Gear />} text="Settings" />
-        </div>
-      </div>
+      </nav>
     </>
   );
 };
