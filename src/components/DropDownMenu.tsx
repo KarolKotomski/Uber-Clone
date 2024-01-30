@@ -3,7 +3,7 @@ import Tag from "./icons/Tag";
 import HeadSet from "./icons/HeadSet";
 import AccountPerson from "./icons/AccountPerson";
 import Gear from "./icons/Gear";
-import DropdownMenuButton from "./DropDownMenuButton";
+import DropdownMenuButton from "./buttons/DropDownMenuButton";
 
 const DropDownMenu = () => {
   return (

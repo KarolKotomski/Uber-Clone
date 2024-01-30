@@ -19,9 +19,12 @@ import {
 import { RideErrorScreenContext } from "../context/RideErrorScreenContext";
 import HamburgerThreeLines from "./icons/HamburgerThreeLines";
 import DropDownMenu from "./DropDownMenu";
+import SideModalMenu from "./SideModalMenu";
+import Chevron from "./icons/Chevron";
 
 const RideNavbar = () => {
   const [isDropdownMenuActive, setIsDropdownMenuActive] = useState(false);
+  const [isSideModalMenuActive, setIsSideModalMenuActive] = useState(false);
 
   const { isSearchMenuActive, setIsSearchMenuActive } =
     useContext(SearchMenuContext);
@@ -100,23 +103,42 @@ const RideNavbar = () => {
               <RideNavbarButton labelText="My trips" icon={<Ticket />} />
             </li>
             <li
-              className="hidden lg:flex"
+              className="hidden cursor-pointer lg:flex"
               onMouseOver={() => setIsDropdownMenuActive(true)}
               onMouseLeave={() => setIsDropdownMenuActive(false)}
             >
               <UserButton />
+              <div className="ml-1 flex w-5 items-center">
+                <Chevron />
+              </div>
               {isDropdownMenuActive && (
-                <div className="absolute right-0 top-5 z-10 mt-3 cursor-pointer pt-8">
+                <div className="absolute right-0 top-5 z-10 mt-3 pt-8">
                   <DropDownMenu />
                 </div>
               )}
             </li>
-            <li className="cursor-pointer rounded-full bg-white p-[0.875rem] lg:hidden">
+            <li
+              className="cursor-pointer rounded-full bg-white p-[0.875rem] lg:hidden"
+              onClick={() => setIsSideModalMenuActive(true)}
+            >
               <HamburgerThreeLines />
             </li>
           </ul>
         </nav>
       </div>
+      <div
+        className={`fixed bottom-0 left-0 right-0 top-0 bg-black transition-opacity duration-500 ${
+          isSideModalMenuActive ? "opacity-50" : "pointer-events-none opacity-0"
+        }`}
+      ></div>
+
+      <nav
+        className={`fixed bottom-0 right-0 top-0 w-full bg-white transition-transform duration-500 xs:max-w-[31.25rem] ${
+          isSideModalMenuActive ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <SideModalMenu handleClose={() => setIsSideModalMenuActive(false)} />
+      </nav>
     </header>
   );
 };
