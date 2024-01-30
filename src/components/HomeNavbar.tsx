@@ -35,6 +35,14 @@ const HomeNavbar = () => {
     };
   });
 
+  useEffect(() => {
+    if (isHomeNavModalActive === true) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isHomeNavModalActive]);
+
   return (
     <header className="bg-black py-3 font-medium text-white">
       <div className="mx-auto flex max-w-[88rem] items-center justify-between px-6 xl:px-16">
