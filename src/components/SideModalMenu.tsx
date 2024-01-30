@@ -15,7 +15,10 @@ type Props = {
 const SideModalMenu = ({ handleClose }: Props) => {
   return (
     <>
-      <div className="m-4 ml-auto w-fit cursor-pointer" onClick={handleClose}>
+      <div
+        className="m-4 ml-auto w-fit cursor-pointer fill-black"
+        onClick={handleClose}
+      >
         <CloseCross />
       </div>
       <div className="flex items-center justify-between p-4">
