@@ -18,12 +18,13 @@ import {
 } from "../slices/navSlice";
 import { RideErrorScreenContext } from "../context/RideErrorScreenContext";
 import HamburgerThreeLines from "./icons/HamburgerThreeLines";
-import DropDownMenu from "./DropDownMenu";
+import DropDownMenu from "./UserDropDownMenu";
 import SideModalMenu from "./SideModalMenu";
 import Chevron from "./icons/Chevron";
 
 const RideNavbar = () => {
-  const [isDropdownMenuActive, setIsDropdownMenuActive] = useState(false);
+  const [isUserDropdownMenuActive, setIsUserDropdownMenuActive] =
+    useState(false);
   const [isSideModalMenuActive, setIsSideModalMenuActive] = useState(false);
 
   const { isSearchMenuActive, setIsSearchMenuActive } =
@@ -112,14 +113,14 @@ const RideNavbar = () => {
             </li>
             <li
               className="hidden cursor-pointer lg:flex"
-              onMouseOver={() => setIsDropdownMenuActive(true)}
-              onMouseLeave={() => setIsDropdownMenuActive(false)}
+              onMouseOver={() => setIsUserDropdownMenuActive(true)}
+              onMouseLeave={() => setIsUserDropdownMenuActive(false)}
             >
               <UserButton />
               <div className="ml-1 flex w-5 items-center">
                 <Chevron />
               </div>
-              {isDropdownMenuActive && (
+              {isUserDropdownMenuActive && (
                 <div className="absolute right-0 top-5 z-10 mt-3 pt-8">
                   <DropDownMenu />
                 </div>

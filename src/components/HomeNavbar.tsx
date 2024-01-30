@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import HomeNavbarButton from "./buttons/HomeNavbarButton";
-import { useContext } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { HomeNavModalContext } from "../context/HomeNavModalContext";
 import Globe from "./icons/Globe";
 import Mesh from "./icons/Mesh";
@@ -8,10 +8,32 @@ import HamburgerTwoLines from "./icons/HamburgerTwoLines";
 import HomeNavModal from "./HomeNavModal";
 import CloseButton from "./buttons/CloseButton";
 import Chevron from "./icons/Chevron";
+import CompanyDropDownMenu from "./CompanyDropDownMenu";
 
 const HomeNavbar = () => {
+  const [isCompanyDropDownMenuActive, setIsCompanyDropdownMenuActive] =
+    useState(false);
+
   const { isHomeNavModalActive, setIsHomeNavModalActive } =
     useContext(HomeNavModalContext);
+
+  const companyMenuRef = useRef<HTMLLIElement>(null);
+
+  const handleClickOutsideMenu = (e: MouseEvent) => {
+    if (
+      companyMenuRef.current &&
+      !companyMenuRef.current.contains(e.target as Node)
+    ) {
+      setIsCompanyDropdownMenuActive(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", handleClickOutsideMenu);
+    return () => {
+      document.removeEventListener("click", handleClickOutsideMenu);
+    };
+  });
 
   return (
     <header className="bg-black py-3 font-medium text-white">
@@ -25,13 +47,22 @@ const HomeNavbar = () => {
             </li>
           </ul>
           <ul className="mx-6 hidden gap-1 leading-4 md:flex">
-            <li>
+            <li className="relative" ref={companyMenuRef}>
               <HomeNavbarButton
                 labelText="Company"
                 iconCustomStyle="w-[1.125rem]"
                 buttonStyle="white/black"
                 icon={<Chevron />}
+                handleClick={() =>
+                  setIsCompanyDropdownMenuActive(!isCompanyDropDownMenuActive)
+                }
               />
+
+              {isCompanyDropDownMenuActive && (
+                <div className="absolute left-3 z-10 mt-2">
+                  <CompanyDropDownMenu />
+                </div>
+              )}
             </li>
             <li>
               <HomeNavbarButton labelText="Safety" buttonStyle="white/black" />

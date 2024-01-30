@@ -39,6 +39,19 @@ export const bannerContentList = [
   },
 ];
 
+//Company DropDownMenu data:
+
+export const companyDropDownList = [
+  "About Us",
+  "Our offerings",
+  "How Uber works",
+  "Global citizenship",
+  "Newsroom",
+  "Investor relations",
+  "Blog",
+  "Careers",
+];
+
 //Download section data:
 
 export const downloadList = [

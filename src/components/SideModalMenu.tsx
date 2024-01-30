@@ -1,4 +1,4 @@
-import DropdownMenuButton from "./buttons/DropDownMenuButton";
+import DropdownMenuButton from "./buttons/UserDropDownMenuButton";
 import UserButton from "./buttons/UserButton";
 import AccountPerson from "./icons/AccountPerson";
 import CloseCross from "./icons/CloseCross";

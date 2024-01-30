@@ -4,6 +4,7 @@ type Props = {
   iconOnTheLeft?: boolean;
   iconCustomStyle?: string;
   buttonStyle: string;
+  handleClick?: () => void;
 };
 
 const HomeNavbarButton = ({
@@ -12,6 +13,7 @@ const HomeNavbarButton = ({
   icon,
   iconOnTheLeft,
   iconCustomStyle,
+  handleClick,
 }: Props) => {
   let applyStyle;
   if (buttonStyle === "white/black") {
@@ -29,6 +31,7 @@ const HomeNavbarButton = ({
   return (
     <button
       className={`flex items-center gap-2 rounded-full p-3 transition-colors duration-300 ${applyStyle}`}
+      onClick={handleClick}
     >
       {!iconOnTheLeft && labelText}
 
