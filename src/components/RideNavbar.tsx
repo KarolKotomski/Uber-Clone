@@ -148,14 +148,14 @@ const RideNavbar = () => {
         </nav>
       </div>
       <div
-        className={`fixed bottom-0 left-0 right-0 top-0 bg-black transition-opacity duration-500 ${
+        className={`fixed bottom-0 left-0 right-0 top-0 z-40 bg-black transition-opacity duration-500 ${
           isSideModalMenuActive ? "opacity-50" : "pointer-events-none opacity-0"
         }`}
         onClick={() => setIsSideModalMenuActive(false)}
       ></div>
 
       <div
-        className={`fixed bottom-0 right-0 top-0 w-full bg-white transition-transform duration-500 xs:max-w-[31.25rem] ${
+        className={`fixed bottom-0 right-0 top-0 z-50 w-full bg-white transition-transform duration-500 xs:max-w-[31.25rem] ${
           isSideModalMenuActive ? "translate-x-0" : "translate-x-full"
         }`}
       >

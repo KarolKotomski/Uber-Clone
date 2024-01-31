@@ -109,10 +109,7 @@ const InputItem = ({ type, isRide }: Props) => {
         isFocused ? "border-black" : "border-lightGrey2"
       }`}
       onFocus={() => {
-        if (isSmallScreen) {
-          setIsSearchMenuActive(true);
-          window.scrollTo(0, 0);
-        }
+        isSmallScreen && setIsSearchMenuActive(true);
       }}
     >
       <div className="absolute left-3 top-1/2 w-5 -translate-y-1/2 text-black">
