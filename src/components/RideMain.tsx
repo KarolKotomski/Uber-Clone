@@ -1,27 +1,40 @@
 import SearchSection from "./SearchSection";
 import GoogleMapSection from "./GoogleMapSection";
-import { useContext } from "react";
-import {
-  SearchMenuContext,
-} from "../context/SearchMenuContext";
-import {
-  RideResultsContext,
-} from "../context/RideResultsContext";
-import {
-  SmallScreenContext,
-} from "../context/SmallScreenContext";
+import { useContext, useEffect, useLayoutEffect } from "react";
+import { SearchMenuContext } from "../context/SearchMenuContext";
+import { RideResultsContext } from "../context/RideResultsContext";
+import { SmallScreenContext } from "../context/SmallScreenContext";
 
-import {
-  RideErrorScreenContext,
-} from "../context/RideErrorScreenContext";
+import { RideErrorScreenContext } from "../context/RideErrorScreenContext";
 import RideResults from "./RideResults";
 import PayScreen from "./PayScreen";
 
 const RideMain = () => {
   const { isRideError } = useContext(RideErrorScreenContext);
-  const { isSearchMenuActive } = useContext(SearchMenuContext);
+  const { isSearchMenuActive, setIsSearchMenuActive } =
+    useContext(SearchMenuContext);
   const { isRideResultsActive } = useContext(RideResultsContext);
   const { isSmallScreen } = useContext(SmallScreenContext);
+
+  useEffect(() => {
+    if (isSearchMenuActive === true) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isSearchMenuActive]);
+
+  useLayoutEffect(() => {
+    const handleCloseMenu = () => {
+      if (isSearchMenuActive && window.innerWidth >= 1024) {
+        setIsSearchMenuActive(false);
+      }
+    };
+    window.addEventListener("resize", handleCloseMenu);
+    return () => {
+      window.removeEventListener("resize", handleCloseMenu);
+    };
+  }, [window.innerWidth]);
 
   return (
     <main
