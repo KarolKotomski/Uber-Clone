@@ -108,7 +108,12 @@ const InputItem = ({ type, isRide }: Props) => {
       className={`relative flex items-center rounded-lg border-2 bg-lightGrey2 py-[0.1875rem] ${
         isFocused ? "border-black" : "border-lightGrey2"
       }`}
-      onFocus={() => isSmallScreen && setIsSearchMenuActive(true)}
+      onFocus={() => {
+        if (isSmallScreen) {
+          setIsSearchMenuActive(true);
+          window.scrollTo(0, 0);
+        }
+      }}
     >
       <div className="absolute left-3 top-1/2 w-5 -translate-y-1/2 text-black">
         {type === "source" && (
