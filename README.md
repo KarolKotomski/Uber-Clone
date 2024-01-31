@@ -24,8 +24,8 @@ Live Demo: [Uber-Clone](https://uber-clone-kk.vercel.app/)
 ## Features
 
 - Real Google Map with Google Places
-- Real Uber Client expierience
-- Travel route and ride cost present
+- Real Uber Client experience
+- Travel route and ride cost presented
 
 ## License
 
