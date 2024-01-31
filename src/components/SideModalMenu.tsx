@@ -21,7 +21,7 @@ const SideModalMenu = ({ handleClose }: Props) => {
       >
         <CloseCross />
       </div>
-      <div className="flex items-center justify-between p-4">
+      <div className="flex items-center justify-between px-4 pb-4">
         <h3 className="font-UberMove text-[2rem] font-bold">User</h3>
         <UserButton />
       </div>

@@ -152,7 +152,7 @@ const InputItem = ({ type, isRide }: Props) => {
                 border: "0",
                 boxShadow: "0",
                 ":hover": {
-                  cursor: "text",
+                  cursor: isSmallScreen ? "pointer" : "text",
                 },
               }),
               valueContainer: (baseStyles) => ({

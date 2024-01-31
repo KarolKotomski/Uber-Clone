@@ -25,7 +25,7 @@ const RideMain = () => {
 
   return (
     <main
-      className={`relative mx-auto grid max-w-[88rem] ${
+      className={`relative mx-auto grid max-w-[110rem] ${
         !isSearchMenuActive && isSmallScreen && "h-screen"
       } ${
         isSmallScreen && isRideResultsActive

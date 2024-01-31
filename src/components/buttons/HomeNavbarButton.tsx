@@ -5,6 +5,7 @@ type Props = {
   iconCustomStyle?: string;
   buttonStyle: string;
   handleClick?: () => void;
+  applyFocus?: boolean;
 };
 
 const HomeNavbarButton = ({
@@ -14,10 +15,13 @@ const HomeNavbarButton = ({
   iconOnTheLeft,
   iconCustomStyle,
   handleClick,
+  applyFocus,
 }: Props) => {
   let applyStyle;
   if (buttonStyle === "white/black") {
-    applyStyle = "text-white bg-black hover:bg-greyHover";
+    applyStyle =
+      "text-white bg-black hover:bg-greyHover " +
+      (applyFocus && "focus:bg-greyActive");
   }
   if (buttonStyle === "black/white") {
     applyStyle = "text-black bg-white hover:bg-lightGrey2";

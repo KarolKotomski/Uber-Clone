@@ -64,6 +64,7 @@ const HomeNavbar = () => {
                 handleClick={() =>
                   setIsCompanyDropdownMenuActive(!isCompanyDropDownMenuActive)
                 }
+                applyFocus={true}
               />
 
               {isCompanyDropDownMenuActive && (
