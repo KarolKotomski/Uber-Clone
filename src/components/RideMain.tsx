@@ -19,9 +19,13 @@ const RideMain = () => {
   useEffect(() => {
     if (isSearchMenuActive === true) {
       document.body.style.overflow = "hidden";
+      document.body.style.position = "fixed";
+      document.body.style.width = "100%";
       window.scrollTo(0, 0);
     } else {
       document.body.style.overflow = "auto";
+      document.body.style.position = "static";
+      document.body.style.width = "auto";
     }
   }, [isSearchMenuActive]);
 
