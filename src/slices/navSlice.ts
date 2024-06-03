@@ -25,22 +25,10 @@ export const navSlice = createSlice({
   name: "nav",
   initialState,
   reducers: {
-    setOrigin: (
-      state,
-      action: PayloadAction<{
-        placeData: Option;
-        coordinates: LatLng;
-      } | null>,
-    ) => {
+    setOrigin: (state, action: PayloadAction<LocationData | null>) => {
       state.origin = action.payload;
     },
-    setDestination: (
-      state,
-      action: PayloadAction<{
-        placeData: Option;
-        coordinates: LatLng;
-      } | null>,
-    ) => {
+    setDestination: (state, action: PayloadAction<LocationData | null>) => {
       state.destination = action.payload;
     },
     setDirections: (
